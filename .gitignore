@@ -1,0 +1,18 @@
+# Visual Studio user configuration
+/*.user
+/*.ncb
+/*.suo
+/.vs/
+# Visual Studio IncerdiBuild files
+/PredictedInputCache_*.dat
+# Visual Studio IntelliSense files
+/*.VC.db
+/*.VC.opendb
+/ipch/
+# Intel Amplifier profiler results
+/My Amplifier XE Results*
+# Build directories
+/Debug
+/Debug64
+/Release
+/Release64
