@@ -1,9 +1,10 @@
 #include <iostream>
 #include "Observer.h"
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[]) 
+{
 
-
+	std::cout << "Hello szia";
 
 	return 0;
 }
