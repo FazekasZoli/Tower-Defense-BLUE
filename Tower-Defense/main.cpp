@@ -1,12 +1,7 @@
 #include <iostream>
 
-int main(int argc, char *argv[]) 
-{
-	Player player;
-	CritterManger cm;
-	Map map;
+int main(int argc, char *argv[]) {
 
-	Engine game(player, map, tm, cm)
 
 
 	return 0;
