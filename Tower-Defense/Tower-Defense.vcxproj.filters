@@ -21,10 +21,14 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+
+    <ClCompile Include="View.cpp">
+
     <ClCompile Include="Entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
+
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

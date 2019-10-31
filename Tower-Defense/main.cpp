@@ -7,7 +7,10 @@
 
 int main(int argc, char *argv[]) 
 {
-	View* view = new View();
+  View v;
+	v.displayIntro();
+
+  	View* view = new View();
 	Player* player = new Player();
 	Game* game = new Game(player, view);
 
