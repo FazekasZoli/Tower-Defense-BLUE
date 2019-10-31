@@ -13,9 +13,9 @@ class Entity
 			: x(x), y(y), _cost(_cost)
 		{}
 
-		double getEntityPosX();
-		double getEntityPosY();
-		int getEntityCost();
+		double getX();
+		double getY();
+		int getCost();
 
 
 };
