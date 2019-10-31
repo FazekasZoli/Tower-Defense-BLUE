@@ -124,6 +124,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="inc\Observable.h" />
     <ClInclude Include="inc\Observer.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="View.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
