@@ -1,18 +1,17 @@
 #pragma once
-#include "View.h"
 
-class Player;
-class Grid;
+#include "Player.h"
+#include "View.h"
 
 class Game
 {
 private:
 	Player* _player;
 	View* _view;
-	Grid* _grid;
+	//Grid* _grid;
 
 public:
-	Game(Player* player, View* view, Grid* grid) : _player(player), _view(view), _grid(grid) {}
+	Game(Player* player, View* view) : _player(player), _view(view) {}
 
 	void gameLogic();
 
