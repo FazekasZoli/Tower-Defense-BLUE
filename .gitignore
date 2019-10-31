@@ -12,8 +12,8 @@
 # Intel Amplifier profiler results
 /My Amplifier XE Results*
 # Build directories
-/Debug
-/Debug64
-/Release
-/Release64
-/x64
+Debug/
+Debug64/
+Release/
+Release64/
+x64/
