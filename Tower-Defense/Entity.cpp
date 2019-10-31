@@ -1,16 +1,16 @@
 #include "Entity.h"
 
-double Entity::getEntityPosX()
+double Entity::getX()
 {
 	return x;
 }
 
-double Entity::getEntityPosY()
+double Entity::getY()
 {
 	return y;
 }
 
-int Entity::getEntityCost()
+int Entity::getCost()
 {
 	return _cost;
 }
