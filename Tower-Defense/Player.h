@@ -11,7 +11,7 @@ private:
 public:
 
 	//Player konstruktora
-	Player(int _life, int _money) : life(_life), money(_money) {};
+	Player(int _life = 10, int _money = 100) : life(_life), money(_money) {};
 
 	//destruktor ha kell
 	~Player();
