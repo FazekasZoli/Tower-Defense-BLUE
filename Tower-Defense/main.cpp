@@ -3,7 +3,8 @@
 #include "Observer.h"
 #include "Player.h"
 #include "View.h"
-#include "Game.h"	
+#include "Game.h"
+#include "Critter.h"
 
 int main(int argc, char *argv[]) 
 {

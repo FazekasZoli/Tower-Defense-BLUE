@@ -9,6 +9,7 @@ class Entity
 
 	public:
 
+		Entity() {};
 		Entity(double x, double y, int _cost)
 			: x(x), y(y), _cost(_cost)
 		{}
