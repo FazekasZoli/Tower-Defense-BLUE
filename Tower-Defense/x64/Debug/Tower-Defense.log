@@ -1,7 +1,5 @@
-﻿  Entity.cpp
-  Game.cpp
-  main.cpp
-  View.cpp
+﻿  Game.cpp
   Player.cpp
+  main.cpp
   Generating Code...
   Tower-Defense.vcxproj -> C:\Workplace\TowerDefense\x64\Debug\Tower-Defense.exe

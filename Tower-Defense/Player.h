@@ -14,7 +14,7 @@ public:
 	Player(int _life = 10, int _money = 100) : life(_life), money(_money) {};
 
 	//destruktor ha kell
-	~Player();
+	~Player() {}
 
 	//GETTEREK: lekérdezést biztosítja(ezzel jelenítjük majd meg a HUD-on az életet és a pénzt, constans értékek)
 	int getLife() const;
