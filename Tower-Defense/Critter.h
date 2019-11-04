@@ -46,18 +46,3 @@ private:
 
 
 };
-
-void Critter::setLife(int newLife)
-{
-	life = newLife;
-}
-
-void Critter::setReward(int newReward)
-{
-	reward = newReward;
-}
-
-void Critter::setSpeed(int newSpeed)
-{
-	speed = newSpeed;
-}
