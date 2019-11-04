@@ -4,52 +4,61 @@
 
 void introTower()
 {
-	std::cout << "               " <<" _    _    _" << std::endl;
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(40) << " _    _    _" << std::setfill(' ') << std::setw(36) << "++\n";
 	Sleep(100);
-	std::cout << "               " << "| |__| |__| |" << std::endl;
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(41) << "| |__| |__| |" << std::setfill(' ') << std::setw(35) << "++\n";
 	Sleep(100);
-	std::cout << "               " << "|           |" << std::endl;
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(41) << "|           |" << std::setfill(' ') << std::setw(35) << "++\n";
 	Sleep(100);
-	std::cout << "               " << "|__       __|" << std::endl;
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(41) << "|__       __|" << std::setfill(' ') << std::setw(35) << "++\n";
 	Sleep(100);
-	std::cout << "               " << "   |     |    " << std::endl;
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << "   |     |    " << std::setfill(' ') << std::setw(34) << "++\n";
 	Sleep(100);
-	std::cout << "               " << "   |     |    " << std::endl;
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << "   |     |    " << std::setfill(' ') << std::setw(34) << "++\n";
 	Sleep(100);
-	std::cout << "               " << " __|     |__ " << std::endl;
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(41) << " __|     |__ " << std::setfill(' ') << std::setw(35) << "++\n";
 	Sleep(100);
-	std::cout << "               " << "|___________| " << std::endl;
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << "|___________| " << std::setfill(' ') << std::setw(34) << "++\n";
 }
 
 void welcome()
 {
 	std::string welcome = "Welcome to our TOWER DEFENSE game";
-	std::cout << "      ";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << std::setfill(' ') << std::setw(76) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << std::setfill(' ') << std::setw(76) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(19);
 	for (int i = 0; i < welcome.size(); ++i)
 	{
-		std::cout << welcome[i];  
+		std::cout << welcome[i];
 		Sleep(50);
 	}
+	std::cout << std::setfill(' ') << std::setw(25) << "++\n";
 }
 
 void View::displayIntro()
 {
-	
+	std::cout << "\n\n" << std::setfill(' ') << std::setw(10) << "+" << std::setfill('+') << std::setw(77) << "\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << std::setfill(' ') << std::setw(76) << "++\n";
+
 	introTower();
-	
+
 	Sleep(1000);
-		
-	std::cout << "\n" << std::endl;
+
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(76) << "++\n";
 
 	welcome();
 
 	Sleep(1000);
 
-	std::cout << "\n" << std::endl;
-		
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << std::setfill(' ') << std::setw(76) << "++\n";
+
 	introTower();
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << std::setfill(' ') << std::setw(76) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << std::setfill(' ') << std::setw(76) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(10) << "+" << std::setfill('+') << std::setw(77) << "\n";
 	Sleep(500);
 }
+
 
 
 void View::displayMenu()
