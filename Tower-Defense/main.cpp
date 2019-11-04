@@ -18,6 +18,7 @@ int main(int argc, char *argv[])
 	delete player;
 	delete game;
 
+	view->displayGameOver();
 
 	return 0;
 }

@@ -1,24 +1,23 @@
 #include "View.h"
 #include <iostream>
 
-
 void introTower()
 {
-	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(40) << " _    _    _" << std::setfill(' ') << std::setw(36) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << " _    _    _" << std::setfill(' ') << std::setw(34) << "++\n";
 	Sleep(100);
-	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(41) << "| |__| |__| |" << std::setfill(' ') << std::setw(35) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(43) << "| |__| |__| |" << std::setfill(' ') << std::setw(33) << "++\n";
 	Sleep(100);
-	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(41) << "|           |" << std::setfill(' ') << std::setw(35) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(43) << "|           |" << std::setfill(' ') << std::setw(33) << "++\n";
 	Sleep(100);
-	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(41) << "|__       __|" << std::setfill(' ') << std::setw(35) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(43) << "|__       __|" << std::setfill(' ') << std::setw(33) << "++\n";
 	Sleep(100);
-	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << "   |     |    " << std::setfill(' ') << std::setw(34) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(44) << "   |     |    " << std::setfill(' ') << std::setw(32) << "++\n";
 	Sleep(100);
-	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << "   |     |    " << std::setfill(' ') << std::setw(34) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(44) << "   |     |    " << std::setfill(' ') << std::setw(32) << "++\n";
 	Sleep(100);
-	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(41) << " __|     |__ " << std::setfill(' ') << std::setw(35) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(43) << " __|     |__ " << std::setfill(' ') << std::setw(33) << "++\n";
 	Sleep(100);
-	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << "|___________| " << std::setfill(' ') << std::setw(34) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(44) << "|___________| " << std::setfill(' ') << std::setw(32) << "++\n";
 }
 
 void welcome()
@@ -33,6 +32,31 @@ void welcome()
 		Sleep(50);
 	}
 	std::cout << std::setfill(' ') << std::setw(25) << "++\n";
+}
+
+void destroyTower()
+{
+	Sleep(100);
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(40) << "       _   " << std::setfill(' ') << std::setw(36) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(44) << "      _| |_     " << std::setfill(' ') << std::setw(32) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(47) << "_     _|     |_     _" << std::setfill(' ') << std::setw(29) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(50) << "_| |_ _|         |_ _| |_ " << std::setfill(' ') << std::setw(26) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(51) << "|_____|_____________|_____| " << std::setfill(' ') << std::setw(25) << "++\n";
+	Sleep(100);
+}
+
+void end()
+{
+	std::string end = "GAME OVER";
+
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(33);
+	for (int i = 0; i < end.size(); ++i)
+	{
+		std::cout << end[i];
+		Sleep(50);
+	}
+	std::cout << std::setfill(' ') << std::setw(35) << "++\n";
+
 }
 
 void View::displayIntro()
@@ -58,8 +82,6 @@ void View::displayIntro()
 	std::cout << std::setfill(' ') << std::setw(10) << "+" << std::setfill('+') << std::setw(77) << "\n";
 	Sleep(500);
 }
-
-
 
 void View::displayMenu()
 {
@@ -102,7 +124,6 @@ void View::displayMenu()
 	std::cout << "\n" << menuState;
 }
 
-
 void View::mainMenu() {
 
 	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -125,9 +146,6 @@ void View::mainMenu() {
 	COORD  LoadGamePos = { push,9 };
 	COORD  ExitGamepos = { push,12 };
 
-
-
-
 	char input;
 	bool menuBool = true;
 	if (mainPpos == -1)
@@ -144,9 +162,6 @@ void View::mainMenu() {
 	//Beep(723, 50);
 	do
 	{
-
-
-
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), NewGamePos);
 		(mainPpos == 0) ? SetConsoleTextAttribute(hOut, 8 + 16 * 14) : SetConsoleTextAttribute(hOut, 7);
 		std::cout << "1. New Game";
@@ -238,22 +253,13 @@ void View::mainMenu() {
 			break;
 		}
 
-
-
-
-
-
 		//std::cout << input;
 	} while (menuBool);
 
 }
 
-
 void View::displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &levels)
 {
-
-
-
 	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
 	ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
 	SetConsoleTextAttribute(hOut, 10);
@@ -378,4 +384,30 @@ void View::displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &le
 
 		//std::cout << input;
 	} while (menuBool);
+}
+
+void View::displayGameOver()
+{
+	system("cls");
+
+	std::cout << "\n\n" << std::setfill(' ') << std::setw(10) << "+" << std::setfill('+') << std::setw(77) << "\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << std::setfill(' ') << std::setw(76) << "++\n";
+
+	introTower();
+
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << std::setfill(' ') << std::setw(76) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << std::setfill(' ') << std::setw(76) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << std::setfill(' ') << std::setw(76) << "++\n";
+
+	end();
+
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << std::setfill(' ') << std::setw(76) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << std::setfill(' ') << std::setw(76) << "++\n";
+
+	destroyTower();
+
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << std::setfill(' ') << std::setw(76) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << std::setfill(' ') << std::setw(76) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << std::setfill(' ') << std::setw(76) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(10) << "+" << std::setfill('+') << std::setw(77) << "\n";
 }

@@ -27,4 +27,5 @@ public:
 	//A mentett palyak és a betöltendo pélyék hasonlóan tárolhatóak(pl a new game tartalmazza ugyanazokat mint a mentett csak adott kezdo értékekkel)
 	//így az enummal adhatjuk meg éppen mit írjon ki a select level, utána ugyanúgy indítja el a pályát
 	void displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &betoltendoPalya);
+	void displayGameOver();
 };
