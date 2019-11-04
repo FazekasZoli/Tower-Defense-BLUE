@@ -127,6 +127,8 @@
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Critter.h" />
+    <ClInclude Include="CritterManager.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="inc\Observable.h" />
