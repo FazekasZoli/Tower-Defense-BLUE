@@ -70,7 +70,7 @@ void View::displayMenu()
 			std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(76) << "++\n";
 		}
 		std::cout << std::setfill(' ') << std::setw(10) << "+" << std::setfill('+') << std::setw(77) << "\n";
-		std::cout << std::setfill(' ') << std::setw(13) << " " << "Move Up/down : W/D - Enter : Select - Space : Back - ESC : Exit game\n";
+		std::cout << std::setfill(' ') << std::setw(13) << " " << "Move Up/down : W/S - Enter : Select - Space : Back - ESC : Exit game\n";
 
 
 		switch (menuState)
