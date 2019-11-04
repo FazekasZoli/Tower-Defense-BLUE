@@ -13,5 +13,10 @@ int main(int argc, char *argv[])
 
 	game->gameLogic();
 
+	delete view;
+	delete player;
+	delete game;
+
+
 	return 0;
 }
