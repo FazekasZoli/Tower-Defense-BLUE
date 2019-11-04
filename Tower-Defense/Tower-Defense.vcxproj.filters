@@ -13,9 +13,6 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Critter.cpp">
       <Filter>Source Files\Critter</Filter>
     </ClCompile>
@@ -44,6 +41,9 @@
     </ClInclude>
     <ClInclude Include="Critter.h">
       <Filter>Header Files\Critter</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
