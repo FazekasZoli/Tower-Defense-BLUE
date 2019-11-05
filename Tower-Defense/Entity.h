@@ -21,7 +21,7 @@ protected:
 	int _cost;
 
 public:
-	Entity() : _pos({ 0, 0 }), _cost(0)
+	Entity() : _pos({ 0, 0 }), _cost()
 	{
 	}
 

@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include "Critter.h"
 #include "Game.h"	
 
 int main(int argc, char* argv[])
@@ -10,5 +10,7 @@ int main(int argc, char* argv[])
 
 	game.gameLogic();
 
+	
+	
 	return 0;
 }
