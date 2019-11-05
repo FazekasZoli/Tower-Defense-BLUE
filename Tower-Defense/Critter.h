@@ -1,11 +1,11 @@
 #pragma once
 #include "Entity.h"
+#include "Observable.h"
 
-class Critter : public Entity
+class Critter : public Entity, public Observable
 {
 
 public:
-
 	//default konstruktor
 	Critter() : life(1), positionX(0), positionY(0), reward(150), speed(1) {};
 

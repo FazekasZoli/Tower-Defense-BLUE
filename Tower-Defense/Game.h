@@ -5,8 +5,9 @@
 #include "View.h"
 #include "Grid.h"
 #include "CritterManager.h"
+#include "Observer.h"
 
-class Game
+class Game : public CritterObserver
 {
 private:
 	std::unique_ptr<Player> _player;
@@ -18,4 +19,8 @@ public:
 	Game() : _player(std::make_unique<Player>()), _view(std::make_unique<View>()), _grid(std::make_shared<Grid>()), _cm(std::make_shared<CritterManager>()) {}
 
 	void gameLogic();
+	   
+	// Inherited via CritterObserver
+	virtual void updatePlayerLife() override;
+
 };
