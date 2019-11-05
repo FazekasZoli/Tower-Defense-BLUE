@@ -37,11 +37,12 @@ void welcome()
 void destroyTower()
 {
 	Sleep(100);
-	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(40) << "       _   " << std::setfill(' ') << std::setw(36) << "++\n";
-	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(44) << "      _| |_     " << std::setfill(' ') << std::setw(32) << "++\n";
-	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(47) << "_     _|     |_     _" << std::setfill(' ') << std::setw(29) << "++\n";
-	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(50) << "_| |_ _|         |_ _| |_ " << std::setfill(' ') << std::setw(26) << "++\n";
-	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(51) << "|_____|_____________|_____| " << std::setfill(' ') << std::setw(25) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(20) << std::setfill(' ') << std::setw(51) << "      ____   " << std::setfill(' ') << std::setw(25) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(20) << std::setfill(' ') << std::setw(49) << "   __|   _|" << std::setfill(' ') << std::setw(27) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(32) << "    _    " << std::setfill(' ') << std::setw(17) << " _|     |_ " << std::setfill(' ') << std::setw(27) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(36) << "   | |___    " << std::setfill(' ') << std::setw(14) << "|        _| " << std::setfill(' ') << std::setw(26) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(36) << " __|     |__ " << std::setfill(' ') << std::setw(13) << "|____   |_ " << std::setfill(' ') << std::setw(27) << "++\n";
+	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(37) << "|___________| " << std::setfill(' ') << std::setw(13) << "     |____| " << std::setfill(' ') << std::setw(26) << "++\n";
 	Sleep(100);
 }
 
