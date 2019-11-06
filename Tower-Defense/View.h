@@ -62,14 +62,5 @@ private:
 	bool current;
 };
 
-Button::Button(const sf::Texture& normal, const sf::Texture&  clicked, std::string, sf::Vector2f location)
-{
-	this->normal.setTexture(normal);
-	this->clicked.setTexture(clicked);
-	this->current = &(this->normal);
-	current = false;
-}
 
-Button::~Button()
-{
-}
+
