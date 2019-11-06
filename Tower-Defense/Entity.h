@@ -36,5 +36,5 @@ public:
 	int getCost() const { return _cost; };
 	Position getPos() const { return _pos; };
 
-	virtual std::unique_ptr<Entity> clone() = 0;
+	virtual std::shared_ptr<Entity> clone() = 0;
 };

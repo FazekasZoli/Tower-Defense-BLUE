@@ -31,9 +31,9 @@ public:
 	inline void setReward(int newReward) { reward = newReward; };
 	inline void setSpeed(int newSpeed) { speed = newSpeed; };
 
-	std::unique_ptr<Entity> clone() override
+	std::shared_ptr<Entity> clone() override
 	{
-		return std::make_unique<Critter>(*this);
+		return std::make_shared<Critter>(*this);
 	}
 
 private:

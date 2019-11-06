@@ -6,23 +6,23 @@
 #include <list>
 #include <iostream>
 
-class CritterManager : public Critter
+class CritterManager
 {
 private:
 
-	int startX;
-	int startY;
 	int critAlive;
 	int critSummon;
 	int critTotal;
 
 	Critter* critter;
 
+	std::unordered_map<CritterType, std::shared_ptr<Critter>> _critters;
+
 public:
 
 	CritterManager(){}
-	CritterManager(Critter* critter, int startX, int startY)
-		: critter(critter), startX(startX), startY(startY)
+	CritterManager(Critter* critter)
+		: critter(critter)
 	{};
 
 	virtual ~CritterManager();
@@ -31,37 +31,22 @@ public:
 	int getCritSummon() { return critSummon; }
 	int getCritTotal() { return critTotal; }
 
-	//std::unique_ptr<Critter> clone() override
-	//{
-	//	return std::make_unique<Critter>(*this);
-	//}
+	CritterManager()
+	{
+
+		std::shared_ptr<Critter>critter_ptr(new Critter);
+		_critters.insert = critter_ptr;
+	}
+
+	std::shared_ptr<Entity> createCritter(CritterType critters)
+	{
+		return _critters[critters]->clone();
+	}
+
 
 };
 
 enum CritterType
 {
 	NORMAL
-};
-
-class CritterFactory
-{
-private:
-
-	std::unordered_map<CritterType, std::unique_ptr<Critter>> _critters;
-
-public:
-
-	CritterFactory()
-	{
-	
-		std::unique_ptr<Critter>critter_ptr(new Critter);
-		_critters.insert = critter_ptr;
-	}
-
-	std::unique_ptr<Entity> createCritter(CritterType critters)
-	{
-		return _critters[critters]->clone();
-	}
-	
-
 };
