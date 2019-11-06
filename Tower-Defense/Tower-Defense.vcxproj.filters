@@ -13,6 +13,10 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Critter.cpp">
+      <Filter>Source Files\Critter</Filter>
+    </ClCompile>
+
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h">

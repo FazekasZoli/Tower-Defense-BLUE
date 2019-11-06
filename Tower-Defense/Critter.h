@@ -1,55 +1,33 @@
 #pragma once
 #include "Entity.h"
-
+#include <vector>
 
 class Critter : public Entity
 {
-
 public:
-
 	//default konstruktor
-	Critter() : life(1), positionX(0), positionY(0), reward(150), speed(1) {};
-
+	Critter(int life = 5, int speed = 10) : life(life), speed(speed), Entity() {};
+  
 	//konstruktor
-	
-	Critter(int newLife, int newPositionX, int newPositionY, int newReward, int newSpeed) 
-		: life(newLife), positionX(newPositionX), positionY(newPositionY), reward(newReward), speed(newSpeed) {};
+	Critter(int newLife, int newSpeed, Position& pos, int cost) : Entity(pos, cost), life(newLife), speed(newSpeed) {};
 
-	//destruktor
-	~Critter();
-
-	//GETTEREK (azért inline mert az osztály leírásában szerepeltetem a tagfüggvények teljes definícióját (rövidek))
+	//GETTEREK (azÃ©rt inline mert az osztÃ¡ly leÃ­rÃ¡sÃ¡ban szerepeltetem a tagfÃ¼ggvÃ©nyek teljes definÃ­ciÃ³jÃ¡t (rÃ¶videk))
 	inline int getLife() const { return life; };
-	inline int getPositionX() const { return positionX; };
-	inline int getPositionY() const { return positionY; };
-	inline int getReward() const { return reward; };
 	inline int getSpeed() const { return speed; };
 
 	//SETTEREK
 	//........
 	inline void setLife(int newLife) { life = newLife; };
-	inline void setReward(int newReward) { reward = newReward; };
 	inline void setSpeed(int newSpeed) { speed = newSpeed; };
 
-	std::shared_ptr<Entity> clone() override
-	{
-		return std::make_shared<Critter>(*this);
-	}
+	//move algoritmus(ha tesztelni akarod akkor a teszt fv-el teheted meg)
+	void move(std::vector<std::pair<Position, Position>> p);
+	void test_move();
 
 private:
-
-	//élet
+	//Ã©let
 	int life;
-
-	//--Pozíció--
-	int positionX;
-	int positionY;
-
-	//jutalom, ha meghal
-	int reward;
 
 	//milyen gyorsan tud mozogni
 	int speed;
-
-
 };

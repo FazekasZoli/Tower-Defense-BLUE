@@ -1,23 +1,17 @@
 #include <iostream>
-
-#include "Observer.h"
-#include "Player.h"
-#include "View.h"
+#include "Critter.h"
 #include "Game.h"	
 
-int main(int argc, char *argv[]) 
+int main(int argc, char* argv[])
 {
-	ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
-  	View* view = new View();
-	Player* player = new Player();
-	Game* game = new Game(player, view);
+	//ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
 
-	game->gameLogic();
+	//Game game;
 
-	delete view;
-	delete player;
-	delete game;
+	//game.gameLogic();
 
+	Critter monster;
+	monster.test_move();
 
 	return 0;
 }
