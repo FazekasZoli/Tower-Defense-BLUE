@@ -7,8 +7,6 @@
 #include <conio.h>
 #include <vector>
 #include <string>
-#include <list>
-#include "Critter.h"
 
 
 
@@ -34,15 +32,7 @@ private:
 	void mainMenu();
 
 	sf::RenderWindow window;
-	int screenX = 1000;
-	int screenY = 800;
 	sf::Event event;
-	sf::Texture grassTexture;
-	sf::Texture routeTexture;
-	sf::Texture entityTexture;
-	sf::Sprite spriteBG;
-	std::vector<sf::Sprite> sprites;
-	std::vector<sf::Sprite> RoadSprites;
 
 
 public:
@@ -54,12 +44,8 @@ public:
 	void displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &betoltendoPalya);
 	void displayGameOver(GameEnd status);
 
-	void updateGraphic(std::list<std::shared_ptr<Critter>>& critterList);
-	void setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::vector<std::pair<Position, Position>> &road);
-	void addSprites(std::list<std::shared_ptr<Critter>>& critterList, const sf::Texture &texture);
-	void addRouteSprites(std::vector<std::pair<Position, Position>> &road, const sf::Texture &texture);
-	void updateSprites(std::list<std::shared_ptr<Critter>>& entityList);
-	
+	void graphic();
+	void setUpDisplay();
 };
 
 class Button
@@ -76,5 +62,14 @@ private:
 	bool current;
 };
 
+Button::Button(const sf::Texture& normal, const sf::Texture&  clicked, std::string, sf::Vector2f location)
+{
+	this->normal.setTexture(normal);
+	this->clicked.setTexture(clicked);
+	this->current = &(this->normal);
+	current = false;
+}
 
-
+Button::~Button()
+{
+}
