@@ -12,12 +12,55 @@ struct Position
 	}
 
 	Position(const Position& p) : x(p.x), y(p.y) {}
+
+	//overloading
+	bool operator==(const Position& p)
+	{
+		if (x == p.x && y == p.y)
+		{
+			return true;
+		}
+		return false;
+	
+	}
+
+	bool operator!=(const Position& p)
+	{
+		if (x != p.x && y != p.y)
+		{
+			return true;
+		}
+		return false;
+		
+	}
+
+	Position operator*=(int speed)
+	{
+		Position result(this->x, this->y);
+
+		result.x *= speed;
+		result.y *= speed;
+
+		return result;
+	
+	}
+
+	Position operator+=(Position p)
+	{
+
+		x += p.x;
+		y += p.y;
+
+		return *this;
+	
+	}
 };
 
 class Entity
 {
 protected:
 	Position _pos;
+	Position irany;
 	int _cost;
 
 public:

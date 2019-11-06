@@ -1,5 +1,6 @@
 #pragma once
 #include "Entity.h"
+#include <vector>
 
 class Critter : public Entity
 {
@@ -7,7 +8,7 @@ class Critter : public Entity
 public:
 
 	//default konstruktor
-	Critter() : Entity() {};
+	Critter(int life = 5, int speed = 10) : life(life), speed(speed), Entity() {};
 
 	//konstruktor
 
@@ -21,6 +22,10 @@ public:
 	//........
 	inline void setLife(int newLife) { life = newLife; };
 	inline void setSpeed(int newSpeed) { speed = newSpeed; };
+
+	//move algoritmus(ha tesztelni akarod akkor a teszt fv-el teheted meg)
+	void move(std::vector<std::pair<Position, Position>> p);
+	void test_move();
 
 private:
 

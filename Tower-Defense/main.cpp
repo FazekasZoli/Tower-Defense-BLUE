@@ -4,13 +4,14 @@
 
 int main(int argc, char* argv[])
 {
-	ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
+	//ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
 
-	Game game;
+	//Game game;
 
-	game.gameLogic();
+	//game.gameLogic();
 
-	
-	
+	Critter monster;
+	monster.test_move();
+
 	return 0;
 }
