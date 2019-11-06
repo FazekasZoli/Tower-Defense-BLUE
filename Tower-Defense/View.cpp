@@ -360,6 +360,7 @@ void View::displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &le
 
 				system("cls");
 				std::cout << "\n" << levels[pos] << " nevu palya indul... WIP";// ehhes hasonlóan hivatkozhat a megfelelore Pályák tárolása vektorban pl
+				graphic();
 				menuState = -1;
 				return;
 			}
@@ -443,3 +444,30 @@ void View::displayGameOver(GameEnd status)
 		std::cout << std::setfill(' ') << std::setw(10) << "+" << std::setfill('+') << std::setw(77) << "\n";
 	}
 }
+
+void View::graphic()
+{
+
+	sf::Font font;
+	while (window.pollEvent(event))
+	{
+		switch (event.type)
+		{
+		case sf::Event::Closed:
+			window.close();
+			break;
+		}
+	}
+	window.clear();
+	
+	window.display();
+
+}
+
+void View::setUpDisplay()
+{
+	window.create(sf::VideoMode(1000, 800), "Tower defense");
+	window.setFramerateLimit(30);
+}
+
+
