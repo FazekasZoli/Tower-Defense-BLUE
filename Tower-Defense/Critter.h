@@ -1,6 +1,8 @@
 #pragma once
-#include "Entity.h"
 #include <vector>
+#include <memory>
+
+#include "Entity.h"
 
 class Critter : public Entity
 {
@@ -23,6 +25,11 @@ public:
 	//move algoritmus(ha tesztelni akarod akkor a teszt fv-el teheted meg)
 	void move(std::vector<std::pair<Position, Position>> p);
 	void test_move();
+
+	std::shared_ptr<Entity> clone() override
+	{
+		return std::make_shared<Critter>(*this);
+	}
 
 private:
 	//élet

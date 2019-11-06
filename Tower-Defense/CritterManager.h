@@ -1,10 +1,15 @@
 #pragma once
-
-#include "Critter.h"
 #include <memory>
 #include <unordered_map>
 #include <list>
 #include <iostream>
+
+#include "Critter.h"
+
+enum CritterType
+{
+	NORMAL
+};
 
 class CritterManager
 {
@@ -19,13 +24,10 @@ private:
 	std::unordered_map<CritterType, std::shared_ptr<Critter>> _critters;
 
 public:
-
-	CritterManager(){}
+	
 	CritterManager(Critter* critter)
 		: critter(critter)
-	{};
-
-	virtual ~CritterManager();
+	{};	
 
 	int getCritAlive() { return critAlive; }
 	int getCritSummon() { return critSummon; }
@@ -33,20 +35,12 @@ public:
 
 	CritterManager()
 	{
-
 		std::shared_ptr<Critter>critter_ptr(new Critter);
-		_critters.insert = critter_ptr;
+		//_critters.insert = critter_ptr;
 	}
 
 	std::shared_ptr<Entity> createCritter(CritterType critters)
 	{
 		return _critters[critters]->clone();
 	}
-
-
-};
-
-enum CritterType
-{
-	NORMAL
 };

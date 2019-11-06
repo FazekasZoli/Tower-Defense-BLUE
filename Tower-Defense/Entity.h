@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 struct Position
 {
 	int x = 0;
@@ -69,4 +71,6 @@ public:
 
 	int getCost() const { return _cost; };
 	Position getPos() const { return _pos; };
+
+	virtual std::shared_ptr<Entity> clone() = 0;
 };
