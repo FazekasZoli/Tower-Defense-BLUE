@@ -1,12 +1,20 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿  Tower.cpp
 c:\users\arapcsak\source\tower-defense-blue\tower-defense\tower.cpp(12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 c:\users\arapcsak\source\tower-defense-blue\tower-defense\tower.cpp(18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 c:\users\arapcsak\source\tower-defense-blue\tower-defense\tower.cpp(24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+=======
+﻿  Critter.cpp
+<<<<<<< HEAD
+  CritterManager.cpp
+  Game.cpp
+>>>>>>> Setting up
   main.cpp
   Generating Code...
   Tower-Defense.vcxproj -> C:\Users\arapcsak\source\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe
 =======
+<<<<<<< HEAD
 <<<<<<< HEAD
 ﻿  Critter.cpp
   Tower-Defense.vcxproj -> C:\Workplace\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe
@@ -28,3 +36,11 @@ c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\vie
   Generating Code...
   Tower-Defense.vcxproj -> C:\Users\mpinter\source\repos\TowerDefender\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe
 >>>>>>> critter->Critter
+=======
+  Tower-Defense.vcxproj -> C:\Workplace\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe
+=======
+﻿  Game.cpp
+  Tower-Defense.vcxproj -> C:\Users\fbalogh\source\repos\ng201\Tower-Defense-BLUE\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe
+>>>>>>> Setting up
+>>>>>>> Setting up
+>>>>>>> Setting up
