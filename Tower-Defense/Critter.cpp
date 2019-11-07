@@ -1,6 +1,6 @@
 #include "Critter.h"
 #include <iostream>
-//#include <Windows.h>
+#include <Windows.h>
 
 void Critter::move(std::vector<std::pair<Position, Position>> road_)
 {
@@ -10,7 +10,7 @@ void Critter::move(std::vector<std::pair<Position, Position>> road_)
 		if (_pos == road_[i].first)
 		{
 			irany = road_[i].second;
-			/*if (irany.x == 1 && irany.y == 0)
+			if (irany.x == 1 && irany.y == 0)
 			{
 				std::cout << "Jobbra halad" << std::endl;
 			}
@@ -25,7 +25,7 @@ void Critter::move(std::vector<std::pair<Position, Position>> road_)
 			else if(irany.x == 0 && irany.y == 0)
 			{
 				std::cout << "Egyhelyben all" << std::endl;
-			}*/
+			}
 		}
 	}
 
@@ -33,6 +33,7 @@ void Critter::move(std::vector<std::pair<Position, Position>> road_)
 
 	if (this->_pos == road_.back().first)
 	{
+		system("pause");
 		notifyGameCritterFinished();
 	}
 }
