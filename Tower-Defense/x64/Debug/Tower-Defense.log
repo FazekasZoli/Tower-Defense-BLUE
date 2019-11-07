@@ -1,4 +1,6 @@
-﻿  Game.cpp
+﻿  Critter.cpp
+  Game.cpp
+  View.cpp
   main.cpp
   Generating Code...
   Tower-Defense.vcxproj -> C:\Users\mpinter\source\repos\TowerDefender\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe
