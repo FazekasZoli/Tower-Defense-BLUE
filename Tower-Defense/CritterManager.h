@@ -18,16 +18,19 @@ private:
 	// feltöltöm az egyes pályákhoz tartozó critter listát
 	void createCrittersForGame()
 	{
+		_crittersForGame.resize(3);
 		// pálya 0 critterei
-		for (int i = 1; i <= 5; i++)
+		for (int i = 0; i < 5; i++)
 		{
-			_crittersForGame[0].push_back(createCritter(NORMAL));
+ 			_crittersForGame[0].push_back(createCritter(NORMAL));
 		}
-		for (int i = 1; i <= 10; i++)
+
+		for (int i = 0; i < 10; i++)
 		{
 			_crittersForGame[1].push_back(createCritter(NORMAL));
 		}
-		for (int i = 1; i <= 15; i++)
+
+		for (int i = 0; i < 15; i++)
 		{
 			_crittersForGame[2].push_back(createCritter(NORMAL));
 		}

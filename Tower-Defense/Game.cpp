@@ -13,11 +13,11 @@ void Game::playGame()
 		
 	
 	// move teszt
-	/*for (size_t i = 0; i < 50; i++)
+	for (size_t i = 0; i < 50; i ++)
 	{
-		c->move(p);
+		c->move(_grid->getRoad());
 		std::cout << "x: " << c->getPos().x << " y: " << c->getPos().y << std::endl;
-	}*/
+	}
 }
 
 void Game::updatePlayerLife()

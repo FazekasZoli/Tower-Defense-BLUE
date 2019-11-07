@@ -10,9 +10,11 @@
 class Game : public CritterObserver
 {	  
 private:
+	// Events
 	// Inherited via CritterObserver
 	virtual void updatePlayerLife() override;
 
+	// Methods
 	void setupGame();
 	void setupRound();
 	void currentRound();

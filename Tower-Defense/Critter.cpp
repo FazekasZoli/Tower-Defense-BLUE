@@ -67,6 +67,4 @@ void Critter::test_move()
 		this->move(p);
 		std::cout << "x: " << getPos().x << " y: " << getPos().y << std::endl;
 	}
-
-
 }

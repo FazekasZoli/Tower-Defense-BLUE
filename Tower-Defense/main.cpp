@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Critter.h"
+
 #include "Game.h"	
 
 int main(int argc, char* argv[])
