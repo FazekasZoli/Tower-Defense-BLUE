@@ -13,5 +13,11 @@ int main(int argc, char* argv[])
 	Critter monster;
 	monster.test_move();
 
+	Player player;
+
+	player.setLife(1);
+
+	game.updatePlayerLife();
+
 	return 0;
 }
