@@ -1,20 +1,19 @@
 #pragma once
-#include "Entity.h"
 #include <vector>
+#include <memory>
+
+#include "Entity.h"
 
 class Critter : public Entity
 {
-
 public:
-
 	//default konstruktor
 	Critter(int life = 5, int speed = 10) : life(life), speed(speed), Entity() {};
-
+  
 	//konstruktor
-
 	Critter(int newLife, int newSpeed, Position& pos, int cost) : Entity(pos, cost), life(newLife), speed(newSpeed) {};
 
-	//GETTEREK (azért inline mert az osztály leírásában szerepeltetem a tagfüggvények teljes definícióját (rövidek))
+	//GETTEREK (azÃ©rt inline mert az osztÃ¡ly leÃ­rÃ¡sÃ¡ban szerepeltetem a tagfÃ¼ggvÃ©nyek teljes definÃ­ciÃ³jÃ¡t (rÃ¶videk))
 	inline int getLife() const { return life; };
 	inline int getSpeed() const { return speed; };
 
@@ -27,13 +26,15 @@ public:
 	void move(std::vector<std::pair<Position, Position>> p);
 	void test_move();
 
-private:
+	std::shared_ptr<Entity> clone() override
+	{
+		return std::make_shared<Critter>(*this);
+	}
 
-	//élet
+private:
+	//Ã©let
 	int life;
 
 	//milyen gyorsan tud mozogni
 	int speed;
-
-
 };

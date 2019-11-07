@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 struct Position
 {
 	int x = 0;
@@ -7,9 +9,7 @@ struct Position
 
 	Position() {}
 
-	Position(int x, int y) : x(x), y(y)
-	{
-	}
+	Position(int x, int y) : x(x), y(y)	{}
 
 	Position(const Position& p) : x(p.x), y(p.y) {}
 
@@ -20,8 +20,7 @@ struct Position
 		{
 			return true;
 		}
-		return false;
-	
+		return false;	
 	}
 
 	bool operator!=(const Position& p)
@@ -30,8 +29,7 @@ struct Position
 		{
 			return true;
 		}
-		return false;
-		
+		return false;		
 	}
 
 	Position operator*=(int speed)
@@ -41,18 +39,15 @@ struct Position
 		result.x *= speed;
 		result.y *= speed;
 
-		return result;
-	
+		return result;	
 	}
 
 	Position operator+=(Position p)
 	{
-
 		x += p.x;
 		y += p.y;
 
-		return *this;
-	
+		return *this;	
 	}
 };
 
@@ -76,4 +71,6 @@ public:
 
 	int getCost() const { return _cost; };
 	Position getPos() const { return _pos; };
+
+	virtual std::shared_ptr<Entity> clone() = 0;
 };

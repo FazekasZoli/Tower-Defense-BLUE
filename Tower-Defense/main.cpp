@@ -4,20 +4,10 @@
 
 int main(int argc, char* argv[])
 {
-	//ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
+	ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
 
-	//Game game;
-
-	//game.gameLogic();
-
-	Critter monster;
-	monster.test_move();
-
-	Player player;
-
-	player.setLife(1);
-
-	game.updatePlayerLife();
-
+	Game game;
+	game.gameLogic();
+  
 	return 0;
 }
