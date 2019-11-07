@@ -13,57 +13,60 @@ enum CritterType
 
 class CritterManager
 {
-private:
+private:		
 
-	int critAlive;
-	int critSummon;
-	int critTotal;
+	// feltöltöm az egyes pályákhoz tartozó critter listát
+	void createCrittersForGame()
+	{
+		// pálya 0 critterei
+		for (int i = 1; i <= 5; i++)
+		{
+			_crittersForGame[0].push_back(createCritter(NORMAL));
+		}
+		for (int i = 1; i <= 10; i++)
+		{
+			_crittersForGame[1].push_back(createCritter(NORMAL));
+		}
+		for (int i = 1; i <= 15; i++)
+		{
+			_crittersForGame[2].push_back(createCritter(NORMAL));
+		}
+	}
 
-	Critter* critter;
-
-	std::unordered_map<CritterType, std::shared_ptr<Critter>> _critters;
-
-public:
-	
-	CritterManager(Critter* critter)
-		: critter(critter)
-	{};	
-
-	int getCritAlive() { return critAlive; }
-	int getCritSummon() { return critSummon; }
-	int getCritTotal() { return critTotal; }
+public:	
 
 	CritterManager()
 	{
+		// add normal critter sablon
 		std::shared_ptr<Critter>critter_ptr(new Critter);
-		_critters.insert(std::make_pair(NORMAL, critter_ptr));		
+		_critterTemplates.insert(std::make_pair(NORMAL, critter_ptr));		
+
+		createCrittersForGame();
 	}
 
 	std::shared_ptr<Critter> createCritter(CritterType critters)
 	{
-		return _critters[critters]->clone();
+		return _critterTemplates[critters]->clone();
 	}
 
-	// critterek listája levelenként
-	std::vector<std::list<std::shared_ptr<Critter>>> _crittersForGame;
-
-	// feltöltöm az egyes levelekhez tartozó critter listát critterekkel
-
-	void createCrittersForGame()
+	void removeCritter(std::shared_ptr<Critter> critter)
 	{
-		
-			for (int i = 1; i <= 5; i++)
-			{
-				_crittersForGame[0].push_back(createCritter(NORMAL));
-			}
-			for (int i = 1; i <= 10; i++)
-			{
-				_crittersForGame[1].push_back(createCritter(NORMAL));
-			}
-			for (int i = 1; i <= 15; i++)
-			{
-				_crittersForGame[2].push_back(createCritter(NORMAL));
-			}
+
 	}
 
+	std::list<std::shared_ptr<Critter>> getCrittersForLevel(int level) const
+	{
+		if (level < _crittersForGame.size())
+		{
+			return _crittersForGame[level];
+		}
+		throw "error: level not exist";
+	}
+
+private:
+	// critter sablonok
+	std::unordered_map<CritterType, std::shared_ptr<Critter>> _critterTemplates;
+
+	// critterek listája pályánként
+	std::vector<std::list<std::shared_ptr<Critter>>> _crittersForGame;	
 };

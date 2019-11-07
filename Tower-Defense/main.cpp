@@ -7,7 +7,7 @@ int main(int argc, char* argv[])
 	ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
 
 	Game game;
-	game.gameLogic();
+	game.playGame();
 	  
 	return 0;
 }
