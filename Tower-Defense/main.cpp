@@ -1,17 +1,13 @@
 #include <iostream>
-
-
+#include "Critter.h"
 #include "Game.h"	
 
 int main(int argc, char* argv[])
 {
-	/*ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
+	ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
 
 	Game game;
-
-	game.gameLogic();*/
-	Grid grid;
-	grid.saveGrid();
-	
+	game.gameLogic();
+	  
 	return 0;
 }
