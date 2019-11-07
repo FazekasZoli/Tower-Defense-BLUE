@@ -32,7 +32,13 @@ private:
 	void mainMenu();
 
 	sf::RenderWindow window;
+	int screenX = 1000;
+	int screenY = 800;
 	sf::Event event;
+	sf::Texture grassTexture;
+	sf::Texture routeTexture;
+	sf::Texture entityTexture;
+
 
 
 public:
@@ -46,6 +52,7 @@ public:
 
 	void graphic();
 	void setUpDisplay();
+	void displayRoute();
 };
 
 class Button
