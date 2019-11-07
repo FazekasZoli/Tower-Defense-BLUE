@@ -1,15 +1,16 @@
 #include "Critter.h"
 #include <iostream>
+//#include <Windows.h>
 
-void Critter::move(std::vector<std::pair<Position, Position>> road)
+void Critter::move(std::vector<std::pair<Position, Position>> road_)
 {
 
-	for (int i = 0; i < road.size(); i++)
+	for (int i = 0; i < road_.size(); i++)
 	{
-		if (_pos == road[i].first)
+		if (_pos == road_[i].first)
 		{
-			irany = road[i].second;
-			if (irany.x == 1 && irany.y == 0)
+			irany = road_[i].second;
+			/*if (irany.x == 1 && irany.y == 0)
 			{
 				std::cout << "Jobbra halad" << std::endl;
 			}
@@ -24,16 +25,15 @@ void Critter::move(std::vector<std::pair<Position, Position>> road)
 			else if(irany.x == 0 && irany.y == 0)
 			{
 				std::cout << "Egyhelyben all" << std::endl;
-			}
+			}*/
 		}
 	}
 
 	_pos += irany *= speed;
 
-	if (this->_pos == road.back().first)
+	if (this->_pos == road_.back().first)
 	{
 		notifyGameCritterFinished();
-		
 	}
 }
 
@@ -52,7 +52,7 @@ void Critter::test_move()
 	Position dir3(-1, 0);
 	Position end3(0, 50);
 
-	Critter* monster = new Critter();
+	//Critter* monster = new Critter();
 
 	p.emplace_back(start1, dir1);
 	p.emplace_back(end1, dir2);
@@ -63,8 +63,8 @@ void Critter::test_move()
 
 	for (int i = 0; i < 50; i++)
 	{
-		monster->move(p);
-		std::cout << "x: " << monster->getPos().x << " y: " << monster->getPos().y << std::endl;
+		this->move(p);
+		std::cout << "x: " << getPos().x << " y: " << getPos().y << std::endl;
 	}
 
 

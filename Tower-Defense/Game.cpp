@@ -10,42 +10,27 @@ void Game::gameLogic()
 	// crittereket fel kell iratni az observerre a játék inicializálásakor
 	c->addObserver(this);
 
-	// temp road
-	/*std::vector<std::pair<Position, Position>> troad;
-	troad.push_back({ {0, 0} , {1, 0} });
-	troad.push_back({ {5, 0} , {0, 1} });
-	troad.push_back({ {5, 5} , {1, 0} });
-	troad.push_back({ {10, 5} , {0, 0} });*/
-
+	// tmp road
 	std::vector<std::pair<Position, Position>> p;
 
 	Position start1(0, 0); //honnan
 	Position dir1(1, 0); //irány
 	Position end1(50, 0); //hova
-
 	Position dir2(0, 1);
 	Position end2(50, 50);
-
 	Position dir3(-1, 0);
 	Position end3(0, 50);
-
-	Critter* monster = new Critter();
-
 	p.emplace_back(start1, dir1);
 	p.emplace_back(end1, dir2); 
 	p.emplace_back(end2, dir3);
-
 	p.emplace_back(end3, start1);
-
-	monster->test_move();
-
-	/*for (size_t i = 0; i < 100; i++)
+	
+	// move teszt
+	for (size_t i = 0; i < 50; i++)
 	{
 		c->move(p);
-		std::cout << "x: " << monster->getPos().x << " y: " << monster->getPos().y << std::endl;
-	}*/
-
-
+		std::cout << "x: " << c->getPos().x << " y: " << c->getPos().y << std::endl;
+	}
 }
 
 void Game::updatePlayerLife()
