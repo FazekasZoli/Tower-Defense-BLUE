@@ -40,8 +40,31 @@ public:
 		
 	}
 
-	std::shared_ptr<Entity> createCritter(CritterType critters)
+	std::shared_ptr<Critter> createCritter(CritterType critters)
 	{
 		return _critters[critters]->clone();
 	}
+
+	// critterek listája levelenként
+	std::vector<std::list<std::shared_ptr<Critter>>> _crittersForGame;
+
+	// feltöltöm az egyes levelekhez tartozó critter listát critterekkel
+
+	void createCrittersForGame()
+	{
+		
+			for (int i = 1; i <= 5; i++)
+			{
+				_crittersForGame[0].push_back(createCritter(NORMAL));
+			}
+			for (int i = 1; i <= 10; i++)
+			{
+				_crittersForGame[1].push_back(createCritter(NORMAL));
+			}
+			for (int i = 1; i <= 15; i++)
+			{
+				_crittersForGame[2].push_back(createCritter(NORMAL));
+			}
+	}
+
 };
