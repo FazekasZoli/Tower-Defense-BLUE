@@ -1,14 +1,14 @@
 #include "Critter.h"
 #include <iostream>
 
-void Critter::move(std::vector<std::pair<Position, Position>> p)
+void Critter::move(std::vector<std::pair<Position, Position>> road)
 {
 
-	for (int i = 0; i < p.size(); i++)
+	for (int i = 0; i < road.size(); i++)
 	{
-		if (_pos == p[i].first)
+		if (_pos == road[i].first)
 		{
-			irany = p[i].second;
+			irany = road[i].second;
 			if (irany.x == 1 && irany.y == 0)
 			{
 				std::cout << "Jobbra halad" << std::endl;
@@ -29,6 +29,11 @@ void Critter::move(std::vector<std::pair<Position, Position>> p)
 	}
 
 	_pos += irany *= speed;
+
+	if (this->_pos == road.back().first)
+	{
+		notifyGameCritterFinished();
+	}
 }
 
 void Critter::test_move()
