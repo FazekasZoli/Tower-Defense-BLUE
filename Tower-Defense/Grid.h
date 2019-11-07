@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
-
+#include <fstream>
+#pragma once
+#include <iostream>
 #include "Entity.h"
 
 class Grid
@@ -25,3 +27,4 @@ private:
 	// first pair is location, second direction after position
 	std::vector<std::pair<Position,Position>> road;
 };
+
