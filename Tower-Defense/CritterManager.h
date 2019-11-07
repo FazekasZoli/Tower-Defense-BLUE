@@ -36,7 +36,8 @@ public:
 	CritterManager()
 	{
 		std::shared_ptr<Critter>critter_ptr(new Critter);
-		//_critters.insert = critter_ptr;
+		_critters.insert(std::make_pair(NORMAL, critter_ptr));
+		
 	}
 
 	std::shared_ptr<Entity> createCritter(CritterType critters)
