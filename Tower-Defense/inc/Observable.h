@@ -7,41 +7,40 @@
 
 class Observable {
 
-    private:
-	    std::list<Observer*> observers;  ///< The registered observers.
+	private:
+	    std::list<CritterObserver*> _critterFinishObservers;  ///< The registered observers.
 
     public:
 
 		/// Adds an observer.
 		/// \param obs	Observer to add.
-	    void addObserver(Observer *obs) {
+	    void addObserver(CritterObserver *obs) {
 		    //check if already in
-		    for (const auto p : observers) {
+		    for (const auto p : _critterFinishObservers) {
 			    if (p == obs) {
 				    return;
 			    }
 		    }
-		    observers.push_back(obs);
+		    _critterFinishObservers.push_back(obs);
 	    }
 
 		/// Removes an observers.
 		/// \param obs	Observer to remove.
-	    void removeObserver(Observer *obs) {
-		    for (auto it = std::begin(observers); it != std::end(observers); ++it) {
+	    void removeObserver(CritterObserver *obs) {
+		    for (auto it = std::begin(_critterFinishObservers); it != std::end(_critterFinishObservers); ++it) {
 			    if (*it == obs) {
-				    observers.erase(it);
+				    _critterFinishObservers.erase(it);
 				    break;
 			    }
 		    }
 	    }
 
 		/// Notifies all the observers, i.e., calls  observers update function.
-	    void notify() const {
-		    for (auto obs : observers) {
-			    obs->update();
+	    void notifyGameCritterFinished() const {
+		    for (auto obs : _critterFinishObservers) {
+				obs->updatePlayerLife();
 		    }
 	    }
-
 };
 
 #endif /* OBSERVABLE_H_ */
