@@ -25,6 +25,10 @@ void Critter::move(std::vector<std::pair<Position, Position>> p)
 			{
 				std::cout << "Egyhelyben all" << std::endl;
 			}
+			else if (irany.x == 0 && irany.y == -1)
+			{
+				std::cout << "Felfele halad" << std::endl;
+			}
 		}
 	}
 
