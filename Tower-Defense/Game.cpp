@@ -32,16 +32,18 @@ void Game::gameLogic()
 	Critter* monster = new Critter();
 
 	p.emplace_back(start1, dir1);
-	p.emplace_back(end1, dir2);
+	p.emplace_back(end1, dir2); 
 	p.emplace_back(end2, dir3);
 
 	p.emplace_back(end3, start1);
 
-	for (size_t i = 0; i < 100; i++)
+	monster->test_move();
+
+	/*for (size_t i = 0; i < 100; i++)
 	{
 		c->move(p);
 		std::cout << "x: " << monster->getPos().x << " y: " << monster->getPos().y << std::endl;
-	}
+	}*/
 
 
 }

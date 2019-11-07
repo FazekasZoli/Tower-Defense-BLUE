@@ -33,6 +33,7 @@ void Critter::move(std::vector<std::pair<Position, Position>> road)
 	if (this->_pos == road.back().first)
 	{
 		notifyGameCritterFinished();
+		
 	}
 }
 
@@ -60,7 +61,7 @@ void Critter::test_move()
 	p.emplace_back(end3, start1);
 
 
-	for (int i = 0; i < 20; i++)
+	for (int i = 0; i < 50; i++)
 	{
 		monster->move(p);
 		std::cout << "x: " << monster->getPos().x << " y: " << monster->getPos().y << std::endl;

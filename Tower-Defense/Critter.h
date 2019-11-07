@@ -9,7 +9,7 @@ class Critter : public Entity, public Observable
 {
 public:
 	//default konstruktor
-	Critter(int life = 1, int speed = 1) : life(life), speed(speed), Entity() {};
+	Critter(int life = 1, int speed = 10) : life(life), speed(speed), Entity() {};
   
 	//konstruktor
 	Critter(int newLife, int newSpeed, Position& pos, int cost) : Entity(pos, cost), life(newLife), speed(newSpeed) {};
