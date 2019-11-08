@@ -26,7 +26,8 @@ void Grid::saveGrid(std::vector<std::pair<Position, Position>> road_)
 std::vector<std::pair<Position, Position>> Grid::loadGrid()
 {//letrehozok egy load vectort amibe betöltöm a faljbol a pozikat
 	std::ifstream reader;
-	Position pos;
+	Position pos1;
+	Position pos2;
 	std::vector<std::pair<Position, Position>> load;
 	reader.open("TowerDefLoad.txt");
 	if (!reader.is_open()) // hibakezeles
@@ -34,9 +35,10 @@ std::vector<std::pair<Position, Position>> Grid::loadGrid()
 		throw "error: reader is not open";
 	}
 			
-	while (reader >> pos.x && reader >>pos.y && reader >> pos.x && reader >> pos.y) // addig megyek amig a vegere nem erek és a fájlban lévő x és y parokat betöltöm a load vectorba
+	while (reader >> pos1.x && reader >>pos1.y && reader >> pos2.x && reader >> pos2.y) // addig megyek amig a vegere nem erek és a fájlban lévő x és y parokat betöltöm a load vectorba
 	{
-		load.emplace_back(std::make_pair(pos,pos));
+
+		load.emplace_back(std::make_pair(pos1,pos2));
 	}
 	//kiüritem a roadot és feltöltöm
 	_road.clear();

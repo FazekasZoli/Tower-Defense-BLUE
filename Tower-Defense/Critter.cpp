@@ -1,5 +1,8 @@
-#include "Critter.h"
+#pragma once
 #include <iostream>
+#include <memory>
+
+#include "Critter.h"
 #include <Windows.h>
 
 void Critter::move(std::vector<std::pair<Position, Position>> road_)
@@ -30,12 +33,6 @@ void Critter::move(std::vector<std::pair<Position, Position>> road_)
 	}
 
 	_pos += irany *= speed;
-
-	if (this->_pos == road_.back().first)
-	{
-		system("pause");
-		notifyGameCritterFinished();
-	}
 }
 
 void Critter::test_move()
@@ -67,4 +64,9 @@ void Critter::test_move()
 		this->move(p);
 		std::cout << "x: " << getPos().x << " y: " << getPos().y << std::endl;
 	}
+}
+
+std::shared_ptr<Critter> Critter::clone()
+{
+	return std::make_shared<Critter>(*this);
 }

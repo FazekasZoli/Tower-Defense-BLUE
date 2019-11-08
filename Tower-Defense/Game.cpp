@@ -6,21 +6,15 @@ void Game::playGame()
 	//_view->displayIntro();
 	//_view->displayMenu();
 
-	std::shared_ptr<Critter> c = _cm->createCritter(NORMAL);
-
-	// crittereket fel kell iratni az observerre a játék inicializálásakor
-	c->addObserver(this);
-		
-	
-	// move teszt
-	for (size_t i = 0; i < 50; i ++)
+	setupRound();	
+	for (size_t i = 0; i < 100; i++)
 	{
-		c->move(_grid->getRoad());
-		std::cout << "x: " << c->getPos().x << " y: " << c->getPos().y << std::endl;
+		_cm->moveActualRoundCritters(_currentRound, _grid->getRoad());
 	}
+
 }
 
-void Game::updatePlayerLife()
+void Game::critterFinishedRoad(std::shared_ptr<Critter> finishedCritter)
 {
 	_player->setLife(_player->getLife() - 1);
 
@@ -32,6 +26,7 @@ void Game::updatePlayerLife()
 
 void Game::setupGame()
 {
+	// Load map
 	// tmp road
 	std::vector<std::pair<Position, Position>> tmp;
 
@@ -53,6 +48,7 @@ void Game::setupGame()
 
 void Game::setupRound()
 {
+	_currentRound = 0;
 }
 
 void Game::currentRound()

@@ -120,9 +120,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-
     <ClCompile Include="Critter.cpp" />
-
+    <ClCompile Include="CritterManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="main.cpp" />

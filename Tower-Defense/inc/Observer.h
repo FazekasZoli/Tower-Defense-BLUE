@@ -10,7 +10,7 @@ class Observer {
 class CritterObserver : public Observer
 {
 public:
-	virtual void updatePlayerLife() = 0;
+	virtual void critterFinishedRoad(std::shared_ptr<Critter> finishedCritter) = 0;
 };
-
+	
 #endif /* OBSERVER_H_ */

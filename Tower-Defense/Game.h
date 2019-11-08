@@ -10,21 +10,23 @@
 class Game : public CritterObserver
 {	  
 private:
-	// Events
-	// Inherited via CritterObserver
-	virtual void updatePlayerLife() override;
-
-	// Methods
 	void setupGame();
 	void setupRound();
 	void currentRound();
 
 public:
-	Game(int level = 0) : 
-		_player(std::make_unique<Player>()), _view(std::make_unique<View>()), _grid(std::make_shared<Grid>()), _cm(std::make_shared<CritterManager>()), _level(level) 
-	{}
+	Game(int level = 0, int currentRound = 0) : 
+		_player(std::make_unique<Player>()), _view(std::make_unique<View>()), _grid(std::make_shared<Grid>()), _cm(std::make_shared<CritterManager>()), _selectedLevel(level), _currentRound(currentRound)
+	{
+		// add Game to CritterManager observers
+		_cm->addObserver(this);
+	}
 
 	void playGame();
+
+	// Events
+	// Inherited via CritterObserver
+	virtual void critterFinishedRoad(std::shared_ptr<Critter> finishedCritter) override;
 
 private:
 	std::unique_ptr<Player> _player;
@@ -32,5 +34,6 @@ private:
 	std::shared_ptr<Grid> _grid;
 	std::shared_ptr<CritterManager> _cm;
 
-	int _level;
+	int _selectedLevel;
+	int _currentRound;	
 };

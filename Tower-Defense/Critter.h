@@ -3,9 +3,8 @@
 #include <memory>
 
 #include "Entity.h"
-#include "Observable.h"
 
-class Critter : public Entity, public Observable
+class Critter : public Entity
 {
 public:
 	//default konstruktor
@@ -27,10 +26,7 @@ public:
 	void move(std::vector<std::pair<Position, Position>> p);
 	void test_move();
 
-	std::shared_ptr<Critter> clone() //override
-	{
-		return std::make_shared<Critter>(*this);
-	}
+	std::shared_ptr<Critter> clone(); //override
 
 private:
 	//élet
