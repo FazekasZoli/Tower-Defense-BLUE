@@ -6,12 +6,20 @@ int main(int argc, char* argv[])
 {
 	//ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
 
+<<<<<<< HEAD
 	Game game;
-	  
 	game.gameLogic();
+	  
+	
+	
+=======
+	//Game game;
 
-	//Critter monster;
-	//monster.test_move();
+	//game.gameLogic();
 
+	Critter monster;
+	monster.test_move();
+
+>>>>>>> Move metódus végleges
 	return 0;
 }

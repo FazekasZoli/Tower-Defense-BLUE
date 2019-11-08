@@ -3,12 +3,11 @@
 void Game::gameLogic()
 {
 	//_view->displayIntro();
+<<<<<<< HEAD
 	//_view->displayMenu();
-	
+
 	std::shared_ptr<Critter> c = _cm->createCritter(NORMAL);
-	c->setSpeed(10);
-	std::list<std::shared_ptr<Critter>> critterList;
-	critterList.push_back(c);
+
 	// crittereket fel kell iratni az observerre a játék inicializálásakor
 	c->addObserver(this);
 
@@ -17,40 +16,29 @@ void Game::gameLogic()
 
 	Position start1(0, 0); //honnan
 	Position dir1(1, 0); //irány
-
-	Position end1(400, 0); //hova
+	Position end1(50, 0); //hova
 	Position dir2(0, 1);
-
-	Position end2(400,200);
+	Position end2(50, 50);
 	Position dir3(-1, 0);
-
-	Position end3(100,200);
-	Position dir4(0, 1);
-
-	Position end4(100,500);
-	Position dir5(1, 0);
-
-	Position end5(800, 500);
-	Position dir6(0, 1);
-
-	Position end6(800, 800);
-
+	Position end3(0, 50);
 	p.emplace_back(start1, dir1);
 	p.emplace_back(end1, dir2); 
 	p.emplace_back(end2, dir3);
-	p.emplace_back(end3, dir4);
-	p.emplace_back(end4, dir5);
-	p.emplace_back(end5, dir6);
-	p.emplace_back(end6, start1);
-
-	_view->setUpDisplay(critterList, p);
+	p.emplace_back(end3, start1);
+	
 	// move teszt
-	for (size_t i = 0; i < 500; i++)
+	for (size_t i = 0; i < 50; i++)
 	{
 		c->move(p);
-		_view->updateGraphic(critterList);
 		std::cout << "x: " << c->getPos().x << " y: " << c->getPos().y << std::endl;
 	}
+=======
+	_view->displayMenu();
+	_view->setUpDisplay();
+	_view->graphic();
+	_view->displayGameOver();
+	
+>>>>>>> Setting up
 }
 
 void Game::updatePlayerLife()
