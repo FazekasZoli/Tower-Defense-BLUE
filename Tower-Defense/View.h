@@ -7,6 +7,8 @@
 #include <conio.h>
 #include <vector>
 #include <string>
+#include <list>
+#include "Critter.h"
 
 
 
@@ -38,7 +40,9 @@ private:
 	sf::Texture grassTexture;
 	sf::Texture routeTexture;
 	sf::Texture entityTexture;
-
+	sf::Sprite spriteBG;
+	std::vector<sf::Sprite> sprites;
+	std::vector<sf::Sprite> RoadSprites;
 
 
 public:
@@ -50,9 +54,12 @@ public:
 	void displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &betoltendoPalya);
 	void displayGameOver(GameEnd status);
 
-	void graphic();
-	void setUpDisplay();
-	void displayRoute();
+	void updateGraphic(std::list<std::shared_ptr<Critter>>& critterList);
+	void setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::vector<std::pair<Position, Position>> &road);
+	void addSprites(std::list<std::shared_ptr<Critter>>& critterList, const sf::Texture &texture);
+	void addRouteSprites(std::vector<std::pair<Position, Position>> &road, const sf::Texture &texture);
+	void updateSprites(std::list<std::shared_ptr<Critter>>& entityList);
+	
 };
 
 class Button

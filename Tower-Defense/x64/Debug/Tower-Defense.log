@@ -13,8 +13,18 @@ c:\users\arapcsak\source\tower-defense-blue\tower-defense\tower.cpp(24): warning
 =======
 ﻿  Game.cpp
   View.cpp
+<<<<<<< HEAD
   main.cpp
   Generating Code...
   Tower-Defense.vcxproj -> C:\Users\fbalogh\source\repos\ng201\Tower-Defense-BLUE\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe
 >>>>>>> Setting up
 >>>>>>> Setting up
+=======
+c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\view.cpp(522): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\view.cpp(540): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\view.cpp(558): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\view.cpp(566): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  main.cpp
+  Generating Code...
+  Tower-Defense.vcxproj -> C:\Users\mpinter\source\repos\TowerDefender\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe
+>>>>>>> critter->Critter
