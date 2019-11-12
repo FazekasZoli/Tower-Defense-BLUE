@@ -15,10 +15,9 @@ void Game::playGame()
 		_cm->moveActualRoundCritters(_currentRound, _grid->getRoad());
 		_view->updateGraphic(_cm->getCrittersForRound(_currentRound));
 	}
-
 }
 
-void Game::critterFinishedRoad(std::shared_ptr<Critter> finishedCritter)
+void Game::critterFinishedRoad()
 {
 	_player->setLife(_player->getLife() - 1);
 
@@ -26,6 +25,10 @@ void Game::critterFinishedRoad(std::shared_ptr<Critter> finishedCritter)
 	{
 		_view->displayGameOver(LOST);
 	}
+}
+
+void Game::placeTower()
+{
 }
 
 void Game::levelSelected(int selectedLevel)

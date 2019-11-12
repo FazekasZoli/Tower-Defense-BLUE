@@ -8,9 +8,9 @@
 #include <vector>
 #include <string>
 #include <list>
-#include "critter.h"
 
-enum ButtonType { Pause, Resume, TowerPlace, TowerUpgrade, TowerSell, NextRoundStart };
+#include "critter.h"
+#include "inc/Observable.h"
 
 enum LevelSelectMode
 {
@@ -24,7 +24,7 @@ enum GameEnd
 	LOST
 };
 
-class View : public ViewEvent
+class View : public ViewEvents
 {
 private:
 	

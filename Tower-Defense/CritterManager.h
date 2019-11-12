@@ -7,11 +7,11 @@
 #include <algorithm>
 
 #include "Critter.h"
-#include "Observable.h"
+#include "inc\Observable.h"
 
 enum CritterType { NORMAL };
 
-class CritterManager : public Observable
+class CritterManager : public CritterEvents
 {
 private:	
 	std::shared_ptr<Critter> createCritter(CritterType critterType); // majd private legyen

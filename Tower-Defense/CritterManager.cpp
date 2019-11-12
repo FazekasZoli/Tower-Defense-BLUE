@@ -62,10 +62,9 @@ void CritterManager::moveActualRoundCritters(int actualRound, const std::vector<
 
 		if ((*critterIt)->getPos() == road.back().first)
 		{
-			notifyCritterFinishedRoad((*critterIt));
+			notifyCritterFinishedRoad();
 			// mark critter death
 			(*critterIt)->setIsAlive(false);
-
 		}
 
 		i++;
