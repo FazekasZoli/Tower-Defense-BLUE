@@ -15,7 +15,7 @@ public:
 		: gridSizeX(gridSizeX), gridSizeY(gridSizeY)
 	{}
 
-	std::vector<std::pair<Position, Position>> const& getRoad() const { return road; };
+	std::vector<std::pair<Position, Position>> & getRoad()  { return road; };
 
 	void saveGrid();
 	void loadGrid();

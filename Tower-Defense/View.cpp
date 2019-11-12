@@ -525,6 +525,7 @@ void View::addSprites(std::list<std::shared_ptr<Critter>>& critterList, const sf
 
 void View::addRouteSprites(std::vector<std::pair<Position, Position>>& road, const sf::Texture & texture)
 {
+
 	Position irany = road[0].second;
 	Position pos = road[0].first;
 	Position nextPoint = road[1].first;

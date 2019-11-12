@@ -27,19 +27,27 @@ void Grid::saveGrid()
 
 void Grid::loadGrid()
 {//letrehozok egy load vectort amibe betöltöm a faljbol a pozikat
+	int level = 4;
+
+	std::string levelMap = std::to_string(level);
+
 	std::ifstream reader;
-	Position pos;
+	std::string palyaNeve;
+	palyaNeve += "TowerdefLoad" + levelMap + ".txt";
+
+	Position pos1;
+	Position pos2;
 	std::vector<std::pair<Position, Position>> load;
-	reader.open("TowerDefLoad.txt");
+
+	reader.open(palyaNeve);
 	if (!reader.is_open()) // hibakezeles
 	{
 		std::cout << "Error open ";
-		return;
 	}
-			
-	while (reader >> pos.x && reader >>pos.y && reader >> pos.x && reader >> pos.y) // addig megyek amig a vegere nem erek és a fájlban lévő x és y parokat betöltöm a load vectorba
+
+	while (reader >> pos1.x && reader >> pos1.y && reader >> pos2.x && reader >> pos2.y) // addig megyek amig a vegere nem erek és a fájlban lévő x és y parokat betöltöm a load vectorba
 	{
-		load.emplace_back(std::make_pair(pos,pos));
+		load.emplace_back(std::make_pair(pos1, pos2));
 	}
 	//kiüritem a roadot és feltöltöm
 	road.clear();
@@ -47,7 +55,9 @@ void Grid::loadGrid()
 	{
 		road.emplace_back(load[i]);
 	}
-		
+
+	reader.close();
+
 	//ez alatt ami van az a teszteleshez kellett
 	/*for (auto &it : road)
 	{
@@ -63,5 +73,4 @@ void Grid::loadGrid()
 	//	outputFile << road[i].second.x << " " << road[i].second.y << " ";
 	//}
 
-	reader.close();
 }
