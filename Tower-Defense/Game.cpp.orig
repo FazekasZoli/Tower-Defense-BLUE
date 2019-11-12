@@ -8,22 +8,13 @@ void Game::playGame()
 <<<<<<< HEAD
 
 	setupRound();	
-	for (size_t i = 0; i < 100; i++)
+	
+	_view->setUpDisplay(_cm->getCrittersForRound(_currentRound), _grid->getRoad());
+
+	for (size_t i = 0; i < 200; i++)
 	{
 		_cm->moveActualRoundCritters(_currentRound, _grid->getRoad());
-	}
-
-}
-
-void Game::critterFinishedRoad(std::shared_ptr<Critter> finishedCritter)
-{
-	_player->setLife(_player->getLife() - 1);
-
-	if (_player->getLife() == 0)
-	{
-		_view->displayGameOver(LOST);
-	}
-}
+		_view->updateGraphic(_cm->getCrittersForRound(_currentRound));
 =======
 	
 	std::shared_ptr<Critter> c = _cm->createCritter(NORMAL);
@@ -32,7 +23,68 @@ void Game::critterFinishedRoad(std::shared_ptr<Critter> finishedCritter)
 	critterList.push_back(c);
 	// crittereket fel kell iratni az observerre a játék inicializálásakor
 	c->addObserver(this);
->>>>>>> 7107a1da681813e85defdf49aec62111e6c8392b
+
+	// tmp road
+	//std::vector<std::pair<Position, Position>> p;
+
+	//Position start1(0, 0); //honnan
+	//Position dir1(1, 0); //irány
+
+	//Position end1(400, 0); //hova
+	//Position dir2(0, 1);
+
+	//Position end2(400,200);
+	//Position dir3(-1, 0);
+
+	//Position end3(100,200);
+	//Position dir4(0, 1);
+
+	//Position end4(100,500);
+	//Position dir5(1, 0);
+
+	//Position end5(800, 500);
+	//Position dir6(0, 1);
+
+	//Position end6(800, 800);
+
+	//p.emplace_back(start1, dir1);
+	//p.emplace_back(end1, dir2); 
+	//p.emplace_back(end2, dir3);
+	//p.emplace_back(end3, dir4);
+	//p.emplace_back(end4, dir5);
+	//p.emplace_back(end5, dir6);
+	//p.emplace_back(end6, start1);
+	_grid->loadGrid();
+
+	_view->setUpDisplay(critterList, _grid->getRoad());
+	// move teszt
+	for (size_t i = 0; i < 500; i++)
+	{
+		c->move(_grid->getRoad());
+		_view->updateGraphic(critterList);
+		std::cout << "x: " << c->getPos().x << " y: " << c->getPos().y << std::endl;
+>>>>>>> 3fe25deae179cc0aae68aac21fd835479b2580ec
+	}
+}
+
+void Game::critterFinishedRoad()
+{
+	_player->setLife(_player->getLife() - 1);
+
+	if (_player->getLife() == 0)
+	{
+		_view->displayGameOver(LOST);
+	}
+}
+
+void Game::placeTower()
+{
+}
+
+void Game::levelSelected(int selectedLevel)
+{
+	_selectedLevel = selectedLevel;
+}
 
 void Game::setupGame()
 {
@@ -42,51 +94,19 @@ void Game::setupGame()
 
 	Position start1(0, 0); //honnan
 	Position dir1(1, 0); //irány
-
-	Position end1(400, 0); //hova
+	Position end1(500, 0); //hova
 	Position dir2(0, 1);
-
-	Position end2(400,200);
+	Position end2(500, 500);
 	Position dir3(-1, 0);
-<<<<<<< HEAD
-	Position end3(0, 50);
+	Position end3(0, 500);
 	tmp.emplace_back(start1, dir1);
 	tmp.emplace_back(end1, dir2);
 	tmp.emplace_back(end2, dir3);
 	tmp.emplace_back(end3, start1);
+	
 
 	_grid->saveGrid(tmp);
 	_grid->setRoad(_grid->loadGrid());
-=======
-
-	Position end3(100,200);
-	Position dir4(0, 1);
-
-	Position end4(100,500);
-	Position dir5(1, 0);
-
-	Position end5(800, 500);
-	Position dir6(0, 1);
-
-	Position end6(800, 800);
-
-	p.emplace_back(start1, dir1);
-	p.emplace_back(end1, dir2); 
-	p.emplace_back(end2, dir3);
-	p.emplace_back(end3, dir4);
-	p.emplace_back(end4, dir5);
-	p.emplace_back(end5, dir6);
-	p.emplace_back(end6, start1);
-
-	_view->setUpDisplay(critterList, p);
-	// move teszt
-	for (size_t i = 0; i < 500; i++)
-	{
-		c->move(p);
-		_view->updateGraphic(critterList);
-		std::cout << "x: " << c->getPos().x << " y: " << c->getPos().y << std::endl;
-	}
->>>>>>> 7107a1da681813e85defdf49aec62111e6c8392b
 }
 
 void Game::setupRound()
