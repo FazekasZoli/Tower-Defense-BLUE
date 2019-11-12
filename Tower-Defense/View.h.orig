@@ -7,6 +7,9 @@
 #include <conio.h>
 #include <vector>
 #include <string>
+#include <list>
+#include "critter.h"
+
 
 
 
@@ -32,17 +35,19 @@ private:
 	void mainMenu();
 
 	sf::RenderWindow window;
-<<<<<<< HEAD
 	int screenX = 1000;
 	int screenY = 800;
 	sf::Event event;
 	sf::Texture grassTexture;
 	sf::Texture routeTexture;
 	sf::Texture entityTexture;
+<<<<<<< HEAD
 
 =======
-	sf::Event event;
->>>>>>> Setting up
+	sf::Sprite spriteBG;
+	std::vector<sf::Sprite> sprites;
+	std::vector<sf::Sprite> RoadSprites;
+>>>>>>> 7107a1da681813e85defdf49aec62111e6c8392b
 
 
 public:
@@ -52,18 +57,20 @@ public:
 	//A mentett palyak és a betöltendo pályák hasonlóan tárolhatóak(pl a new game tartalmazza ugyanazokat mint a mentett csak adott kezdo értékekkel)
 	//így az enummal adhatjuk meg éppen mit írjon ki a select level, utána ugyanúgy indítja el a pályát
 	void displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &betoltendoPalya);
-<<<<<<< HEAD
 	void displayGameOver(GameEnd status);
 
+<<<<<<< HEAD
 	void graphic();
 	void setUpDisplay();
 	void displayRoute();
 =======
-	void displayGameOver();
-
-	void graphic();
-	void setUpDisplay();
->>>>>>> Setting up
+	void updateGraphic(std::list<std::shared_ptr<Critter>>& critterList);
+	void setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::vector<std::pair<Position, Position>> &road);
+	void addSprites(std::list<std::shared_ptr<Critter>>& critterList, const sf::Texture &texture);
+	void addRouteSprites(std::vector<std::pair<Position, Position>> &road, const sf::Texture &texture);
+	void updateSprites(std::list<std::shared_ptr<Critter>>& entityList);
+	
+>>>>>>> 7107a1da681813e85defdf49aec62111e6c8392b
 };
 
 class Button
@@ -80,19 +87,5 @@ private:
 	bool current;
 };
 
-<<<<<<< HEAD
 
 
-=======
-Button::Button(const sf::Texture& normal, const sf::Texture&  clicked, std::string, sf::Vector2f location)
-{
-	this->normal.setTexture(normal);
-	this->clicked.setTexture(clicked);
-	this->current = &(this->normal);
-	current = false;
-}
-
-Button::~Button()
-{
-}
->>>>>>> Setting up

@@ -1,5 +1,8 @@
-#include "Critter.h"
+#pragma once
 #include <iostream>
+#include <memory>
+
+#include "Critter.h"
 #include <Windows.h>
 
 void Critter::move(std::vector<std::pair<Position, Position>> road_)
@@ -7,7 +10,7 @@ void Critter::move(std::vector<std::pair<Position, Position>> road_)
 
 	for (int i = 0; i < road_.size(); i++)
 	{
-		if (_pos == road_[i].first)
+		if (getIsAlive() == true && _pos == road_[i].first)
 		{
 			irany = road_[i].second;
 			if (irany.x == 1 && irany.y == 0)
@@ -22,20 +25,15 @@ void Critter::move(std::vector<std::pair<Position, Position>> road_)
 			{
 				std::cout << "Balra halad" << std::endl;
 			}
-			else if(irany.x == 0 && irany.y == 0)
+			else if (irany.x == 0 && irany.y == 0)
 			{
 				std::cout << "Egyhelyben all" << std::endl;
 			}
 		}
+		
 	}
 
 	_pos += irany *= speed;
-
-	if (this->_pos == road_.back().first)
-	{
-		system("pause");
-		notifyGameCritterFinished();
-	}
 }
 
 void Critter::test_move()
@@ -54,6 +52,7 @@ void Critter::test_move()
 	Position end3(0, 50);
 
 	//Critter* monster = new Critter();
+	
 
 	p.emplace_back(start1, dir1);
 	p.emplace_back(end1, dir2);
@@ -61,12 +60,16 @@ void Critter::test_move()
 
 	p.emplace_back(end3, start1);
 
-
+	
 	for (int i = 0; i < 50; i++)
 	{
 		this->move(p);
 		std::cout << "x: " << getPos().x << " y: " << getPos().y << std::endl;
+		
 	}
+}
 
-
+std::shared_ptr<Critter> Critter::clone()
+{
+	return std::make_shared<Critter>(*this);
 }

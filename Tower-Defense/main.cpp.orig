@@ -1,25 +1,15 @@
 #include <iostream>
-#include "Critter.h"
+
 #include "Game.h"	
 
 int main(int argc, char* argv[])
 {
-	//ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
+	ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
 
-<<<<<<< HEAD
 	Game game;
-	game.gameLogic();
+	game.playGame();
 	  
 	
 	
-=======
-	//Game game;
-
-	//game.gameLogic();
-
-	Critter monster;
-	monster.test_move();
-
->>>>>>> Move metódus végleges
 	return 0;
 }

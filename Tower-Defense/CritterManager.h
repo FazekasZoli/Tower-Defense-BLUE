@@ -3,67 +3,33 @@
 #include <unordered_map>
 #include <list>
 #include <iostream>
+#include <chrono>
+#include <algorithm>
 
 #include "Critter.h"
+#include "Observable.h"
 
-enum CritterType
+enum CritterType { NORMAL };
+
+class CritterManager : public Observable
 {
-	NORMAL
-};
-
-class CritterManager
-{
-private:
-
-	int critAlive;
-	int critSummon;
-	int critTotal;
-
-	Critter* critter;
-
-	std::unordered_map<CritterType, std::shared_ptr<Critter>> _critters;
-
-public:
+private:	
+	std::shared_ptr<Critter> createCritter(CritterType critterType); // majd private legyen
+	void createCrittersForGame();
 	
-	CritterManager(Critter* critter)
-		: critter(critter)
-	{};	
+public:	
+	CritterManager();	
 
-	int getCritAlive() { return critAlive; }
-	int getCritSummon() { return critSummon; }
-	int getCritTotal() { return critTotal; }
+	std::list<std::shared_ptr<Critter>>& getCrittersForRound(int actualRound);
 
-	CritterManager()
-	{
-		std::shared_ptr<Critter>critter_ptr(new Critter);
-		_critters.insert(std::make_pair(NORMAL, critter_ptr));		
-	}
+	void moveActualRoundCritters(int actualRound, const std::vector<std::pair<Position, Position>>& road);
 
-	std::shared_ptr<Critter> createCritter(CritterType critters)
-	{
-		return _critters[critters]->clone();
-	}
+private:
+	std::chrono::high_resolution_clock::time_point _startTime;
 
-	// critterek listája levelenként
-	std::vector<std::list<std::shared_ptr<Critter>>> _crittersForGame;
-
-	// feltöltöm az egyes levelekhez tartozó critter listát critterekkel
-
-	void createCrittersForGame()
-	{
+	// critter sablonok
+	std::unordered_map<CritterType, std::shared_ptr<Critter>> _critterTemplates;
 		
-			for (int i = 1; i <= 5; i++)
-			{
-				_crittersForGame[0].push_back(createCritter(NORMAL));
-			}
-			for (int i = 1; i <= 10; i++)
-			{
-				_crittersForGame[1].push_back(createCritter(NORMAL));
-			}
-			for (int i = 1; i <= 15; i++)
-			{
-				_crittersForGame[2].push_back(createCritter(NORMAL));
-			}
-	}
+	std::vector<std::list<std::shared_ptr<Critter>>> _crittersForGame;	
 
 };

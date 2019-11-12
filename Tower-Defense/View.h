@@ -10,7 +10,7 @@
 #include <list>
 #include "Critter.h"
 
-
+enum ButtonType { Pause, Resume, TowerPlace, TowerUpgrade, TowerSell, NextRoundStart };
 
 enum LevelSelectMode
 {
@@ -24,7 +24,7 @@ enum GameEnd
 	LOST
 };
 
-class View
+class View : public ViewEvent
 {
 private:
 	
@@ -53,7 +53,7 @@ public:
 	//így az enummal adhatjuk meg éppen mit írjon ki a select level, utána ugyanúgy indítja el a pályát
 	void displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &betoltendoPalya);
 	void displayGameOver(GameEnd status);
-
+	//void graphic();
 	void updateGraphic(std::list<std::shared_ptr<Critter>>& critterList);
 	void setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::vector<std::pair<Position, Position>> &road);
 	void addSprites(std::list<std::shared_ptr<Critter>>& critterList, const sf::Texture &texture);

@@ -506,6 +506,7 @@ Button::Button(const sf::Texture& normal, const sf::Texture&  clicked, std::stri
 	this->clicked.setTexture(clicked);
 	this->current = &(this->normal);
 	current = false;
+	
 }
 
 Button::~Button()
@@ -566,3 +567,28 @@ void View::updateSprites(std::list<std::shared_ptr<Critter>>& critterList)
 		sprites[i].setPosition((*std::next(critterList.begin(), i))->getPos().x, (*std::next(critterList.begin(), i))->getPos().y);
 	}
 }
+
+//void View::graphic()
+//{
+//
+//	sf::Font font;
+//	while (window.pollEvent(event))
+//	{
+//		switch (event.type)
+//		{
+//		case sf::Event::Closed:
+//			window.close();
+//			break;
+//		}
+//	}
+//
+//
+//	window.clear();
+//	
+//	window.display();
+//
+//}
+
+
+
+

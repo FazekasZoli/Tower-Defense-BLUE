@@ -1,59 +1,24 @@
 #include "Game.h"
 
-void Game::gameLogic()
+void Game::playGame()
 {
+	setupGame();
 	//_view->displayIntro();
 	//_view->displayMenu();
+
+	setupRound();	
 	
-	std::shared_ptr<Critter> c = _cm->createCritter(NORMAL);
-	c->setSpeed(10);
-	std::list<std::shared_ptr<Critter>> critterList;
-	critterList.push_back(c);
-	// crittereket fel kell iratni az observerre a játék inicializálásakor
-	c->addObserver(this);
+	_view->setUpDisplay(_cm->getCrittersForRound(_currentRound), _grid->getRoad());
 
-	// tmp road
-	std::vector<std::pair<Position, Position>> p;
-
-	Position start1(0, 0); //honnan
-	Position dir1(1, 0); //irány
-
-	Position end1(400, 0); //hova
-	Position dir2(0, 1);
-
-	Position end2(400,200);
-	Position dir3(-1, 0);
-
-	Position end3(100,200);
-	Position dir4(0, 1);
-
-	Position end4(100,500);
-	Position dir5(1, 0);
-
-	Position end5(800, 500);
-	Position dir6(0, 1);
-
-	Position end6(800, 800);
-
-	p.emplace_back(start1, dir1);
-	p.emplace_back(end1, dir2); 
-	p.emplace_back(end2, dir3);
-	p.emplace_back(end3, dir4);
-	p.emplace_back(end4, dir5);
-	p.emplace_back(end5, dir6);
-	p.emplace_back(end6, start1);
-
-	_view->setUpDisplay(critterList, p);
-	// move teszt
-	for (size_t i = 0; i < 500; i++)
+	for (size_t i = 0; i < 200; i++)
 	{
-		c->move(p);
-		_view->updateGraphic(critterList);
-		std::cout << "x: " << c->getPos().x << " y: " << c->getPos().y << std::endl;
+		_cm->moveActualRoundCritters(_currentRound, _grid->getRoad());
+		_view->updateGraphic(_cm->getCrittersForRound(_currentRound));
 	}
+
 }
 
-void Game::updatePlayerLife()
+void Game::critterFinishedRoad(std::shared_ptr<Critter> finishedCritter)
 {
 	_player->setLife(_player->getLife() - 1);
 
@@ -61,5 +26,42 @@ void Game::updatePlayerLife()
 	{
 		_view->displayGameOver(LOST);
 	}
+}
+
+void Game::levelSelected(int selectedLevel)
+{
+	_selectedLevel = selectedLevel;
+}
+
+void Game::setupGame()
+{
+	// Load map
+	// tmp road
+	std::vector<std::pair<Position, Position>> tmp;
+
+	Position start1(0, 0); //honnan
+	Position dir1(1, 0); //irány
+	Position end1(500, 0); //hova
+	Position dir2(0, 1);
+	Position end2(500, 500);
+	Position dir3(-1, 0);
+	Position end3(0, 500);
+	tmp.emplace_back(start1, dir1);
+	tmp.emplace_back(end1, dir2);
+	tmp.emplace_back(end2, dir3);
+	tmp.emplace_back(end3, start1);
+	
+
+	_grid->saveGrid(tmp);
+	_grid->setRoad(_grid->loadGrid());
+}
+
+void Game::setupRound()
+{
+	_currentRound = 0;
+}
+
+void Game::currentRound()
+{
 }
 
