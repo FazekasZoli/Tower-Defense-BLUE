@@ -7,8 +7,10 @@
 #include <conio.h>
 #include <vector>
 #include <string>
+#include <list>
+#include "critter.h"
 
-
+enum ButtonType { Pause, Resume, TowerPlace, TowerUpgrade, TowerSell, NextRoundStart };
 
 enum LevelSelectMode
 {
@@ -22,7 +24,7 @@ enum GameEnd
 	LOST
 };
 
-class View
+class View : public ViewEvent
 {
 private:
 	
@@ -38,7 +40,9 @@ private:
 	sf::Texture grassTexture;
 	sf::Texture routeTexture;
 	sf::Texture entityTexture;
-
+	sf::Sprite spriteBG;
+	std::vector<sf::Sprite> sprites;
+	std::vector<sf::Sprite> RoadSprites;
 
 
 public:
@@ -49,10 +53,13 @@ public:
 	//így az enummal adhatjuk meg éppen mit írjon ki a select level, utána ugyanúgy indítja el a pályát
 	void displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &betoltendoPalya);
 	void displayGameOver(GameEnd status);
-
-	void graphic();
-	void setUpDisplay();
-	void displayRoute();
+	//void graphic();
+	void updateGraphic(std::list<std::shared_ptr<Critter>>& critterList);
+	void setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::vector<std::pair<Position, Position>> &road);
+	void addSprites(std::list<std::shared_ptr<Critter>>& critterList, const sf::Texture &texture);
+	void addRouteSprites(std::vector<std::pair<Position, Position>> &road, const sf::Texture &texture);
+	void updateSprites(std::list<std::shared_ptr<Critter>>& entityList);
+	
 };
 
 class Button

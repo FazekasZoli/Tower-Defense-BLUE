@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿  Tower.cpp
 c:\users\arapcsak\source\tower-defense-blue\tower-defense\tower.cpp(12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 c:\users\arapcsak\source\tower-defense-blue\tower-defense\tower.cpp(18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
@@ -47,3 +48,10 @@ c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\vie
 >>>>>>> Setting up
 >>>>>>> Setting up
 >>>>>>> Setting up
+=======
+﻿  CritterManager.cpp
+  Game.cpp
+  main.cpp
+  Generating Code...
+  Tower-Defense.vcxproj -> C:\Workplace\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe
+>>>>>>> Delayed critter start
