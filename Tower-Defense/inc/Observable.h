@@ -6,11 +6,12 @@
 
 #include "Observer.h"
 #include "..\Critter.h"
+#include "..\View.h"
 
 class Observable 
 {
 	private:
-	    std::list<CritterObserver*> _critterFinishObservers;  ///< The registered observers.
+	    std::list<CritterObserver*> _critterFinishObservers;  ///< The registered observers.		
 
     public:
 
@@ -49,6 +50,38 @@ class Observable
 				obs->critterFinishedRoad(finishedCritter);
 		    }
 	    }
+};
+
+class ViewEvent
+{
+	ViewObserver* _obs;
+
+	void notifyButtonClicked(ButtonType clickType) 
+	{
+		switch (clickType)
+		{
+		case Pause:
+			break;
+		case Resume:
+			break;
+		case TowerPlace:
+			_obs->placeTower();
+			break;
+		case TowerUpgrade:
+			break;
+		case TowerSell:
+			break;
+		case NextRoundStart:
+			break;
+		default:
+			break;
+		}
+	}
+
+	void notifySelectedLevel(int selectedLevel)
+	{
+		_obs->levelSelected(selectedLevel);
+	}
 };
 
 #endif /* OBSERVABLE_H_ */

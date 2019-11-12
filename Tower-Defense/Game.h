@@ -7,7 +7,7 @@
 #include "CritterManager.h"
 #include "Observer.h"
 
-class Game : public CritterObserver
+class Game : public CritterObserver, public ViewObserver
 {	  
 private:
 	void setupGame();
@@ -27,6 +27,9 @@ public:
 	// Events
 	// Inherited via CritterObserver
 	virtual void critterFinishedRoad(std::shared_ptr<Critter> finishedCritter) override;
+	// Inherited via ViewObserver
+	virtual void placeTower() override;
+	virtual void levelSelected(int selectedLevel) override;
 
 private:
 	std::unique_ptr<Player> _player;

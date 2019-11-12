@@ -16,7 +16,7 @@ public:
 	{}
 	
 	void setRoad(std::vector<std::pair<Position, Position>> road) { _road = road; }
-	std::vector<std::pair<Position, Position>> const& getRoad() const { return _road; };
+	std::vector<std::pair<Position, Position>>& getRoad() { return _road; };
 
 	void saveGrid(std::vector<std::pair<Position, Position>> road_);
 	std::vector<std::pair<Position, Position>> loadGrid();
