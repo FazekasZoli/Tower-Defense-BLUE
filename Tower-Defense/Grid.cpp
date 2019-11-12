@@ -3,8 +3,10 @@
 #include <functional>
 #include <string>
 
-void Grid::saveGrid(std::vector<std::pair<Position, Position>> road_)
+void Grid::saveGrid()
 {
+	std::vector<std::pair<Position, Position>> road;
+		   
 	std::ofstream outputFile;
 
 	outputFile.open("TowerDefLoad.txt");
@@ -14,38 +16,47 @@ void Grid::saveGrid(std::vector<std::pair<Position, Position>> road_)
 		return;
 	}
 
-	for (int i = 0; i < road_.size(); i++) // vegigmegyek a roadon és beleiratom a koordinatakat
+	for (int i = 0; i < road.size(); i++) // vegigmegyek a roadon és beleiratom a koordinatakat
 	{
-		outputFile << road_[i].first.x << " " << road_[i].first.y << " ";
-		outputFile << road_[i].second.x << " " << road_[i].second.y << " ";
+		outputFile << road[i].first.x << " " << road[i].first.y << " ";
+		outputFile << road[i].second.x << " " << road[i].second.y << " ";
 	}
 	outputFile.close();
 
 }
 
-std::vector<std::pair<Position, Position>> Grid::loadGrid()
+void Grid::loadGrid()
 {//letrehozok egy load vectort amibe betöltöm a faljbol a pozikat
+	int level = 4;
+
+	std::string levelMap = std::to_string(level);
+
 	std::ifstream reader;
+	std::string palyaNeve;
+	palyaNeve += "TowerdefLoad" + levelMap + ".txt";
+
 	Position pos1;
 	Position pos2;
 	std::vector<std::pair<Position, Position>> load;
-	reader.open("TowerDefLoad.txt");
+
+	reader.open(palyaNeve);
 	if (!reader.is_open()) // hibakezeles
 	{
-		throw "error: reader is not open";
+		std::cout << "Error open ";
 	}
-			
-	while (reader >> pos1.x && reader >>pos1.y && reader >> pos2.x && reader >> pos2.y) // addig megyek amig a vegere nem erek és a fájlban lévő x és y parokat betöltöm a load vectorba
-	{
 
-		load.emplace_back(std::make_pair(pos1,pos2));
+	while (reader >> pos1.x && reader >> pos1.y && reader >> pos2.x && reader >> pos2.y) // addig megyek amig a vegere nem erek és a fájlban lévő x és y parokat betöltöm a load vectorba
+	{
+		load.emplace_back(std::make_pair(pos1, pos2));
 	}
 	//kiüritem a roadot és feltöltöm
-	_road.clear();
+	road.clear();
 	for (int i = 0; i < load.size(); i++)
 	{
-		_road.emplace_back(load[i]);
-	}		
+		road.emplace_back(load[i]);
+	}
+
+	reader.close();
 
 	//ez alatt ami van az a teszteleshez kellett
 	/*for (auto &it : road)
@@ -62,7 +73,4 @@ std::vector<std::pair<Position, Position>> Grid::loadGrid()
 	//	outputFile << road[i].second.x << " " << road[i].second.y << " ";
 	//}
 
-	reader.close();
-
-	return load;
 }
