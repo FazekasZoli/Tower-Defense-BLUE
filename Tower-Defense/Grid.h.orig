@@ -26,7 +26,7 @@ public:
 
 	void saveGrid();
 	void loadGrid();
->>>>>>> Maps loads from files
+>>>>>>> 3fe25deae179cc0aae68aac21fd835479b2580ec
 
 private:
 	int gridSizeX;

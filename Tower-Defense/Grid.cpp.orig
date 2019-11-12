@@ -35,7 +35,7 @@ std::vector<std::pair<Position, Position>> Grid::loadGrid()
 	std::string palyaNeve;
 	palyaNeve += "TowerdefLoad" + levelMap + ".txt";
 
->>>>>>> Maps loads from files
+>>>>>>> 3fe25deae179cc0aae68aac21fd835479b2580ec
 	Position pos1;
 	Position pos2;
 	std::vector<std::pair<Position, Position>> load;
@@ -58,7 +58,7 @@ std::vector<std::pair<Position, Position>> Grid::loadGrid()
 	while (reader >> pos1.x && reader >> pos1.y && reader >> pos2.x && reader >> pos2.y) // addig megyek amig a vegere nem erek és a fájlban lévő x és y parokat betöltöm a load vectorba
 	{
 		load.emplace_back(std::make_pair(pos1, pos2));
->>>>>>> Maps loads from files
+>>>>>>> 3fe25deae179cc0aae68aac21fd835479b2580ec
 	}
 	//kiüritem a roadot és feltöltöm
 	_road.clear();
@@ -72,7 +72,7 @@ std::vector<std::pair<Position, Position>> Grid::loadGrid()
 	}
 
 	reader.close();
->>>>>>> Maps loads from files
+>>>>>>> 3fe25deae179cc0aae68aac21fd835479b2580ec
 
 	//ez alatt ami van az a teszteleshez kellett
 	/*for (auto &it : road)
@@ -94,5 +94,5 @@ std::vector<std::pair<Position, Position>> Grid::loadGrid()
 
 	return load;
 =======
->>>>>>> Maps loads from files
+>>>>>>> 3fe25deae179cc0aae68aac21fd835479b2580ec
 }
