@@ -12,6 +12,7 @@
 
 
 
+
 enum LevelSelectMode
 {
 	NewGame,
@@ -40,9 +41,13 @@ private:
 	sf::Texture grassTexture;
 	sf::Texture routeTexture;
 	sf::Texture entityTexture;
+<<<<<<< HEAD
+
+=======
 	sf::Sprite spriteBG;
 	std::vector<sf::Sprite> sprites;
 	std::vector<sf::Sprite> RoadSprites;
+>>>>>>> 7107a1da681813e85defdf49aec62111e6c8392b
 
 
 public:
@@ -54,12 +59,18 @@ public:
 	void displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &betoltendoPalya);
 	void displayGameOver(GameEnd status);
 
+<<<<<<< HEAD
+	void graphic();
+	void setUpDisplay();
+	void displayRoute();
+=======
 	void updateGraphic(std::list<std::shared_ptr<Critter>>& critterList);
 	void setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::vector<std::pair<Position, Position>> &road);
 	void addSprites(std::list<std::shared_ptr<Critter>>& critterList, const sf::Texture &texture);
 	void addRouteSprites(std::vector<std::pair<Position, Position>> &road, const sf::Texture &texture);
 	void updateSprites(std::list<std::shared_ptr<Critter>>& entityList);
 	
+>>>>>>> 7107a1da681813e85defdf49aec62111e6c8392b
 };
 
 class Button
