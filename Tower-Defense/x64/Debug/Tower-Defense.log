@@ -2,6 +2,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿  Tower.cpp
 c:\users\arapcsak\source\tower-defense-blue\tower-defense\tower.cpp(12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 c:\users\arapcsak\source\tower-defense-blue\tower-defense\tower.cpp(18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
@@ -12,8 +13,22 @@ c:\users\arapcsak\source\tower-defense-blue\tower-defense\tower.cpp(24): warning
   CritterManager.cpp
   Game.cpp
 >>>>>>> Setting up
+=======
+﻿  CritterManager.cpp
+c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\view.h(28): error C2504: 'ViewEvent': base class undefined
+  Game.cpp
+c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\view.h(28): error C2504: 'ViewEvent': base class undefined
+>>>>>>> 0b4c6a7c61159a54752925e27f39911e8674b0aa
   main.cpp
+c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\view.h(28): error C2504: 'ViewEvent': base class undefined
+  View.cpp
+c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\view.h(28): error C2504: 'ViewEvent': base class undefined
+c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\view.cpp(523): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\view.cpp(541): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\view.cpp(559): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\view.cpp(567): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Generating Code...
+<<<<<<< HEAD
   Tower-Defense.vcxproj -> C:\Users\arapcsak\source\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe
 =======
 <<<<<<< HEAD
@@ -70,3 +85,5 @@ c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\vie
 >>>>>>> Delayed critter start
 =======
 >>>>>>> tower manager clone towers
+=======
+>>>>>>> 0b4c6a7c61159a54752925e27f39911e8674b0aa

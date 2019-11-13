@@ -8,7 +8,7 @@
 #include <vector>
 #include <string>
 #include <list>
-#include "critter.h"
+#include "Critter.h"
 
 enum ButtonType { Pause, Resume, TowerPlace, TowerUpgrade, TowerSell, NextRoundStart };
 

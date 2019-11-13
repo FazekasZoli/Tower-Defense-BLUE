@@ -21,12 +21,16 @@
       <Filter>Source Files</Filter>
     </ClCompile>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ClCompile Include="Tower.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
 =======
     <ClCompile Include="TowerManager.cpp" />
 >>>>>>> tower manager clone towers
+=======
+    <ClCompile Include="TowerManager.cpp" />
+>>>>>>> 0b4c6a7c61159a54752925e27f39911e8674b0aa
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h">
@@ -57,11 +61,17 @@
       <Filter>Header Files</Filter>
     </ClInclude>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     <ClInclude Include="TowerManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
 >>>>>>> tower manager clone towers
+=======
+    <ClInclude Include="TowerManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+>>>>>>> 0b4c6a7c61159a54752925e27f39911e8674b0aa
     <ClInclude Include="Tower.h">
       <Filter>Header Files</Filter>
     </ClInclude>

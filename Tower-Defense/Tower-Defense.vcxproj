@@ -140,10 +140,14 @@
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="main.cpp" />
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ClCompile Include="Tower.cpp" />
 =======
     <ClCompile Include="TowerManager.cpp" />
 >>>>>>> tower manager clone towers
+=======
+    <ClCompile Include="TowerManager.cpp" />
+>>>>>>> 0b4c6a7c61159a54752925e27f39911e8674b0aa
     <ClCompile Include="View.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
@@ -158,9 +162,13 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Tower.h" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     <ClInclude Include="TowerManager.h" />
 >>>>>>> tower manager clone towers
+=======
+    <ClInclude Include="TowerManager.h" />
+>>>>>>> 0b4c6a7c61159a54752925e27f39911e8674b0aa
     <ClInclude Include="View.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

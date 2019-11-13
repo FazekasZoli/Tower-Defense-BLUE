@@ -363,8 +363,12 @@ void View::displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &le
 <<<<<<< HEAD
 				graphic();
 =======
+<<<<<<< HEAD
+				graphic();
+=======
 				//graphic();
 >>>>>>> 7107a1da681813e85defdf49aec62111e6c8392b
+>>>>>>> 0b4c6a7c61159a54752925e27f39911e8674b0aa
 				menuState = -1;
 				return;
 			}
@@ -452,8 +456,12 @@ void View::displayGameOver(GameEnd status)
 <<<<<<< HEAD
 void View::graphic()
 =======
+<<<<<<< HEAD
+void View::graphic()
+=======
 void View::updateGraphic(std::list<std::shared_ptr<Critter>>& critterList)
 >>>>>>> 7107a1da681813e85defdf49aec62111e6c8392b
+>>>>>>> 0b4c6a7c61159a54752925e27f39911e8674b0aa
 {
 
 	sf::Font font;
@@ -470,21 +478,32 @@ void View::updateGraphic(std::list<std::shared_ptr<Critter>>& critterList)
 	window.clear();
 	
 =======
+<<<<<<< HEAD
+	window.clear();
+	
+=======
 	updateSprites(critterList);
 	window.clear();
 	window.draw(spriteBG);
 	for (auto &it : RoadSprites) { window.draw(it); }
 	for (auto &it : sprites) { window.draw(it); }
 >>>>>>> 7107a1da681813e85defdf49aec62111e6c8392b
+>>>>>>> 0b4c6a7c61159a54752925e27f39911e8674b0aa
 	window.display();
 
 }
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 0b4c6a7c61159a54752925e27f39911e8674b0aa
 void View::setUpDisplay()
 {
 	window.create(sf::VideoMode(1000, 800), "Tower defense");
 	window.setFramerateLimit(30);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 =======
 void View::setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::vector<std::pair<Position, Position>> &road)
 {
@@ -495,6 +514,7 @@ void View::setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::v
 	grassTexture.setRepeated(true);
 
 >>>>>>> 7107a1da681813e85defdf49aec62111e6c8392b
+>>>>>>> 0b4c6a7c61159a54752925e27f39911e8674b0aa
 	if (!grassTexture.loadFromFile("grassTile.png")) {
 		std::cout << "betoltes nem sikerult\n";
 	}
@@ -509,12 +529,17 @@ void View::setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::v
 	entityTexture.setSmooth(true);
 
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 0b4c6a7c61159a54752925e27f39911e8674b0aa
 
 }
 
 void View::displayRoute()
 {
 	
+<<<<<<< HEAD
+=======
 =======
 	
 	spriteBG.setTexture(grassTexture);
@@ -527,6 +552,7 @@ void View::displayRoute()
 
 
 >>>>>>> 7107a1da681813e85defdf49aec62111e6c8392b
+>>>>>>> 0b4c6a7c61159a54752925e27f39911e8674b0aa
 }
 
 Button::Button(const sf::Texture& normal, const sf::Texture&  clicked, std::string, sf::Vector2f location)
@@ -541,6 +567,23 @@ Button::~Button()
 {
 }
 
+<<<<<<< HEAD
+Button::Button(const sf::Texture& normal, const sf::Texture&  clicked, std::string, sf::Vector2f location)
+{
+	this->normal.setTexture(normal);
+	this->clicked.setTexture(clicked);
+	this->current = &(this->normal);
+	current = false;
+}
+
+Button::~Button()
+{
+=======
+>>>>>>> Setting up
+}
+
+
+=======
 <<<<<<< HEAD
 =======
 void View::addSprites(std::list<std::shared_ptr<Critter>>& critterList, const sf::Texture &texture)
@@ -598,3 +641,4 @@ void View::updateSprites(std::list<std::shared_ptr<Critter>>& critterList)
 	}
 }
 >>>>>>> 7107a1da681813e85defdf49aec62111e6c8392b
+>>>>>>> 0b4c6a7c61159a54752925e27f39911e8674b0aa
