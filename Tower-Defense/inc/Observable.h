@@ -1,22 +1,17 @@
-#ifndef OBSERVABLE_H_
-#define OBSERVABLE_H_
-
-#include <list>
-#include <memory>
+#pragma once
 
 #include "Observer.h"
-#include "..\Critter.h"
 
-class Observable 
+class CritterEvents 
 {
 	private:
-	    std::list<CritterObserver*> _critterFinishObservers;  ///< The registered observers.
+	    std::list<CritterObserver*> _critterFinishObservers;  ///< The registered observers.		
 
     public:
 
 		/// Adds an observer.
 		/// \param obs	Observer to add.
-	    void addObserver(CritterObserver *obs) 
+	    void addCritterObserver(CritterObserver *obs) 
 		{
 		    //check if already in
 		    for (const auto p : _critterFinishObservers) 
@@ -29,7 +24,7 @@ class Observable
 
 		/// Removes an observers.
 		/// \param obs	Observer to remove.
-	    void removeObserver(CritterObserver *obs) 
+	    void removeCritterObserver(CritterObserver *obs) 
 		{
 		    for (auto it = std::begin(_critterFinishObservers); it != std::end(_critterFinishObservers); ++it) 
 			{
@@ -42,13 +37,54 @@ class Observable
 	    }
 
 		/// Notifies all the observers, i.e., calls  observers update function.
-	    void notifyCritterFinishedRoad(std::shared_ptr<Critter> finishedCritter) 
+	    void notifyCritterFinishedRoad() 
 		{
 		    for (auto obs : _critterFinishObservers) 
 			{
-				obs->critterFinishedRoad(finishedCritter);
+				obs->critterFinishedRoad();
 		    }
 	    }
 };
 
-#endif /* OBSERVABLE_H_ */
+class ViewEvents
+{
+private:
+	ViewObserver* _obs;
+
+	enum ButtonType { Pause, Resume, TowerPlace, TowerUpgrade, TowerSell, NextRoundStart };
+
+public:
+	void addViewObserver(ViewObserver* obs) { _obs = obs; }
+
+	void notifyButtonClicked(ButtonType clickType) 
+	{
+		switch (clickType)
+		{
+		case Pause:
+			break;
+		case Resume:
+			break;
+		case TowerPlace:
+			_obs->placeTower();
+			break;
+		case TowerUpgrade:
+			break;
+		case TowerSell:
+			break;
+		case NextRoundStart:
+			break;
+		default:
+			break;
+		}
+	}
+
+	void notifySelectedLevel(int selectedLevel)
+	{
+		_obs->levelSelected(selectedLevel);
+	}
+
+	void notifyEndGameRequest()
+	{
+		_obs->endGameRequest();
+	}
+};

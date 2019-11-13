@@ -1,0 +1,24 @@
+#include <iostream>
+
+#include "Game.h"	
+
+int main(int argc, char* argv[])
+{
+	//ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
+
+	Game game;
+<<<<<<< HEAD
+	game.playGame();
+	  
+	
+	
+=======
+	  
+	game.gameLogic();
+
+	//Critter monster;
+	//monster.test_move();
+
+>>>>>>> 7107a1da681813e85defdf49aec62111e6c8392b
+	return 0;
+}

@@ -10,7 +10,7 @@ void Critter::move(std::vector<std::pair<Position, Position>> road_)
 
 	for (int i = 0; i < road_.size(); i++)
 	{
-		if (getIsAlive() == true && _pos == road_[i].first)
+		if (isAlive && _pos == road_[i].first)
 		{
 			irany = road_[i].second;
 			if (irany.x == 1 && irany.y == 0)

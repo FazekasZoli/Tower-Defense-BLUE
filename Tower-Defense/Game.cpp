@@ -4,17 +4,21 @@ void Game::playGame()
 {
 	setupGame();
 	//_view->displayIntro();
-	//_view->displayMenu();
 
-	setupRound();	
-	for (size_t i = 0; i < 100; i++)
+	_view->displayMenu();
+	while (!_endGame)
 	{
-		_cm->moveActualRoundCritters(_currentRound, _grid->getRoad());
-	}
+		_view->displayMenu();
 
+		setupRound();
+		while (0 < _player->getLife())
+		{
+			currentRound();
+		}
+	}	
 }
 
-void Game::critterFinishedRoad(std::shared_ptr<Critter> finishedCritter)
+void Game::critterFinishedRoad()
 {
 	_player->setLife(_player->getLife() - 1);
 
@@ -24,34 +28,42 @@ void Game::critterFinishedRoad(std::shared_ptr<Critter> finishedCritter)
 	}
 }
 
+
 void Game::setupGame()
-{
-	// Load map
-	// tmp road
-	std::vector<std::pair<Position, Position>> tmp;
+{	
+	// add Game to CritterManager observer
+	_cm->addCritterObserver(this);
+	// add Game to View observer
+	_view->addViewObserver(this);
 
-	Position start1(0, 0); //honnan
-	Position dir1(1, 0); //irány
-	Position end1(50, 0); //hova
-	Position dir2(0, 1);
-	Position end2(50, 50);
-	Position dir3(-1, 0);
-	Position end3(0, 50);
-	tmp.emplace_back(start1, dir1);
-	tmp.emplace_back(end1, dir2);
-	tmp.emplace_back(end2, dir3);
-	tmp.emplace_back(end3, start1);
-
-	_grid->saveGrid(tmp);
-	_grid->setRoad(_grid->loadGrid());
+	_grid->loadRoads();
 }
 
 void Game::setupRound()
 {
 	_currentRound = 0;
+	_cm->resurectCritters(_currentRound);
+	_view->setUpDisplay(_cm->getCrittersForRound(_currentRound), _grid->getRoad(_selectedRoad));
 }
 
 void Game::currentRound()
+{	
+	if(!_isPaused)
+		_cm->moveActualRoundCritters(_currentRound, _grid->getRoad(_selectedRoad));
+	
+	_view->updateGraphic(_cm->getCrittersForRound(_currentRound));	
+}
+
+void Game::placeTower()
 {
 }
 
+void Game::levelSelected(int selectedRoad)
+{
+	_selectedRoad = selectedRoad;
+}
+
+void Game::endGameRequest()
+{
+	_endGame = true;
+}

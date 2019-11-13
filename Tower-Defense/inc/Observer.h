@@ -1,16 +1,20 @@
-#ifndef OBSERVER_H_
-#define OBSERVER_H_
+#pragma once
 
 class Observer {
     public:
-	    virtual ~Observer() {}
-	    //virtual void update() = 0;
+	    virtual ~Observer() {}	    
 };
 
 class CritterObserver : public Observer
 {
 public:
-	virtual void critterFinishedRoad(std::shared_ptr<Critter> finishedCritter) = 0;
+	virtual void critterFinishedRoad() = 0;
 };
-	
-#endif /* OBSERVER_H_ */
+
+class ViewObserver : public Observer
+{
+public:
+	virtual void placeTower() = 0;
+	virtual void levelSelected (int selectedLevel) = 0;
+	virtual void endGameRequest() = 0;
+};

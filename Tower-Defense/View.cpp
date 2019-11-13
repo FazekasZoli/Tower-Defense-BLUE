@@ -236,7 +236,7 @@ void View::mainMenu() {
 				//SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), {0,0});
 				system("cls");
 				std::cout << "Goodbye\n";
-
+				notifyEndGameRequest();
 				menuState = -1;
 				return;
 			}
@@ -357,9 +357,11 @@ void View::displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &le
 			else
 			{
 				Beep(650, 100);
-
+				// notify ide
+				notifySelectedLevel(pos);
 				system("cls");
 				std::cout << "\n" << levels[pos] << " nevu palya indul... WIP";// ehhes hasonlóan hivatkozhat a megfelelore Pályák tárolása vektorban pl
+				//graphic();
 				menuState = -1;
 				return;
 			}
@@ -367,6 +369,7 @@ void View::displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &le
 			break;
 		case 27:
 			Beep(400, 100);
+			notifyEndGameRequest();
 			system("cls");
 			menuState = -1;
 			std::cout << "Goodbye\n";
@@ -443,3 +446,152 @@ void View::displayGameOver(GameEnd status)
 		std::cout << std::setfill(' ') << std::setw(10) << "+" << std::setfill('+') << std::setw(77) << "\n";
 	}
 }
+
+void View::updateGraphic(std::list<std::shared_ptr<Critter>>& critterList)
+{
+
+	sf::Font font;
+	while (window.pollEvent(event))
+	{
+		switch (event.type)
+		{
+		case sf::Event::Closed:
+			window.close();
+			break;
+		}
+	}
+	updateSprites(critterList);
+	window.clear();
+	window.draw(spriteBG);
+	for (auto &it : RoadSprites) { window.draw(it); }
+	for (auto &it : sprites) { window.draw(it); }
+	window.display();
+
+}
+
+void View::setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::vector<std::pair<Position, Position>> &road)
+{
+	window.create(sf::VideoMode(1000, 800), "Tower defense");
+	window.setFramerateLimit(30);
+
+	grassTexture.create(1000, 800);
+	grassTexture.setRepeated(true);
+
+	if (!grassTexture.loadFromFile("grassTile.png")) {
+		std::cout << "betoltes nem sikerult\n";
+	}
+	if (!routeTexture.loadFromFile("routeTile1.png")) {
+		std::cout << "betoltes nem sikerult\n";
+	}
+	if (!entityTexture.loadFromFile("poke2.png")) {
+		std::cout << "betoltes nem sikerult\n";
+	}
+	grassTexture.setSmooth(true);
+	routeTexture.setSmooth(true);
+	entityTexture.setSmooth(true);
+
+	
+	spriteBG.setTexture(grassTexture);
+	spriteBG.setTextureRect({ 0, 0, 1000, 800 });
+
+	addSprites(critterList, entityTexture);
+	addRouteSprites(road, routeTexture);
+
+	updateGraphic(critterList);
+
+
+}
+
+Button::Button(const sf::Texture& normal, const sf::Texture&  clicked, std::string, sf::Vector2f location)
+{
+	this->normal.setTexture(normal);
+	this->clicked.setTexture(clicked);
+	this->current = &(this->normal);
+	current = false;
+	
+}
+
+Button::~Button()
+{
+}
+
+void View::addSprites(std::list<std::shared_ptr<Critter>>& critterList, const sf::Texture &texture)
+{
+	for (size_t i = 0; i < critterList.size(); i++)
+	{
+		sprites.emplace_back();
+		sprites[i].setTexture(texture);
+		//std::next(sprites.begin(), i)->setScale(sf::Vector2f(0.1, 0.1));
+		sprites[i].setPosition((*std::next(critterList.begin(), i))->getPos().x, (*std::next(critterList.begin(), i))->getPos().y);
+	}
+}
+
+void View::addRouteSprites(std::vector<std::pair<Position, Position>>& road, const sf::Texture & texture)
+{
+
+	Position irany = road[0].second;
+	Position pos = road[0].first;
+	Position nextPoint = road[1].first;
+	int size = texture.getSize().x;
+	//system("pause");
+	int sorsz = 0;
+	for (size_t i = 1; i <= road.size(); i++)
+	{
+		while (!(pos == nextPoint))
+		{
+			RoadSprites.emplace_back();
+			RoadSprites[sorsz].setTexture(texture);
+			RoadSprites[sorsz].setPosition(pos.x, pos.y);
+			/*std::cout << sorsz << ":\n";
+			std::cout << pos.x << " " << pos.y << "\n";
+			std::cout << irany.x << " " << irany.y << "\n";
+			std::cout << nextPoint.x << " " << nextPoint.y << "\n\n";*/
+			pos += irany *= size;
+			++sorsz;
+
+		}
+		if (i< road.size())
+		{
+			nextPoint = road[i].first;
+		}
+		irany = road[i - 1].second;
+
+	}
+	RoadSprites.emplace_back();
+	RoadSprites[sorsz].setTexture(texture);
+	RoadSprites[sorsz].setPosition(pos.x, pos.y);
+}
+
+void View::updateSprites(std::list<std::shared_ptr<Critter>>& critterList)
+{
+
+	for (size_t i = 0; i < critterList.size(); i++)
+	{
+		sprites[i].setPosition((*std::next(critterList.begin(), i))->getPos().x, (*std::next(critterList.begin(), i))->getPos().y);
+	}
+}
+
+//void View::graphic()
+//{
+//
+//	sf::Font font;
+//	while (window.pollEvent(event))
+//	{
+//		switch (event.type)
+//		{
+//		case sf::Event::Closed:
+//			window.close();
+//			break;
+//		}
+//	}
+//
+//
+//	window.clear();
+//	
+//	window.display();
+//
+//}
+
+
+
+
