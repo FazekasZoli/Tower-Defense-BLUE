@@ -87,7 +87,7 @@ void View::displayIntro()
 void View::displayMenu()
 {
 	system("cls");
-
+	menuState = 0;
 
 	//console beállítások
 	//HWND hWnd;
@@ -149,6 +149,8 @@ void View::mainMenu() {
 
 	char input;
 	bool menuBool = true;
+
+	mainPpos = -1;
 	if (mainPpos == -1)
 	{
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), NewGamePos);
@@ -282,23 +284,12 @@ void View::displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &le
 	}
 	SetConsoleTextAttribute(hOut, 7);
 
-
-
 	short push = 40;
-
-
-	//for (short i = 1; i <= levels.size(); i++)
-	//{
-	//	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), { push,4+i*3});
-	//	std::cout << i<<":\t"<< levels[i-1];
-	//}
-
-	//SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), { push,4 + ((short)levels.size()+1) * 3 });
-	//std::cout << "Back";
 
 	short pos = 0;
 	char input;
 	bool menuBool = true;
+
 	//input = _getch();
 	//Beep(723, 50);
 	do
@@ -356,13 +347,15 @@ void View::displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &le
 			}
 			else
 			{
+
 				Beep(650, 100);
 				// notify ide
+				menuState = -1;
 				notifySelectedLevel(pos);
 				system("cls");
 				std::cout << "\n" << levels[pos] << " nevu palya indul... WIP";// ehhes hasonlóan hivatkozhat a megfelelore Pályák tárolása vektorban pl
 				//graphic();
-				menuState = -1;
+				
 				return;
 			}
 
@@ -569,6 +562,11 @@ void View::updateSprites(std::list<std::shared_ptr<Critter>>& critterList)
 	{
 		sprites[i].setPosition((*std::next(critterList.begin(), i))->getPos().x, (*std::next(critterList.begin(), i))->getPos().y);
 	}
+}
+
+void View::closeWindow()
+{
+	window.close();
 }
 
 //void View::graphic()

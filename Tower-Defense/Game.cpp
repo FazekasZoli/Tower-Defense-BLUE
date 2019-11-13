@@ -8,13 +8,15 @@ void Game::playGame()
 	_view->displayMenu();
 	while (!_endGame)
 	{
-		_view->displayMenu();
+		
 
 		setupRound();
 		while (0 < _player->getLife())
 		{
 			currentRound();
 		}
+		
+		_view->displayMenu();
 	}	
 }
 
@@ -24,6 +26,7 @@ void Game::critterFinishedRoad()
 
 	if (_player->getLife() == 0)
 	{
+		_view->closeWindow();
 		_view->displayGameOver(LOST);
 	}
 }

@@ -59,6 +59,7 @@ public:
 	void addSprites(std::list<std::shared_ptr<Critter>>& critterList, const sf::Texture &texture);
 	void addRouteSprites(std::vector<std::pair<Position, Position>> &road, const sf::Texture &texture);
 	void updateSprites(std::list<std::shared_ptr<Critter>>& entityList);
+	void closeWindow();
 	
 };
 
