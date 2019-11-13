@@ -6,6 +6,7 @@
 #include "Grid.h"
 #include "CritterManager.h"
 #include "Observer.h"
+#include "TowerManager.h"
 
 class Game : public CritterObserver
 {	  
