@@ -357,7 +357,8 @@ void View::displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &le
 			else
 			{
 				Beep(650, 100);
-
+				// notify ide
+				notifySelectedLevel(pos);
 				system("cls");
 				std::cout << "\n" << levels[pos] << " nevu palya indul... WIP";// ehhes hasonlóan hivatkozhat a megfelelore Pályák tárolása vektorban pl
 				//graphic();

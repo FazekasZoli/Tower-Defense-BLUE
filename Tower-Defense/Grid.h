@@ -7,26 +7,24 @@
 
 class Grid
 {
-private:
-	std::vector<std::pair<Position, Position>> generateRoad(Position start, Position end);
-
 public:
-	Grid(int gridSizeX = 10, int gridSizeY = 10)
-		: gridSizeX(gridSizeX), gridSizeY(gridSizeY)
-	{}
+	Grid() {}
 
-	std::vector<std::pair<Position, Position>> & getRoad()  { return road; };
+	std::vector<std::pair<Position, Position>> & getRoad(int selectedRoad)  { return allRoads[selectedRoad]; };
 
 	void saveGrid();
-	void loadGrid(int ActualMap);
-	std::vector<std::vector<std::pair<Position, Position>>> allRoads;
+	std::vector<std::pair<Position, Position>> loadRoad(int ActualMap);
+	
+	void loadRoads() 
+	{
+		for (size_t i = 1; i <= 2; i++)
+		{
+			allRoads.push_back(loadRoad(i));
+		}
+	}
 
 private:
-	int gridSizeX;
-	int gridSizeY;
-
-	// first pair is location, second direction after position
-	std::vector<std::pair<Position,Position>> road;
+	std::vector<std::vector<std::pair<Position, Position>>> allRoads;
 
 };
 

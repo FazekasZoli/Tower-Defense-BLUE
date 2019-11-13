@@ -15,13 +15,10 @@ private:
 	void currentRound();
 
 public:
-	Game(int level = 0, int currentRound = 0) : 
-		_player(std::make_unique<Player>()), _view(std::make_unique<View>()), _grid(std::make_shared<Grid>()), _cm(std::make_shared<CritterManager>()), _selectedLevel(level), _currentRound(currentRound)
-	{
-		// add Game to CritterManager observer
-		_cm->addCritterObserver(this);
-		// add Game to View observer
-		_view->addViewObserver(this);
+	Game(int defaultRoad = 0, int currentRound = 0, bool isPaused = false) : 
+		_player(std::make_unique<Player>()), _view(std::make_unique<View>()), _grid(std::make_shared<Grid>()), _cm(std::make_shared<CritterManager>()), 
+		_selectedRoad(defaultRoad), _currentRound(currentRound), _isPaused(isPaused)
+	{		
 	}
 
 	void playGame();
@@ -38,7 +35,8 @@ private:
 	std::unique_ptr<View> _view;
 	std::shared_ptr<Grid> _grid;
 	std::shared_ptr<CritterManager> _cm;
-
-	int _selectedLevel;
+		
 	int _currentRound;	
+	int _selectedRoad;
+	bool _isPaused;
 };
