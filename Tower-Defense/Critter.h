@@ -36,5 +36,7 @@ private:
 
 	//milyen gyorsan tud mozogni
 	int speed;
+	
+	//a critter statusza
 	bool isAlive;
 };

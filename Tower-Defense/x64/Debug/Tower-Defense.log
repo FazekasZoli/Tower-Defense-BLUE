@@ -1,6 +1,0 @@
-﻿  View.cpp
-c:\users\mjuhasz2\desktop\tower-defense-blue\tower-defense\view.cpp(523): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\mjuhasz2\desktop\tower-defense-blue\tower-defense\view.cpp(542): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\mjuhasz2\desktop\tower-defense-blue\tower-defense\view.cpp(560): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\mjuhasz2\desktop\tower-defense-blue\tower-defense\view.cpp(568): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Tower-Defense.vcxproj -> C:\Users\mjuhasz2\Desktop\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe
