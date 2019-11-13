@@ -26,6 +26,7 @@ public:
 
 private:
 	std::chrono::high_resolution_clock::time_point _startTime;
+	bool _startTimeIsValid = false;
 
 	// critter sablonok
 	std::unordered_map<CritterType, std::shared_ptr<Critter>> _critterTemplates;

@@ -8,19 +8,19 @@ void Game::playGame()
 
 	setupRound();	
 	
-	_view->setUpDisplay(_cm->getCrittersForRound(_currentRound), _grid->getRoad());
+	_view->setUpDisplay(_cm->getCrittersForRound(_currentRound), _grid->getRoad(), _player->getLifePtr());
 
 	for (size_t i = 0; i < 200; i++)
 	{
 		_cm->moveActualRoundCritters(_currentRound, _grid->getRoad());
-		_view->updateGraphic(_cm->getCrittersForRound(_currentRound));
+		_view->updateGraphic();
 	}
 }
 
 void Game::critterFinishedRoad()
 {
 	_player->setLife(_player->getLife() - 1);
-
+	_view->updateGraphic();
 	if (_player->getLife() == 0)
 	{
 		_view->displayGameOver(LOST);

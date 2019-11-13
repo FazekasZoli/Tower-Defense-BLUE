@@ -1,5 +1,6 @@
 #include "View.h"
 #include <iostream>
+#include "inc/Observable.h"
 
 void introTower()
 {
@@ -445,10 +446,12 @@ void View::displayGameOver(GameEnd status)
 	}
 }
 
-void View::updateGraphic(std::list<std::shared_ptr<Critter>>& critterList)
+void View::updateGraphic()
 {
+	//std::cout << *playerLife << "\n";
 
 	sf::Font font;
+	playerLifeText.setString(std::to_string(*playerLife));
 	while (window.pollEvent(event))
 	{
 		switch (event.type)
@@ -456,19 +459,87 @@ void View::updateGraphic(std::list<std::shared_ptr<Critter>>& critterList)
 		case sf::Event::Closed:
 			window.close();
 			break;
+		case sf::Event::MouseButtonPressed:
+			if (event.mouseButton.button == sf::Mouse::Left ) {
+				if (buttonTowerProba.checkClick(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
+				{
+					if (selectedButton == nullptr)
+					{
+						selectedButton = &buttonTowerProba;
+					}
+					else
+					{
+						selectedButton = nullptr;
+					}
+				}
+				else
+				{
+					if (selectedButton== &buttonTowerProba)
+					{
+						notifyButtonClicked(buttonTowerProba.getType());
+					}
+				}
+
+			}
+			break;
 		}
 	}
-	updateSprites(critterList);
+	updateSprites();
 	window.clear();
 	window.draw(spriteBG);
+	/*auto it = my_vector.rbegin(); it != my_vector.rend(); ++it
+		RoadSprites*/
+
 	for (auto &it : RoadSprites) { window.draw(it); }
-	for (auto &it : sprites) { window.draw(it); }
+	//for (int i = RoadSprites.size()-1; i > 0; --i) { window.draw(RoadSprites[i]); }
+	for (auto it = sprites.rbegin(); it != sprites.rend(); ++it) { window.draw(*it); }
+	
+	window.draw(playerLifeRizsa);
+	window.draw(playerLifeText);
+	window.draw(*buttonTowerProba.getSprite());
+	if (selectedButton== &buttonTowerProba)
+	{
+		TowerShadySprite.setPosition(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
+		window.draw(TowerShadySprite);
+	}
 	window.display();
 
 }
 
-void View::setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::vector<std::pair<Position, Position>> &road)
+void View::setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::vector<std::pair<Position, Position>> &road, int* playerLifee)
 {
+	crittersPtr = &critterList;
+	button1.loadFromFile("button1.png");
+	button2.loadFromFile("button2.png");
+	buttonTowerProba.initialize(&button1, &button2, "proba saasdd", sf::Vector2f(500, 500), TowerPlace);
+	playerLife = playerLifee;
+
+	Tower.loadFromFile("Tower1.png");
+	TowerShady.loadFromFile("Tower2Shady.png");
+	TowerShadySprite.setTexture(TowerShady);
+
+	if (!font.loadFromFile("arial.ttf"))
+	{
+		std::cout << "error loading font\n";
+	}
+	playerLifeText.setFont(font);
+	playerLifeText.setString(std::to_string(*playerLife));
+	playerLifeText.setCharacterSize(50); // in pixels, not points!
+	playerLifeText.setFillColor(sf::Color::Red);
+	playerLifeText.setStyle(sf::Text::Bold);
+	playerLifeText.setPosition(950, 0);
+	playerLifeText.setOutlineColor(sf::Color::Black);
+
+	playerLifeRizsa.setFont(font);
+	playerLifeRizsa.setStyle(sf::Text::Bold);
+	playerLifeRizsa.setCharacterSize(50);
+	playerLifeRizsa.setString("HP: ");
+	playerLifeRizsa.setPosition(850,0);
+	playerLifeRizsa.setOutlineColor(sf::Color::Black);
+	
+	
+
+	
 	window.create(sf::VideoMode(1000, 800), "Tower defense");
 	window.setFramerateLimit(30);
 
@@ -494,24 +565,12 @@ void View::setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::v
 
 	addSprites(critterList, entityTexture);
 	addRouteSprites(road, routeTexture);
-
-	updateGraphic(critterList);
+	//Buttons.emplace_back();
+	updateGraphic();
 
 
 }
 
-Button::Button(const sf::Texture& normal, const sf::Texture&  clicked, std::string, sf::Vector2f location)
-{
-	this->normal.setTexture(normal);
-	this->clicked.setTexture(clicked);
-	this->current = &(this->normal);
-	current = false;
-	
-}
-
-Button::~Button()
-{
-}
 
 void View::addSprites(std::list<std::shared_ptr<Critter>>& critterList, const sf::Texture &texture)
 {
@@ -559,12 +618,12 @@ void View::addRouteSprites(std::vector<std::pair<Position, Position>>& road, con
 	RoadSprites[sorsz].setPosition(pos.x, pos.y);
 }
 
-void View::updateSprites(std::list<std::shared_ptr<Critter>>& critterList)
+void View::updateSprites()
 {
-
-	for (size_t i = 0; i < critterList.size(); i++)
+	
+	for (size_t i = 0; i < crittersPtr->size(); i++)
 	{
-		sprites[i].setPosition((*std::next(critterList.begin(), i))->getPos().x, (*std::next(critterList.begin(), i))->getPos().y);
+		sprites[i].setPosition((*std::next(crittersPtr->begin(), i))->getPos().x, (*std::next(crittersPtr->begin(), i))->getPos().y);
 	}
 }
 
@@ -589,6 +648,57 @@ void View::updateSprites(std::list<std::shared_ptr<Critter>>& critterList)
 //
 //}
 
+//Buttons
+void Button::initialize(sf::Texture* normal, sf::Texture* clicked, std::string words, sf::Vector2f location, ButtonType ownType) {
+	this->normal.setTexture(*normal);
+	//this->normal.setOrigin(0,150);
+	this->clicked.setTexture(*clicked);
+	//this->clicked.setOrigin(0, 143);
+	this->currentSpr = &this->normal;
+	current = false;
+	this->normal.setPosition(location);
+	this->clicked.setPosition(location);
+	string.setString(words);
+	string.setPosition(location.x + 3, location.y + 3);
+	string.setCharacterSize(4);
+	this->ownType = ownType;
+}
 
+bool Button::checkClick(sf::Vector2f mousePos) {
+
+	if (mousePos.x > currentSpr->getPosition().x && mousePos.x < (currentSpr->getPosition().x + currentSpr->getTexture()->getSize().x)) {
+		if (mousePos.y > currentSpr->getPosition().y && mousePos.y < (currentSpr->getPosition().y + currentSpr->getTexture()->getSize().y)) {
+			setState(!current);
+			return true;
+		}
+	}
+	return false;
+}
+void Button::setState(bool which) {
+	current = which;
+	if (current) {
+		currentSpr = &clicked;
+		return;
+	}
+	currentSpr = &normal;
+}
+void Button::setText(std::string words) {
+	string.setString(words);
+}
+bool Button::getVar() {
+	return current;
+}
+sf::Sprite* Button::getSprite() {
+	return currentSpr;
+}
+
+sf::String * Button::getText() {
+	return &String;
+}
+
+ButtonType Button::getType()
+{
+	return ownType;
+}
 
 

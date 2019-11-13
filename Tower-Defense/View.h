@@ -24,6 +24,32 @@ enum GameEnd
 	LOST
 };
 
+
+class Button {
+public:
+	Button() {};
+	bool checkClick(sf::Vector2f mousePos);
+	void setState(bool);
+	void setText(std::string);
+	bool getVar();
+	void initialize(sf::Texture* normal, sf::Texture* clicked, std::string, sf::Vector2f location, ButtonType ownType);
+	sf::Sprite* getSprite();
+	sf::String * getText();
+	ButtonType getType();
+
+private:
+	sf::Sprite normal;
+	sf::Sprite clicked;
+	sf::Sprite* currentSpr;
+	sf::String String;
+	bool current;
+	sf::Text string;
+	ButtonType ownType;
+};
+
+
+
+
 class View : public ViewEvents
 {
 private:
@@ -41,9 +67,23 @@ private:
 	sf::Texture routeTexture;
 	sf::Texture entityTexture;
 	sf::Sprite spriteBG;
+	sf::Sprite placingTower;
+	std::list<std::shared_ptr<Critter>>* crittersPtr;
 	std::vector<sf::Sprite> sprites;
 	std::vector<sf::Sprite> RoadSprites;
+	std::vector<Button> Buttons;
+	Button buttonTowerProba;
+	Button *selectedButton;
+	sf::Texture button1;
+	sf::Texture button2;
+	sf::Texture Tower;
+	sf::Texture TowerShady;
+	sf::Sprite TowerShadySprite;
 
+	int* playerLife;
+	sf::Text playerLifeText;
+	sf::Text playerLifeRizsa;
+	sf::Font font;
 
 public:
 	//View() :window(sf::VideoMode(1000, 800), "Proba") {};
@@ -54,27 +94,19 @@ public:
 	void displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &betoltendoPalya);
 	void displayGameOver(GameEnd status);
 	//void graphic();
-	void updateGraphic(std::list<std::shared_ptr<Critter>>& critterList);
-	void setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::vector<std::pair<Position, Position>> &road);
+	void updateGraphic();
+	void setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::vector<std::pair<Position, Position>> &road, int* playerLifee);
 	void addSprites(std::list<std::shared_ptr<Critter>>& critterList, const sf::Texture &texture);
 	void addRouteSprites(std::vector<std::pair<Position, Position>> &road, const sf::Texture &texture);
-	void updateSprites(std::list<std::shared_ptr<Critter>>& entityList);
+	void updateSprites();
+	
+
 	
 };
 
-class Button
-{
-public:
-	Button(const sf::Texture& normal, const sf::Texture&  clicked, std::string, sf::Vector2f location);
-	~Button();
 
-private:
-	sf::Sprite normal;
-	sf::Sprite clicked;
-	sf::Sprite* currentSpr;
-	sf::String String;
-	bool current;
-};
+
+
 
 
 
