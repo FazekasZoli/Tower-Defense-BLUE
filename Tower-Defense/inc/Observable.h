@@ -82,4 +82,9 @@ public:
 	{
 		_obs->levelSelected(selectedLevel);
 	}
+
+	void notifyEndGameRequest()
+	{
+		_obs->endGameRequest();
+	}
 };

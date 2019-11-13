@@ -1,3 +1,7 @@
-﻿  Game.cpp
+﻿  CritterManager.cpp
+  Game.cpp
 c:\workplace\tower-defense-blue\tower-defense\grid.h(22): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  main.cpp
+c:\workplace\tower-defense-blue\tower-defense\grid.h(22): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
   Tower-Defense.vcxproj -> C:\Workplace\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe

@@ -4,14 +4,18 @@ void Game::playGame()
 {
 	setupGame();
 	//_view->displayIntro();
-	_view->displayMenu();
 
-	setupRound();	
-	
-	while (0 < _player->getLife())
+	_view->displayMenu();
+	while (!_endGame)
 	{
-		currentRound();
-	}
+		_view->displayMenu();
+
+		setupRound();
+		while (0 < _player->getLife())
+		{
+			currentRound();
+		}
+	}	
 }
 
 void Game::critterFinishedRoad()
@@ -38,6 +42,7 @@ void Game::setupGame()
 void Game::setupRound()
 {
 	_currentRound = 0;
+	_cm->resurectCritters(_currentRound);
 	_view->setUpDisplay(_cm->getCrittersForRound(_currentRound), _grid->getRoad(_selectedRoad));
 }
 
@@ -56,4 +61,9 @@ void Game::placeTower()
 void Game::levelSelected(int selectedRoad)
 {
 	_selectedRoad = selectedRoad;
+}
+
+void Game::endGameRequest()
+{
+	_endGame = true;
 }

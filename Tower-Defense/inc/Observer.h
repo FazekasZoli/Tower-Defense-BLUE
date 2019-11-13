@@ -16,4 +16,5 @@ class ViewObserver : public Observer
 public:
 	virtual void placeTower() = 0;
 	virtual void levelSelected (int selectedLevel) = 0;
+	virtual void endGameRequest() = 0;
 };

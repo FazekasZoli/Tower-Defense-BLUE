@@ -236,7 +236,7 @@ void View::mainMenu() {
 				//SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), {0,0});
 				system("cls");
 				std::cout << "Goodbye\n";
-
+				notifyEndGameRequest();
 				menuState = -1;
 				return;
 			}
@@ -369,6 +369,7 @@ void View::displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &le
 			break;
 		case 27:
 			Beep(400, 100);
+			notifyEndGameRequest();
 			system("cls");
 			menuState = -1;
 			std::cout << "Goodbye\n";

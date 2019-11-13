@@ -15,9 +15,9 @@ private:
 	void currentRound();
 
 public:
-	Game(int defaultRoad = 0, int currentRound = 0, bool isPaused = false) : 
+	Game(int defaultRoad = 0, int currentRound = 0, bool isPaused = false, bool endGame = false) : 
 		_player(std::make_unique<Player>()), _view(std::make_unique<View>()), _grid(std::make_shared<Grid>()), _cm(std::make_shared<CritterManager>()), 
-		_selectedRoad(defaultRoad), _currentRound(currentRound), _isPaused(isPaused)
+		_selectedRoad(defaultRoad), _currentRound(currentRound), _isPaused(isPaused), _endGame(endGame)
 	{		
 	}
 
@@ -29,6 +29,7 @@ public:
 	// Inherited via ViewObserver
 	virtual void placeTower() override;
 	virtual void levelSelected(int selectedLevel) override;
+	virtual void endGameRequest() override;
 
 private:
 	std::unique_ptr<Player> _player;
@@ -39,4 +40,5 @@ private:
 	int _currentRound;	
 	int _selectedRoad;
 	bool _isPaused;
+	bool _endGame;
 };

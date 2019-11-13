@@ -70,3 +70,11 @@ void CritterManager::moveActualRoundCritters(int actualRound, const std::vector<
 		i++;
 	}
 }
+
+void CritterManager::resurectCritters(int actualRound)
+{
+	for (auto& critter : _crittersForGame[actualRound])
+	{
+		critter->setLife(10);
+	}
+}
