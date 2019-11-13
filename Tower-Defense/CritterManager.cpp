@@ -66,15 +66,15 @@ void CritterManager::moveActualRoundCritters(int actualRound, const std::vector<
 			// mark critter death
 			(*critterIt)->setIsAlive(false);
 		}
-
 		i++;
 	}
 }
 
-void CritterManager::resurectCritters(int actualRound)
+void CritterManager::resetCritters(int actualRound)
 {
 	for (auto& critter : _crittersForGame[actualRound])
 	{
 		critter->setLife(10);
+		critter->setPos(0, 0, 0, 0);
 	}
 }

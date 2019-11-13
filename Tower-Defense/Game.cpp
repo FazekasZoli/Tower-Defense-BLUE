@@ -7,8 +7,7 @@ void Game::playGame()
 
 	_view->displayMenu();
 	while (!_endGame)
-	{
-		
+	{	
 
 		setupRound();
 		while (0 < _player->getLife())
@@ -45,7 +44,8 @@ void Game::setupGame()
 void Game::setupRound()
 {
 	_currentRound = 0;
-	_cm->resurectCritters(_currentRound);
+	_player->setLife(2);
+	_cm->resetCritters(_currentRound);
 	_view->setUpDisplay(_cm->getCrittersForRound(_currentRound), _grid->getRoad(_selectedRoad));
 }
 

@@ -23,7 +23,7 @@ public:
 	std::list<std::shared_ptr<Critter>>& getCrittersForRound(int actualRound);
 
 	void moveActualRoundCritters(int actualRound, const std::vector<std::pair<Position, Position>>& road);
-	void resurectCritters(int actualRound);
+	void resetCritters(int actualRound);
 
 private:
 	std::chrono::high_resolution_clock::time_point _startTime;
