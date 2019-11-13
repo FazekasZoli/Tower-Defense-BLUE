@@ -25,9 +25,9 @@ void Grid::saveGrid()
 
 }
 
-void Grid::loadGrid()
+void Grid::loadGrid(int ActualMap)
 {//letrehozok egy load vectort amibe betöltöm a faljbol a pozikat
-	int level = 4;
+	int level = ActualMap;
 
 	std::string levelMap = std::to_string(level);
 

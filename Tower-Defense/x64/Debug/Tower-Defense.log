@@ -1,17 +1,6 @@
-<<<<<<< HEAD
-﻿  Critter.cpp
-  CritterManager.cpp
-  Game.cpp
-  Grid.cpp
-  main.cpp
-  View.cpp
-c:\users\zfazekas\desktop\tower-defense-blue\tower-defense-blue\tower-defense\view.cpp(523): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\zfazekas\desktop\tower-defense-blue\tower-defense-blue\tower-defense\view.cpp(541): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\zfazekas\desktop\tower-defense-blue\tower-defense-blue\tower-defense\view.cpp(559): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\zfazekas\desktop\tower-defense-blue\tower-defense-blue\tower-defense\view.cpp(567): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Player.cpp
-  Generating Code...
-=======
-﻿  Grid.cpp
->>>>>>> 3fe25deae179cc0aae68aac21fd835479b2580ec
-  Tower-Defense.vcxproj -> C:\Users\zfazekas\Desktop\Tower-Defense-BLUE\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe
+﻿  View.cpp
+c:\users\mjuhasz2\desktop\tower-defense-blue\tower-defense\view.cpp(523): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\mjuhasz2\desktop\tower-defense-blue\tower-defense\view.cpp(542): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\mjuhasz2\desktop\tower-defense-blue\tower-defense\view.cpp(560): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\mjuhasz2\desktop\tower-defense-blue\tower-defense\view.cpp(568): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Tower-Defense.vcxproj -> C:\Users\mjuhasz2\Desktop\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe

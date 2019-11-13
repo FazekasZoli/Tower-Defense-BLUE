@@ -18,7 +18,8 @@ public:
 	std::vector<std::pair<Position, Position>> & getRoad()  { return road; };
 
 	void saveGrid();
-	void loadGrid();
+	void loadGrid(int ActualMap);
+	std::vector<std::vector<std::pair<Position, Position>>> allRoads;
 
 private:
 	int gridSizeX;
@@ -26,5 +27,6 @@ private:
 
 	// first pair is location, second direction after position
 	std::vector<std::pair<Position,Position>> road;
+
 };
 

@@ -3,8 +3,8 @@
 void Game::playGame()
 {
 	setupGame();
-	//_view->displayIntro();
-	//_view->displayMenu();
+	_view->displayIntro();
+	_view->displayMenu();
 
 	setupRound();	
 	
@@ -40,28 +40,22 @@ void Game::setupGame()
 {
 	// Load map
 	// tmp road
-	std::vector<std::pair<Position, Position>> tmp;
-
-	Position start1(0, 0); //honnan
-	Position dir1(1, 0); //irány
-	Position end1(500, 0); //hova
-	Position dir2(0, 1);
-	Position end2(500, 500);
-	Position dir3(-1, 0);
-	Position end3(0, 500);
-	tmp.emplace_back(start1, dir1);
-	tmp.emplace_back(end1, dir2);
-	tmp.emplace_back(end2, dir3);
-	tmp.emplace_back(end3, start1);
+	//std::vector<std::pair<Position, Position>> tmp;
 	
-
-	_grid->saveGrid(tmp);
-	_grid->setRoad(_grid->loadGrid());
+	for (size_t i = 1; i <= 2; i++)
+	{
+		_grid->loadGrid(i);
+		_grid->allRoads.push_back(_grid->getRoad());
+	}
+	
 }
 
 void Game::setupRound()
 {
+
 	_currentRound = 0;
+
+
 }
 
 void Game::currentRound()
