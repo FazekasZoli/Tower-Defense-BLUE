@@ -1,6 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿  Tower.cpp
 c:\users\arapcsak\source\tower-defense-blue\tower-defense\tower.cpp(12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 c:\users\arapcsak\source\tower-defense-blue\tower-defense\tower.cpp(18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
@@ -49,9 +50,23 @@ c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\vie
 >>>>>>> Setting up
 >>>>>>> Setting up
 =======
+=======
+>>>>>>> tower manager clone towers
 ﻿  CritterManager.cpp
+c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\view.h(28): error C2504: 'ViewEvent': base class undefined
   Game.cpp
+c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\view.h(28): error C2504: 'ViewEvent': base class undefined
   main.cpp
+c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\view.h(28): error C2504: 'ViewEvent': base class undefined
+  View.cpp
+c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\view.h(28): error C2504: 'ViewEvent': base class undefined
+c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\view.cpp(523): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\view.cpp(541): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\view.cpp(559): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\mpinter\source\repos\towerdefender\tower-defense-blue\tower-defense\view.cpp(567): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Generating Code...
+<<<<<<< HEAD
   Tower-Defense.vcxproj -> C:\Workplace\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe
 >>>>>>> Delayed critter start
+=======
+>>>>>>> tower manager clone towers

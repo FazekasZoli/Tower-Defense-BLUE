@@ -20,9 +20,13 @@
     <ClCompile Include="Critter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="Tower.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+=======
+    <ClCompile Include="TowerManager.cpp" />
+>>>>>>> tower manager clone towers
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h">
@@ -52,6 +56,12 @@
     <ClInclude Include="Critter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< HEAD
+=======
+    <ClInclude Include="TowerManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+>>>>>>> tower manager clone towers
     <ClInclude Include="Tower.h">
       <Filter>Header Files</Filter>
     </ClInclude>

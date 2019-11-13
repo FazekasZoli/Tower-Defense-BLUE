@@ -139,7 +139,11 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="main.cpp" />
+<<<<<<< HEAD
     <ClCompile Include="Tower.cpp" />
+=======
+    <ClCompile Include="TowerManager.cpp" />
+>>>>>>> tower manager clone towers
     <ClCompile Include="View.cpp" />
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
@@ -153,6 +157,10 @@
     <ClInclude Include="inc\Observer.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Tower.h" />
+<<<<<<< HEAD
+=======
+    <ClInclude Include="TowerManager.h" />
+>>>>>>> tower manager clone towers
     <ClInclude Include="View.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
