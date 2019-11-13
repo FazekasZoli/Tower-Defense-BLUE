@@ -510,6 +510,7 @@ Button::~Button()
 
 void View::addSprites(std::list<std::shared_ptr<Critter>>& critterList, const sf::Texture &texture)
 {
+	sprites.clear();
 	for (size_t i = 0; i < critterList.size(); i++)
 	{
 		sprites.emplace_back();
@@ -567,6 +568,11 @@ void View::updateSprites(std::list<std::shared_ptr<Critter>>& critterList)
 void View::closeWindow()
 {
 	window.close();
+}
+
+void View::addNewSprites(std::list<std::shared_ptr<Critter>>& critterList)
+{
+	addSprites(critterList, entityTexture);
 }
 
 //void View::graphic()

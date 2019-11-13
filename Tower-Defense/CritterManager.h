@@ -24,6 +24,7 @@ public:
 
 	void moveActualRoundCritters(int actualRound, const std::vector<std::pair<Position, Position>>& road);
 	void resetCritters(int actualRound);
+	bool allCritterIsDead(int actualRound);
 
 private:
 	std::chrono::high_resolution_clock::time_point _startTime;

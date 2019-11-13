@@ -1,22 +1,3 @@
-﻿  Critter.cpp
-  CritterManager.cpp
-  Game.cpp
-c:\workplace\tower-defense-blue\tower-defense\grid.h(22): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  Grid.cpp
-c:\workplace\tower-defense-blue\tower-defense\grid.h(22): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  Tower.cpp
-c:\workplace\tower-defense-blue\tower-defense\tower.cpp(12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\workplace\tower-defense-blue\tower-defense\tower.cpp(18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\workplace\tower-defense-blue\tower-defense\tower.cpp(24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\workplace\tower-defense-blue\tower-defense\tower.cpp(36): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-c:\workplace\tower-defense-blue\tower-defense\tower.cpp(37): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-  TowerManager.cpp
-  View.cpp
-c:\workplace\tower-defense-blue\tower-defense\view.cpp(518): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\workplace\tower-defense-blue\tower-defense\view.cpp(537): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\workplace\tower-defense-blue\tower-defense\view.cpp(555): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\workplace\tower-defense-blue\tower-defense\view.cpp(563): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  main.cpp
-c:\workplace\tower-defense-blue\tower-defense\grid.h(22): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  Generating Code...
-  Tower-Defense.vcxproj -> C:\Workplace\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe
+﻿  Game.cpp
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\grid.h(22): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Tower-Defense.vcxproj -> C:\Users\fbalogh\source\repos\ng201\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe

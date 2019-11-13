@@ -60,6 +60,7 @@ public:
 	void addRouteSprites(std::vector<std::pair<Position, Position>> &road, const sf::Texture &texture);
 	void updateSprites(std::list<std::shared_ptr<Critter>>& entityList);
 	void closeWindow();
+	void addNewSprites(std::list<std::shared_ptr<Critter>>& critterList);
 	
 };
 

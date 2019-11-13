@@ -45,6 +45,7 @@ std::shared_ptr<Critter> CritterManager::createCritter(CritterType critterType)
 
 void CritterManager::moveActualRoundCritters(int actualRound, const std::vector<std::pair<Position, Position>>& road)
 {
+	
 	int i = 0;
 	
 	std::chrono::duration<double> diff = std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now() - _startTime);
@@ -53,6 +54,7 @@ void CritterManager::moveActualRoundCritters(int actualRound, const std::vector<
 	{
 		if (i > std::min(_crittersForGame[actualRound].size(), static_cast<size_t>(diff.count() / 0.3)))
 		{
+			
 			//std::cout << "asd\n";
 			//system("pause");
 			break;
@@ -75,6 +77,19 @@ void CritterManager::resetCritters(int actualRound)
 	for (auto& critter : _crittersForGame[actualRound])
 	{
 		critter->setLife(10);
+		critter->setIsAlive(true);
 		critter->setPos(0, 0, 0, 0);
 	}
+}
+
+bool CritterManager::allCritterIsDead(int actualRound)
+{
+	for (auto &it : _crittersForGame[actualRound])
+	{
+		if (it->getIsAlive())
+		{
+			return false;
+		}
+	}
+	return true;
 }
