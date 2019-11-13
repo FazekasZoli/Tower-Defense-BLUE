@@ -1,7 +1,13 @@
-﻿  Tower.cpp
-c:\users\arapcsak\source\tower-defense-blue\tower-defense\tower.cpp(12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\arapcsak\source\tower-defense-blue\tower-defense\tower.cpp(18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\arapcsak\source\tower-defense-blue\tower-defense\tower.cpp(24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+﻿  Critter.cpp
+  CritterManager.cpp
+  Game.cpp
+  Grid.cpp
   main.cpp
+  Tower.cpp
+c:\workplace\tower-defense-blue\tower-defense\tower.cpp(12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\workplace\tower-defense-blue\tower-defense\tower.cpp(18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\workplace\tower-defense-blue\tower-defense\tower.cpp(24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  View.cpp
+  Player.cpp
   Generating Code...
-  Tower-Defense.vcxproj -> C:\Users\arapcsak\source\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe
+  Tower-Defense.vcxproj -> C:\Workplace\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe

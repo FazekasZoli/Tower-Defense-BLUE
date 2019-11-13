@@ -16,7 +16,9 @@
     <ClCompile Include="Grid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CritterManager.cpp" />
+    <ClCompile Include="CritterManager.cpp">
+	      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Critter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
