@@ -15,6 +15,8 @@ class Tower : public Entity
 {
 public:
 	//konstruktor
+	
+
 	Tower(TowerType _type, Position& position);
 
 
