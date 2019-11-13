@@ -18,26 +18,8 @@ public:
 		
 	TowerManager();
 
-	void createTowerForGame()
-	{
-		_towerForGame.emplace_back(_createTower(BASE));
-	}
-	
-	void upgradeTower(std::vector<std::shared_ptr<Tower>> towers)
-	{
-		for (auto tower : towers)
-		{
-			tower->upgrade(towers[0]);
-		}
-		
-	}
-
-	int sellTower(std::vector<std::shared_ptr<Tower>> towers)
-	{
-		for (auto tower : towers)
-		{
-			return towers[0]->getSellCost();
-		}
-	}
+	void createTowerForGame();
+	void upgradeTower(std::vector<std::shared_ptr<Tower>> towers);
+	int sellTower(std::vector<std::shared_ptr<Tower>> towers);
 
 };
