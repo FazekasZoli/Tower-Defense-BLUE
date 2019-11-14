@@ -3,7 +3,7 @@
 void Game::playGame()
 {
 	setupGame();
-	//_view->displayIntro();
+	_view->displayIntro();
 	
 	_view->displayMenu(_grid->allRoadsSize());
 	while (!_endGame)

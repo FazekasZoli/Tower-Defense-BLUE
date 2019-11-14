@@ -65,7 +65,12 @@ private:
 	sf::Texture grassTexture;
 	sf::Texture routeTexture;
 	sf::Texture entityTexture;
+	sf::Texture newEntityFront;
+	sf::Texture newEntityBack;
+	sf::Texture newEntityLeft;
+	sf::Texture newEntityRight;
 	sf::Sprite spriteBG;
+
 	
 	std::list<std::shared_ptr<Critter>>* crittersPtr;
 	std::vector<std::shared_ptr<Tower>>* towersPtr;

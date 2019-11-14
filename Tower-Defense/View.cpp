@@ -515,6 +515,11 @@ void View::updateGraphic()
 void View::setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::vector<std::shared_ptr<Tower>>& towerList, std::vector<std::pair<Position, Position>> &road, int* playerLifee)
 {
 	
+	newEntityFront.loadFromFile("pokeFront.png");
+	newEntityBack.loadFromFile("pokeBack.png");
+	newEntityLeft.loadFromFile("pokeLeft.png");
+	newEntityRight.loadFromFile("pokeRight.png");
+
 	towerSprites.clear();
 	crittersPtr = &critterList;
 	towersPtr = &towerList;
@@ -579,7 +584,7 @@ void View::setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::v
 	spriteBG.setTexture(grassTexture);
 	spriteBG.setTextureRect({ 0, 0, 1000, 800 });
 
-	addSprites(critterList, entityTexture);
+	addSprites(critterList, newEntityFront);
 	addRouteSprites(road, routeTexture);
 	//Buttons.emplace_back();
 	updateGraphic();
@@ -638,10 +643,33 @@ void View::addRouteSprites(std::vector<std::pair<Position, Position>>& road, con
 
 void View::updateSprites()
 {
+	Position up(0, -1);
+	Position down(0, 1);
+	Position left(-1, 0);
+	Position right(1, 0);
+	Position tmp;
+
 
 	for (size_t i = 0; i < crittersPtr->size(); i++)
 	{
 		sprites[i].setPosition((*std::next(crittersPtr->begin(), i))->getPos().x, (*std::next(crittersPtr->begin(), i))->getPos().y);
+		tmp=(*std::next(crittersPtr->begin(), i))->getDir();
+		if (tmp==down)
+		{
+			sprites[i].setTexture(newEntityFront);
+		}
+		else if (tmp == up)
+		{
+			sprites[i].setTexture(newEntityBack);
+		}
+		else if (tmp == left)
+		{
+			sprites[i].setTexture(newEntityLeft);
+		}
+		else if (tmp == right)
+		{
+			sprites[i].setTexture(newEntityRight);
+		}
 	}
 }
 
@@ -666,7 +694,7 @@ void View::addNewSprites(std::list<std::shared_ptr<Critter>>& critterList)
 
 	crittersPtr = &critterList;
 	sprites.clear();
-	addSprites(critterList, entityTexture);
+	addSprites(critterList, newEntityFront);
 }
 
 //void View::graphic()
