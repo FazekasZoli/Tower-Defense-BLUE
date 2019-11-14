@@ -3,13 +3,15 @@
 #include <unordered_map>
 #include <list>
 #include <iostream>
+#include <chrono>
+#include <algorithm>
 
 #include "Critter.h"
-#include "Observable.h"
+#include "inc\Observable.h"
 
 enum CritterType { NORMAL };
 
-class CritterManager : public Observable
+class CritterManager : public CritterEvents
 {
 private:	
 	std::shared_ptr<Critter> createCritter(CritterType critterType); // majd private legyen
@@ -18,9 +20,16 @@ private:
 public:	
 	CritterManager();	
 
-	void moveActualRoundCritters(int actualRound, const std::vector<std::pair<Position, Position>>& road);
+	std::list<std::shared_ptr<Critter>>& getCrittersForRound(int actualRound);
 
-private:
+	void moveActualRoundCritters(int actualRound, const std::vector<std::pair<Position, Position>>& road);
+	void resetCritters(int actualRound);
+	bool allCritterIsDead(int actualRound);
+	void resetTimer();
+
+private: 
+	std::chrono::high_resolution_clock::time_point _startTime;
+	bool _startTimeIsValid = false;
 	// critter sablonok
 	std::unordered_map<CritterType, std::shared_ptr<Critter>> _critterTemplates;
 		

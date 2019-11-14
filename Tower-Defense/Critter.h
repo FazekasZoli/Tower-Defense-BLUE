@@ -8,7 +8,7 @@ class Critter : public Entity
 {
 public:
 	//default konstruktor
-	Critter(int life = 1, int speed = 10, bool isAlive = true) : Entity(), life(life), speed(speed), isAlive(isAlive) {};
+	Critter(int life = 10, int speed = 10, bool isAlive = true) : Entity(), life(life), speed(speed), isAlive(isAlive) {};
   
 	//konstruktor
 	Critter(int newLife, int newSpeed, Position& pos, int cost, bool isAlive = true) : Entity(pos, cost), life(newLife), speed(newSpeed) , isAlive(isAlive) {};
@@ -36,5 +36,7 @@ private:
 
 	//milyen gyorsan tud mozogni
 	int speed;
+	
+	//a critter statusza
 	bool isAlive;
 };

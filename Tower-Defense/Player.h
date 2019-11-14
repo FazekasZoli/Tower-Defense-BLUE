@@ -19,6 +19,7 @@ public:
 	//GETTEREK: lekérdezést biztosítja(ezzel jelenítjük majd meg a HUD-on az életet és a pénzt, constans értékek)
 	int getLife() const;
 	int getMoney() const;
+	int *getLifePtr();
 
 	//SETTEREK: arra kell, hogy tudjuk módosítani a Life és a Money értékén.
 
