@@ -57,6 +57,7 @@ void Game::critterFinishedRoad()
 
 	if (_player->getLife() == 0)
 	{
+		_currentRound = 0;
 		_view->closeWindow();
 		_tm->deleteTowers();
 		_view->displayGameOver(LOST);
@@ -80,7 +81,7 @@ void Game::setupRound()
 	_cm->resetCritters(1);
 	_cm->resetCritters(2);
 	_currentRound = 0;
-	_player->setLife(100);
+	_player->setLife(3);
 	//_cm->resetCritters(_currentRound);
 	_view->setUpDisplay(_cm->getCrittersForRound(_currentRound), _tm->getTowerList() , _grid->getRoad(_selectedRoad), _player->getLifePtr());
 }

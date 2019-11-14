@@ -122,7 +122,7 @@ void View::displayMenu(int numberOfMaps)
 
 		}
 	} while (menuState > -1);
-	std::cout << "\n" << menuState;
+	//std::cout << "\n" << menuState;
 }
 
 void View::mainMenu() {
@@ -584,7 +584,7 @@ void View::setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::v
 	spriteBG.setTexture(grassTexture);
 	spriteBG.setTextureRect({ 0, 0, 1000, 800 });
 
-	addSprites(critterList, newEntityFront);
+	addNewSprites(critterList);
 	addRouteSprites(road, routeTexture);
 	//Buttons.emplace_back();
 	updateGraphic();
