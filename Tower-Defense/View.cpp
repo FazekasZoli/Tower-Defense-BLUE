@@ -84,7 +84,7 @@ void View::displayIntro()
 	Sleep(500);
 }
 
-void View::displayMenu()
+void View::displayMenu(int numberOfMaps)
 {
 	system("cls");
 	menuState = 0;
@@ -111,10 +111,10 @@ void View::displayMenu()
 			mainMenu();
 			break;
 		case 1:
-			displayLevelSelect(NewGame, probaPalyaNevek);
+			displayLevelSelect(NewGame, probaPalyaNevek, numberOfMaps);
 			break;
 		case 2:
-			displayLevelSelect(LoadGame, probaPalyaNevek);
+			displayLevelSelect(LoadGame, probaPalyaNevek, 0);
 			break;
 		default:
 			break;
@@ -261,7 +261,7 @@ void View::mainMenu() {
 
 }
 
-void View::displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &levels)
+void View::displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &levels, int numberOfMaps)
 {
 	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
 	ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
@@ -294,7 +294,7 @@ void View::displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &le
 	//Beep(723, 50);
 	do
 	{
-		for (short i = 1; i <= levels.size(); i++)
+		for (short i = 1; i <= numberOfMaps; i++)
 		{
 			SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), { push,3 + i * 3 });
 			(pos == i - 1) ? SetConsoleTextAttribute(hOut, 8 + 16 * 14) : SetConsoleTextAttribute(hOut, 7);
@@ -303,11 +303,11 @@ void View::displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &le
 			(pos == i - 1) ? (std::cout << " <-") : std::cout << "   ";
 		}
 
-		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), { push,4 + ((short)levels.size() + 1) * 3 });
-		(pos == levels.size()) ? SetConsoleTextAttribute(hOut, 8 + 16 * 14) : SetConsoleTextAttribute(hOut, 7);
+		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), { push,4 + ((short)numberOfMaps + 1) * 3 });
+		(pos == numberOfMaps) ? SetConsoleTextAttribute(hOut, 8 + 16 * 14) : SetConsoleTextAttribute(hOut, 7);
 		std::cout << "Back";
 		SetConsoleTextAttribute(hOut, 7);
-		(mainPpos == levels.size()) ? (std::cout << " <-") : std::cout << "   ";
+		(mainPpos == numberOfMaps) ? (std::cout << " <-") : std::cout << "   ";
 		//SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), { 0,0 });
 
 		input = _getch();
@@ -316,29 +316,29 @@ void View::displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &le
 		case 'w':
 			--pos;
 			if (pos < 0)
-				pos = (short)levels.size();
-			pos = pos % (levels.size() + 1);
+				pos = (short)numberOfMaps;
+			pos = pos % (numberOfMaps + 1);
 			//Beep(723, 100);
 			break;
 		case 'W':
 			--pos;
 			if (pos < 0)
-				pos = (short)levels.size();
-			pos = pos % (levels.size() + 1);
+				pos = (short)numberOfMaps;
+			pos = pos % (numberOfMaps + 1);
 			//Beep(723, 100);
 			break;
 		case 's':
 			++pos;
-			pos = pos % (levels.size() + 1);
+			pos = pos % (numberOfMaps + 1);
 			//Beep(723, 100);
 			break;
 		case 'S':
 			++pos;
-			pos = pos % (levels.size() + 1);
+			pos = pos % (numberOfMaps + 1);
 			//Beep(723, 100);
 			break;
 		case '\r':
-			if (pos == levels.size())
+			if (pos == numberOfMaps)
 			{
 
 				system("cls");
@@ -440,32 +440,124 @@ void View::displayGameOver(GameEnd status)
 	}
 }
 
-void View::updateGraphic(std::list<std::shared_ptr<Critter>>& critterList)
+void View::updateGraphic()
 {
+	//std::cout << *playerLife << "\n";
 
 	sf::Font font;
+	playerLifeText.setString(std::to_string(*playerLife));
 	while (window.pollEvent(event))
 	{
 		switch (event.type)
 		{
 		case sf::Event::Closed:
 			window.close();
+			notifyEndGameRequest();
+			break;
+		case sf::Event::MouseButtonPressed:
+			if (event.mouseButton.button == sf::Mouse::Left) {
+				if (buttonTowerProba.checkClick(window.mapPixelToCoords(sf::Mouse::getPosition(window))))
+				{
+					if (selectedButton == nullptr)
+					{
+						//sf::Window::ShowMouseCursor(false);
+						window.setMouseCursorVisible(false);
+						selectedButton = &buttonTowerProba;
+					}
+					else
+					{
+						window.setMouseCursorVisible(true);
+						selectedButton = nullptr;
+					}
+				}
+				else
+				{
+					if (selectedButton == &buttonTowerProba)
+					{
+						selectedButton = nullptr;
+						buttonTowerProba.setState(!buttonTowerProba.getVar());
+						window.setMouseCursorVisible(true);
+						auto asd=window.mapPixelToCoords(sf::Mouse::getPosition(window));
+						Position tmp(asd.x, asd.y);
+						notifyButtonClicked(buttonTowerProba.getType(), BASE, tmp);
+					}
+				}
+
+			}
 			break;
 		}
 	}
-	updateSprites(critterList);
+	updateSprites();
 	window.clear();
 	window.draw(spriteBG);
+	/*auto it = my_vector.rbegin(); it != my_vector.rend(); ++it
+		RoadSprites*/
+
 	for (auto &it : RoadSprites) { window.draw(it); }
-	for (auto &it : sprites) { window.draw(it); }
+	//for (int i = RoadSprites.size()-1; i > 0; --i) { window.draw(RoadSprites[i]); }
+	for (auto it = sprites.rbegin(); it != sprites.rend(); ++it) { window.draw(*it); }
+	for (auto &it : towerSprites) { window.draw(it); }
+	window.draw(playerLifeRizsa);
+	window.draw(playerLifeText);
+	window.draw(*buttonTowerProba.getSprite());
+	if (selectedButton == &buttonTowerProba)
+	{
+
+		TowerShadySprite.setPosition(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
+		radius.setPosition(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
+		window.draw(TowerShadySprite);
+		window.draw(radius);
+	}
 	window.display();
 
 }
 
-void View::setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::vector<std::pair<Position, Position>> &road)
+void View::setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::vector<std::shared_ptr<Tower>>& towerList, std::vector<std::pair<Position, Position>> &road, int* playerLifee)
 {
+	
+	towerSprites.clear();
+	crittersPtr = &critterList;
+	towersPtr = &towerList;
+	button1.loadFromFile("button1Tower.png");
+	button2.loadFromFile("Button2Tower.png");
+	buttonTowerProba.initialize(&button1, &button2, "proba saasdd", sf::Vector2f(450, 700), TowerPlace);
+	playerLife = playerLifee;
+
+	towerTex.loadFromFile("Tower1.png");
+	TowerShady.loadFromFile("Tower2Shady.png");
+	TowerShadySprite.setTexture(TowerShady);
+	TowerShadySprite.setOrigin(25,25);
+
+	if (!font.loadFromFile("arial.ttf"))
+	{
+		std::cout << "error loading font\n";
+	}
+	playerLifeText.setFont(font);
+	playerLifeText.setString(std::to_string(*playerLife));
+	playerLifeText.setCharacterSize(50); // in pixels, not points!
+	playerLifeText.setFillColor(sf::Color::Red);
+	playerLifeText.setStyle(sf::Text::Bold);
+	playerLifeText.setPosition(900, 0);
+	playerLifeText.setOutlineColor(sf::Color::Black);
+
+	playerLifeRizsa.setFont(font);
+	playerLifeRizsa.setStyle(sf::Text::Bold);
+	playerLifeRizsa.setCharacterSize(50);
+	playerLifeRizsa.setString("HP: ");
+	playerLifeRizsa.setPosition(800, 0);
+	playerLifeRizsa.setOutlineColor(sf::Color::Black);
+
+	radius.setOutlineColor(sf::Color::Yellow);
+	radius.setOutlineThickness(3);
+	radius.setRadius(baseRadius);
+	radius.setOrigin(baseRadius, baseRadius);
+	radius.setFillColor(sf::Color::Transparent);
+
+
 	window.create(sf::VideoMode(1000, 800), "Tower defense");
+	window.setPosition(sf::Vector2i(590, 0));
 	window.setFramerateLimit(30);
+	window.setVerticalSyncEnabled(true);
 
 	grassTexture.create(1000, 800);
 	grassTexture.setRepeated(true);
@@ -483,34 +575,22 @@ void View::setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::v
 	routeTexture.setSmooth(true);
 	entityTexture.setSmooth(true);
 
-	
+
 	spriteBG.setTexture(grassTexture);
 	spriteBG.setTextureRect({ 0, 0, 1000, 800 });
 
 	addSprites(critterList, entityTexture);
 	addRouteSprites(road, routeTexture);
-
-	updateGraphic(critterList);
+	//Buttons.emplace_back();
+	updateGraphic();
 
 
 }
 
-Button::Button(const sf::Texture& normal, const sf::Texture&  clicked, std::string, sf::Vector2f location)
-{
-	this->normal.setTexture(normal);
-	this->clicked.setTexture(clicked);
-	this->current = &(this->normal);
-	current = false;
-	
-}
-
-Button::~Button()
-{
-}
 
 void View::addSprites(std::list<std::shared_ptr<Critter>>& critterList, const sf::Texture &texture)
 {
-	sprites.clear();
+	
 	for (size_t i = 0; i < critterList.size(); i++)
 	{
 		sprites.emplace_back();
@@ -544,7 +624,7 @@ void View::addRouteSprites(std::vector<std::pair<Position, Position>>& road, con
 			++sorsz;
 
 		}
-		if (i< road.size())
+		if (i < road.size())
 		{
 			nextPoint = road[i].first;
 		}
@@ -556,13 +636,24 @@ void View::addRouteSprites(std::vector<std::pair<Position, Position>>& road, con
 	RoadSprites[sorsz].setPosition(pos.x, pos.y);
 }
 
-void View::updateSprites(std::list<std::shared_ptr<Critter>>& critterList)
+void View::updateSprites()
 {
 
-	for (size_t i = 0; i < critterList.size(); i++)
+	for (size_t i = 0; i < crittersPtr->size(); i++)
 	{
-		sprites[i].setPosition((*std::next(critterList.begin(), i))->getPos().x, (*std::next(critterList.begin(), i))->getPos().y);
+		sprites[i].setPosition((*std::next(crittersPtr->begin(), i))->getPos().x, (*std::next(crittersPtr->begin(), i))->getPos().y);
 	}
+}
+
+void View::addNewTower()
+{
+	//system("pause");
+
+	towerSprites.emplace_back();
+	towerSprites[towersPtr->size()-1].setTexture(towerTex);
+	towerSprites[towersPtr->size() - 1].setOrigin(25,25);
+	//std::next(sprites.begin(), i)->setScale(sf::Vector2f(0.1, 0.1));
+	towerSprites[towersPtr->size() - 1].setPosition(towersPtr->back()->getPosition().x, towersPtr->back()->getPosition().y);
 }
 
 void View::closeWindow()
@@ -572,6 +663,9 @@ void View::closeWindow()
 
 void View::addNewSprites(std::list<std::shared_ptr<Critter>>& critterList)
 {
+
+	crittersPtr = &critterList;
+	sprites.clear();
 	addSprites(critterList, entityTexture);
 }
 
@@ -595,6 +689,61 @@ void View::addNewSprites(std::list<std::shared_ptr<Critter>>& critterList)
 //	window.display();
 //
 //}
+
+//Buttons
+void Button::initialize(sf::Texture* normal, sf::Texture* clicked, std::string words, sf::Vector2f location, ButtonType ownType) {
+	this->normal.setTexture(*normal);
+	//this->normal.setOrigin(0,150);
+	this->clicked.setTexture(*clicked);
+	//this->clicked.setOrigin(0, 143);
+	this->currentSpr = &this->normal;
+	current = false;
+	this->normal.setPosition(location);
+	this->clicked.setPosition(location);
+	string.setString(words);
+	string.setPosition(location.x + 3, location.y + 3);
+	string.setCharacterSize(4);
+	this->ownType = ownType;
+}
+
+bool Button::checkClick(sf::Vector2f mousePos) {
+
+	if (mousePos.x > currentSpr->getPosition().x && mousePos.x < (currentSpr->getPosition().x + currentSpr->getTexture()->getSize().x)) {
+		if (mousePos.y > currentSpr->getPosition().y && mousePos.y < (currentSpr->getPosition().y + currentSpr->getTexture()->getSize().y)) {
+			setState(!current);
+			return true;
+		}
+	}
+	return false;
+}
+void Button::setState(bool which) {
+	current = which;
+	if (current) {
+		currentSpr = &clicked;
+		return;
+	}
+	currentSpr = &normal;
+}
+void Button::setText(std::string words) {
+	string.setString(words);
+}
+bool Button::getVar() {
+	return current;
+}
+sf::Sprite* Button::getSprite() {
+	return currentSpr;
+}
+
+sf::String * Button::getText() {
+	return &String;
+}
+
+ButtonType Button::getType()
+{
+	return ownType;
+}
+
+
 
 
 

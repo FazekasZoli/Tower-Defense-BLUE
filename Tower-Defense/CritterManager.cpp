@@ -47,7 +47,11 @@ void CritterManager::moveActualRoundCritters(int actualRound, const std::vector<
 {
 	
 	int i = 0;
-	
+	if (!_startTimeIsValid)
+	{
+		_startTime = std::chrono::high_resolution_clock::now();
+		_startTimeIsValid = true;
+	}
 	std::chrono::duration<double> diff = std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now() - _startTime);
 
 	for (auto critterIt = _crittersForGame[actualRound].begin(); critterIt != _crittersForGame[actualRound].end(); critterIt++)
@@ -74,6 +78,7 @@ void CritterManager::moveActualRoundCritters(int actualRound, const std::vector<
 
 void CritterManager::resetCritters(int actualRound)
 {
+	_startTimeIsValid = false;
 	for (auto& critter : _crittersForGame[actualRound])
 	{
 		critter->setLife(10);
@@ -93,3 +98,9 @@ bool CritterManager::allCritterIsDead(int actualRound)
 	}
 	return true;
 }
+
+void CritterManager::resetTimer()
+{
+	_startTimeIsValid = false;
+}
+

@@ -4,20 +4,27 @@ void Game::playGame()
 {
 	setupGame();
 	//_view->displayIntro();
-
-	_view->displayMenu();
+	
+	_view->displayMenu(_grid->allRoadsSize());
 	while (!_endGame)
 	{	
 
 		setupRound();
 		while (0 < _player->getLife())
 		{
-			
+			_cm->resetTimer();
 			while (0 < _player->getLife() && !_cm->allCritterIsDead(_currentRound))
 			{
+				if (_endGame)
+				{
+					break;
+				}
 				currentRound();
 			}
-			
+			if (_endGame)
+			{
+				break;
+			}
 
 			
 			++_currentRound;
@@ -28,14 +35,18 @@ void Game::playGame()
 				
 				_currentRound = 0;
 				_view->closeWindow();
+				_tm->deleteTowers();
 				_view->displayGameOver(WIN);
 				break;
 
 			}
 			_view->addNewSprites(_cm->getCrittersForRound(_currentRound));
 		}
-		
-		_view->displayMenu();
+		if (_endGame)
+		{
+			break;
+		}
+		_view->displayMenu(_grid->allRoadsSize());
 	}	
 }
 
@@ -47,6 +58,7 @@ void Game::critterFinishedRoad()
 	if (_player->getLife() == 0)
 	{
 		_view->closeWindow();
+		_tm->deleteTowers();
 		_view->displayGameOver(LOST);
 	}
 }
@@ -70,7 +82,7 @@ void Game::setupRound()
 	_currentRound = 0;
 	_player->setLife(100);
 	//_cm->resetCritters(_currentRound);
-	_view->setUpDisplay(_cm->getCrittersForRound(_currentRound), _grid->getRoad(_selectedRoad));
+	_view->setUpDisplay(_cm->getCrittersForRound(_currentRound), _tm->getTowerList() , _grid->getRoad(_selectedRoad), _player->getLifePtr());
 }
 
 void Game::currentRound()
@@ -79,11 +91,13 @@ void Game::currentRound()
 		
 		_cm->moveActualRoundCritters(_currentRound, _grid->getRoad(_selectedRoad));
 	
-	_view->updateGraphic(_cm->getCrittersForRound(_currentRound));	
+	_view->updateGraphic();	
 }
 
-void Game::placeTower()
+void Game::placeTower(int type, Position towerPos)
 {
+	_tm->createTowerForGame(type, towerPos);
+	_view->addNewTower();
 }
 
 void Game::levelSelected(int selectedRoad)

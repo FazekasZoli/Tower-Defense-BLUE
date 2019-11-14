@@ -4,7 +4,7 @@
 
 int main(int argc, char* argv[])
  {
-	//ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
+	ShowWindow(GetConsoleWindow(), SW_SHOWMAXIMIZED);
 
 	Game game;
 	  

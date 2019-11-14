@@ -25,10 +25,11 @@ public:
 	void moveActualRoundCritters(int actualRound, const std::vector<std::pair<Position, Position>>& road);
 	void resetCritters(int actualRound);
 	bool allCritterIsDead(int actualRound);
+	void resetTimer();
 
-private:
+private: 
 	std::chrono::high_resolution_clock::time_point _startTime;
-
+	bool _startTimeIsValid = false;
 	// critter sablonok
 	std::unordered_map<CritterType, std::shared_ptr<Critter>> _critterTemplates;
 		
