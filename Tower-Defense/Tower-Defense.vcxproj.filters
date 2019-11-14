@@ -72,11 +72,5 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{a168728d-d9aa-4a5c-a7e8-311a41945176}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Critter">
-      <UniqueIdentifier>{660695b9-15fa-4c2b-ac94-58d367288d39}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Critter">
-      <UniqueIdentifier>{ca97a8f5-d31c-49fd-a2fd-d4e905be2a70}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
 </Project>

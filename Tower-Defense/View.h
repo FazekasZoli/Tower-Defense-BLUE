@@ -25,7 +25,6 @@ enum GameEnd
 	LOST
 };
 
-
 class Button {
 public:
 	Button() {};
@@ -47,7 +46,6 @@ private:
 	sf::Text string;
 	ButtonType ownType;
 };
-
 
 class View : public ViewEvents
 {
@@ -89,7 +87,6 @@ private:
 	sf::Text playerLifeRizsa;
 	sf::Font font;
 
-
 public:
 	//View() :window(sf::VideoMode(1000, 800), "Proba") {};
 	void displayIntro();
@@ -107,11 +104,5 @@ public:
 	void addNewTower();
 
 	void closeWindow();
-	void addNewSprites(std::list<std::shared_ptr<Critter>>& critterList);
-	
+	void addNewSprites(std::list<std::shared_ptr<Critter>>& critterList);	
 };
-
-
-
-
-

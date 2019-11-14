@@ -62,8 +62,7 @@ void CritterManager::moveActualRoundCritters(int actualRound, const std::vector<
 	for (auto critterIt = _crittersForGame[actualRound].begin(); critterIt != _crittersForGame[actualRound].end(); critterIt++)
 	{
 		if (i > std::min(_crittersForGame[actualRound].size(), static_cast<size_t>(diff.count() / 0.3)))
-		{
-			
+		{			
 			//std::cout << "asd\n";
 			//system("pause");
 			break;
@@ -108,4 +107,3 @@ void CritterManager::resetTimer()
 {
 	_startTimeIsValid = false;
 }
-

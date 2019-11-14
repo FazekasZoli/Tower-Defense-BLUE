@@ -3,29 +3,25 @@
 void Game::playGame()
 {
 	setupGame();
-	//_view->displayIntro();
 	
+	_view->displayIntro();
 	_view->displayMenu(_grid->allRoadsSize());
+
 	while (!_endGame)
 	{	
-
 		setupRound();
 		while (0 < _player->getLife())
 		{
 			_cm->resetTimer();
-			while (0 < _player->getLife() && !_cm->allCritterIsDead(_currentRound))
-			{
-				if (_endGame)
-				{
-					break;
-				}
+			while (0 < _player->getLife() && !_cm->allCritterIsDead(_currentRound) && !_endGame)
+			{				
 				currentRound();
 			}
+
 			if (_endGame)
 			{
 				break;
 			}
-
 			
 			++_currentRound;
 			std::cout << _currentRound << "\n";
@@ -38,7 +34,6 @@ void Game::playGame()
 				_tm->deleteTowers();
 				_view->displayGameOver(WIN);
 				break;
-
 			}
 			_view->addNewSprites(_cm->getCrittersForRound(_currentRound));
 		}
@@ -63,7 +58,6 @@ void Game::critterFinishedRoad()
 	}
 }
 
-
 void Game::setupGame()
 {	
 	// add Game to CritterManager observer
@@ -76,19 +70,21 @@ void Game::setupGame()
 
 void Game::setupRound()
 {
+	_currentRound = 0;
+	
+	//_cm->resetCritters(_currentRound);
 	_cm->resetCritters(0);
 	_cm->resetCritters(1);
 	_cm->resetCritters(2);
-	_currentRound = 0;
+	
 	_player->setLife(100);
-	//_cm->resetCritters(_currentRound);
+	
 	_view->setUpDisplay(_cm->getCrittersForRound(_currentRound), _tm->getTowerList() , _grid->getRoad(_selectedRoad), _player->getLifePtr());
 }
 
 void Game::currentRound()
 {	
-	if (!_isPaused)
-		
+	if (!_isPaused)		
 		_cm->moveActualRoundCritters(_currentRound, _grid->getRoad(_selectedRoad));
 	
 	_view->updateGraphic();	

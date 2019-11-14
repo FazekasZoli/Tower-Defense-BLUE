@@ -122,7 +122,7 @@ void View::displayMenu(int numberOfMaps)
 
 		}
 	} while (menuState > -1);
-	std::cout << "\n" << menuState;
+	//std::cout << "\n" << menuState;
 }
 
 void View::mainMenu() {
