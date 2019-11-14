@@ -4,117 +4,122 @@ void Game::playGame()
 {
 	setupGame();
 	//_view->displayIntro();
-	//_view->displayMenu();
-<<<<<<< HEAD
-
-	setupRound();	
 	
-	_view->setUpDisplay(_cm->getCrittersForRound(_currentRound), _grid->getRoad());
+<<<<<<< HEAD
+	_view->displayMenu(_grid->allRoadsSize());
+	while (!_endGame)
+	{	
+
+		setupRound();
+		while (0 < _player->getLife())
+		{
+			_cm->resetTimer();
+			while (0 < _player->getLife() && !_cm->allCritterIsDead(_currentRound))
+			{
+				if (_endGame)
+				{
+					break;
+				}
+				currentRound();
+			}
+			if (_endGame)
+			{
+				break;
+			}
+
+			
+			++_currentRound;
+			std::cout << _currentRound << "\n";
+			if ((_player->getLife() > 0) && _currentRound == 3)
+			{
+				//system("pause");
+				
+				_currentRound = 0;
+				_view->closeWindow();
+				_tm->deleteTowers();
+				_view->displayGameOver(WIN);
+				break;
+
+			}
+			_view->addNewSprites(_cm->getCrittersForRound(_currentRound));
+		}
+		if (_endGame)
+		{
+			break;
+		}
+		_view->displayMenu(_grid->allRoadsSize());
+	}	
+=======
+	_view->setUpDisplay(_cm->getCrittersForRound(_currentRound), _grid->getRoad(), _player->getLifePtr());
 
 	for (size_t i = 0; i < 200; i++)
 	{
 		_cm->moveActualRoundCritters(_currentRound, _grid->getRoad());
-		_view->updateGraphic(_cm->getCrittersForRound(_currentRound));
-=======
-	
-	std::shared_ptr<Critter> c = _cm->createCritter(NORMAL);
-	c->setSpeed(10);
-	std::list<std::shared_ptr<Critter>> critterList;
-	critterList.push_back(c);
-	// crittereket fel kell iratni az observerre a játék inicializálásakor
-	c->addObserver(this);
-
-	// tmp road
-	//std::vector<std::pair<Position, Position>> p;
-
-	//Position start1(0, 0); //honnan
-	//Position dir1(1, 0); //irány
-
-	//Position end1(400, 0); //hova
-	//Position dir2(0, 1);
-
-	//Position end2(400,200);
-	//Position dir3(-1, 0);
-
-	//Position end3(100,200);
-	//Position dir4(0, 1);
-
-	//Position end4(100,500);
-	//Position dir5(1, 0);
-
-	//Position end5(800, 500);
-	//Position dir6(0, 1);
-
-	//Position end6(800, 800);
-
-	//p.emplace_back(start1, dir1);
-	//p.emplace_back(end1, dir2); 
-	//p.emplace_back(end2, dir3);
-	//p.emplace_back(end3, dir4);
-	//p.emplace_back(end4, dir5);
-	//p.emplace_back(end5, dir6);
-	//p.emplace_back(end6, start1);
-	_grid->loadGrid();
-
-	_view->setUpDisplay(critterList, _grid->getRoad());
-	// move teszt
-	for (size_t i = 0; i < 500; i++)
-	{
-		c->move(_grid->getRoad());
-		_view->updateGraphic(critterList);
-		std::cout << "x: " << c->getPos().x << " y: " << c->getPos().y << std::endl;
->>>>>>> 3fe25deae179cc0aae68aac21fd835479b2580ec
+		_view->updateGraphic();
 	}
+>>>>>>> 713ecd91ff59a247593ec9c47651a1d113ac3085
 }
 
 void Game::critterFinishedRoad()
 {
 	_player->setLife(_player->getLife() - 1);
+<<<<<<< HEAD
+	
 
+=======
+	_view->updateGraphic();
+>>>>>>> 713ecd91ff59a247593ec9c47651a1d113ac3085
 	if (_player->getLife() == 0)
 	{
+		_view->closeWindow();
+		_tm->deleteTowers();
 		_view->displayGameOver(LOST);
 	}
 }
 
-void Game::placeTower()
-{
-}
-
-void Game::levelSelected(int selectedLevel)
-{
-	_selectedLevel = selectedLevel;
-}
 
 void Game::setupGame()
-{
-	// Load map
-	// tmp road
-	std::vector<std::pair<Position, Position>> tmp;
+{	
+	// add Game to CritterManager observer
+	_cm->addCritterObserver(this);
+	// add Game to View observer
+	_view->addViewObserver(this);
 
-	Position start1(0, 0); //honnan
-	Position dir1(1, 0); //irány
-	Position end1(500, 0); //hova
-	Position dir2(0, 1);
-	Position end2(500, 500);
-	Position dir3(-1, 0);
-	Position end3(0, 500);
-	tmp.emplace_back(start1, dir1);
-	tmp.emplace_back(end1, dir2);
-	tmp.emplace_back(end2, dir3);
-	tmp.emplace_back(end3, start1);
-	
-
-	_grid->saveGrid(tmp);
-	_grid->setRoad(_grid->loadGrid());
+	_grid->loadRoads();
 }
 
 void Game::setupRound()
 {
+	_cm->resetCritters(0);
+	_cm->resetCritters(1);
+	_cm->resetCritters(2);
 	_currentRound = 0;
+	_player->setLife(100);
+	//_cm->resetCritters(_currentRound);
+	_view->setUpDisplay(_cm->getCrittersForRound(_currentRound), _tm->getTowerList() , _grid->getRoad(_selectedRoad), _player->getLifePtr());
 }
 
 void Game::currentRound()
-{
+{	
+	if (!_isPaused)
+		
+		_cm->moveActualRoundCritters(_currentRound, _grid->getRoad(_selectedRoad));
+	
+	_view->updateGraphic();	
 }
 
+void Game::placeTower(int type, Position towerPos)
+{
+	_tm->createTowerForGame(type, towerPos);
+	_view->addNewTower();
+}
+
+void Game::levelSelected(int selectedRoad)
+{
+	_selectedRoad = selectedRoad;
+}
+
+void Game::endGameRequest()
+{
+	_endGame = true;
+}
