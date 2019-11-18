@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <cmath>
 
 struct Position
 {
@@ -49,6 +50,8 @@ struct Position
 
 		return *this;	
 	}
+
+
 };
 
 class Entity
@@ -76,5 +79,11 @@ public:
 	void setPos(int x, int y, int dirX, int dirY) { _pos.x = x; _pos.y = y; irany.x = dirX; irany.y = dirY; }
 	void setPosTw(Position pos) { _pos.x = pos.x; _pos.y = pos.y;}
 
+	double distance(Position p)
+	{
+		double result = sqrt(pow((_pos.x + p.x), 2) + pow((_pos.y + p.y), 2));
+
+		return result;
+	}
 	//virtual std::shared_ptr<Entity> clone() = 0;
 };
