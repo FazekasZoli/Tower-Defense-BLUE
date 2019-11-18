@@ -1,111 +1,102 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="View.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Game.cpp">
+      <Filter>SourceFiles</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>SourceFiles</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Player.cpp">
+      <Filter>SourceFiles</Filter>
     </ClCompile>
-
-    <ClCompile Include="Grid.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="View.cpp">
+      <Filter>SourceFiles</Filter>
     </ClCompile>
-    <ClCompile Include="Tower.cpp">
-
-      <Filter>Source Files</Filter>
+    <ClCompile Include="BlockArea.cpp">
+      <Filter>SourceFiles\Grid</Filter>
     </ClCompile>
     <ClCompile Include="Critter.cpp">
-      <Filter>Source Files\Critter</Filter>
+      <Filter>SourceFiles\Critter</Filter>
     </ClCompile>
     <ClCompile Include="CritterManager.cpp">
-      <Filter>Source Files\Critter</Filter>
-    </ClCompile>
-    <ClCompile Include="TowerManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-
-    <ClCompile Include="TowerManager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>SourceFiles\Critter</Filter>
     </ClCompile>
     <ClCompile Include="Grid.cpp">
-      <Filter>Source Files\Grid</Filter>
+      <Filter>SourceFiles\Grid</Filter>
     </ClCompile>
-    <ClCompile Include="BlockAre
-                        a.cpp">
-      <Filter>Source Files\Grid</Filter>
+    <ClCompile Include="Tower.cpp">
+      <Filter>SourceFiles\Tower</Filter>
     </ClCompile>
-
+    <ClCompile Include="TowerManager.cpp">
+      <Filter>SourceFiles\Tower</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h">
-      <Filter>Header Files</Filter>
+      <Filter>HeaderFiles</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
+      <Filter>HeaderFiles</Filter>
     </ClInclude>
     <ClInclude Include="inc\Observable.h">
-      <Filter>Header Files</Filter>
+      <Filter>HeaderFiles</Filter>
     </ClInclude>
     <ClInclude Include="inc\Observer.h">
-      <Filter>Header Files</Filter>
+      <Filter>HeaderFiles</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>Header Files</Filter>
+      <Filter>HeaderFiles</Filter>
     </ClInclude>
     <ClInclude Include="View.h">
-      <Filter>Header Files</Filter>
+      <Filter>HeaderFiles</Filter>
     </ClInclude>
-
-    <ClInclude Include="CritterManager.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="BlockArea.h">
+      <Filter>HeaderFiles\Grid</Filter>
     </ClInclude>
     <ClInclude Include="Critter.h">
-
-      <Filter>Header Files</Filter>
+      <Filter>HeaderFiles\Critter</Filter>
     </ClInclude>
-    <ClInclude Include="Tower.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TowerManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-
-    <ClInclude Include="BlockArea.h">
-      <Filter>Header Files\Grid</Filter>
+    <ClInclude Include="CritterManager.h">
+      <Filter>HeaderFiles\Critter</Filter>
     </ClInclude>
     <ClInclude Include="Grid.h">
-      <Filter>Header Files\Grid</Filter>
-
-    <ClInclude Include="Critter.h">
-      <Filter>Header Files\Critter</Filter>
+      <Filter>HeaderFiles\Grid</Filter>
     </ClInclude>
-    <ClInclude Include="CritterManager.h">
-      <Filter>Header Files\Critter</Filter>
-
+    <ClInclude Include="Tower.h">
+      <Filter>HeaderFiles\Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="TowerManager.h">
+      <Filter>HeaderFiles\Tower</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{1851f9eb-5707-4cfc-b47c-4af42dd8f989}</UniqueIdentifier>
+    <Filter Include="HeaderFiles">
+      <UniqueIdentifier>{32eed41e-9fff-489c-8913-e1abb3b853b3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{369bc384-0874-42a8-9f14-daf964e4e416}</UniqueIdentifier>
+    <Filter Include="SourceFiles">
+      <UniqueIdentifier>{061d756e-61cc-422f-9761-41c79107bf81}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{a168728d-d9aa-4a5c-a7e8-311a41945176}</UniqueIdentifier>
+    <Filter Include="ResourceFiles">
+      <UniqueIdentifier>{f52aac39-2e0b-4883-9e0a-ea8a6ed37545}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Grid">
-      <UniqueIdentifier>{240067e9-6085-4e63-8848-9e82dfcab3f1}</UniqueIdentifier>
+    <Filter Include="HeaderFiles\Critter">
+      <UniqueIdentifier>{5c462556-42a2-4579-adf1-745092e18de1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Grid">
-      <UniqueIdentifier>{8d4b5fc4-82a1-4a3a-aed8-34918570053a}</UniqueIdentifier>
+    <Filter Include="HeaderFiles\Tower">
+      <UniqueIdentifier>{68670dd5-54b6-4014-bb4d-9beab7e4bc1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HeaderFiles\Grid">
+      <UniqueIdentifier>{e4ef8268-d673-4c2a-a40c-c94ea4e62ebf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFiles\Critter">
+      <UniqueIdentifier>{c279d491-dca8-4abc-8443-9d46fc04c571}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFiles\Grid">
+      <UniqueIdentifier>{74f335d0-1cbc-4e21-9733-09af06ca7408}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SourceFiles\Tower">
+      <UniqueIdentifier>{957c0030-27be-4e4a-a50d-823a0256f54b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -1,5 +1,6 @@
+//#include <iostream>
+
 #include "TowerManager.h"
-#include <iostream>
 
 std::shared_ptr<Tower> TowerManager::_createTower(TowerType type)
 {

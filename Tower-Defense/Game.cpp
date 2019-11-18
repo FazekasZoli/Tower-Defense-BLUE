@@ -96,7 +96,7 @@ void Game::currentRound()
 	_view->updateGraphic();	
 }
 
-void Game::placeTower(int type, Position towerPos)
+void Game::towerPlaced(int type, Position towerPos)
 {
 	_tm->createTowerForGame(type, towerPos);
 	_view->addNewTower();
@@ -107,7 +107,7 @@ void Game::buyTower(Tower* tower)
 	if (tower->getBuyCost() < _player->getMoney())
 	{
 		_player->buyTower(tower->getBuyCost());
-		placeTower(tower->getType(),tower->getPosition());
+		towerPlaced(tower->getType(),tower->getPosition());
 		//grid tiltolista implementalas
 	}
 	else

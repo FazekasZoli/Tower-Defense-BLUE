@@ -3,10 +3,10 @@
 #include <memory>
 #include <chrono>
 #include <ctime>
+#include <list>
 
 #include "Entity.h"
 #include "Critter.h"
-#include "CritterManager.h"
 
 enum TowerType
 {
@@ -38,7 +38,7 @@ public:
 	inline void setAttackRange(int _attackRange) { attackRange = _attackRange; };
 
 	//metodusok
-	void upgrade(std::shared_ptr<Tower> tower);
+	void upgrade();
 	void attack(std::list<std::shared_ptr<Critter>>& critters);	
 	std::shared_ptr<Tower> clone(); 
 

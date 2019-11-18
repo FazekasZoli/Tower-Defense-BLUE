@@ -28,7 +28,7 @@ public:
 	// Inherited via CritterObserver
 	virtual void critterFinishedRoad() override;
 	// Inherited via ViewObserver
-	virtual void placeTower(int type, Position towerPos) override;
+	virtual void towerPlaced(int type, Position towerPos) override;
 	virtual void buyTower(Tower* tower) override;
 	virtual void sellTower(Tower* tower) override;
 	virtual void upgradeTower(Tower* tower) override;

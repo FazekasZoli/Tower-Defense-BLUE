@@ -73,7 +73,7 @@ void Grid::createBlockedAreaFromRoad(const int level)
 	}
 }
 
-void Grid::addBlockedTowerArea(const Position& towerPos)
+void Grid::addBlockedTowerArea(Position& towerPos)
 {
 	blockedAreas.emplace_back(std::make_shared<BlockArea>(towerPos));
 }

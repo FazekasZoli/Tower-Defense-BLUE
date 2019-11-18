@@ -48,7 +48,7 @@ void Tower::attack(std::list<std::shared_ptr<Critter>>& critters)
 	}
 }
 
-void Tower::upgrade(std::shared_ptr<Tower> tower)
+void Tower::upgrade()
 {
 	setAttackPower(attackPower *= 2);
 	setSellCost(sellCost *= 1.2) ;

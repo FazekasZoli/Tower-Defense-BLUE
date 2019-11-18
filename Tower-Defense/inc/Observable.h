@@ -2,8 +2,6 @@
 
 #include "Observer.h"
 
-
-
 class CritterEvents 
 {
 	private:
@@ -53,9 +51,7 @@ enum ButtonType { Pause, Resume, TowerPlace, TowerUpgrade, TowerSell, TowerBuy, 
 class ViewEvents
 {
 private:
-	ViewObserver* _obs;
-
-	
+	ViewObserver* _obs;	
 
 public:
 	void addViewObserver(ViewObserver* obs) { _obs = obs; }
@@ -69,7 +65,7 @@ public:
 		case Resume:
 			break;
 		case TowerPlace:
-			_obs->placeTower(type, towerPos);
+			_obs->towerPlaced(type, towerPos);
 			break;
 		case TowerUpgrade:
 			break;
@@ -99,8 +95,6 @@ public:
 			break;
 		}
 	}
-
-
 
 	void notifySelectedLevel(int selectedLevel)
 	{
