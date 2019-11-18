@@ -27,8 +27,8 @@ public:
 	void setMoney(int _money);
 
 	// "hozzáad / elvesz metórusok" ha kell
-	int addMoney(int _money);
-	int removeMoney(int _money);
+	int sellTower(int _money);
+	int buyTower(int _money);
 
 	//vásárlás metódusa
 	//void pay(int _money);

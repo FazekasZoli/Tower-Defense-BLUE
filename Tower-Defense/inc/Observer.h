@@ -1,5 +1,5 @@
 #pragma once
-//#include "tower.h"
+#include "tower.h"
 
 
 class Observer {
@@ -18,6 +18,9 @@ class ViewObserver : public Observer
 {
 public:
 	virtual void placeTower(int type, Position towerPos) = 0;
+	virtual void buyTower(Tower* tower) = 0;
+	virtual void sellTower(Tower* tower) = 0;
+	virtual void upgradeTower(Tower* tower) = 0;
 	virtual void levelSelected (int selectedLevel) = 0;
 	virtual void endGameRequest() = 0;
 };

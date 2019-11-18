@@ -48,7 +48,7 @@ class CritterEvents
 	    }
 };
 
-enum ButtonType { Pause, Resume, TowerPlace, TowerUpgrade, TowerSell, NextRoundStart };
+enum ButtonType { Pause, Resume, TowerPlace, TowerUpgrade, TowerSell, TowerBuy, NextRoundStart };
 
 class ViewEvents
 {
@@ -81,6 +81,26 @@ public:
 			break;
 		}
 	}
+
+	void notifyButtonClicked(ButtonType clickType, Tower* tower)
+	{
+		switch (clickType)
+		{
+		case TowerUpgrade:
+			_obs->upgradeTower(tower);
+			break;
+		case TowerSell:
+			_obs->sellTower(tower);
+			break;
+		case TowerBuy:
+			_obs->buyTower(tower);
+			break;
+		default:
+			break;
+		}
+	}
+
+
 
 	void notifySelectedLevel(int selectedLevel)
 	{

@@ -13,24 +13,35 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CritterManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Critter.cpp">
+
+    <ClCompile Include="Grid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Tower.cpp">
+
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Critter.cpp">
+      <Filter>Source Files\Critter</Filter>
+    </ClCompile>
+    <ClCompile Include="CritterManager.cpp">
+      <Filter>Source Files\Critter</Filter>
+    </ClCompile>
+    <ClCompile Include="TowerManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+
     <ClCompile Include="TowerManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Grid.cpp">
       <Filter>Source Files\Grid</Filter>
     </ClCompile>
-    <ClCompile Include="BlockArea.cpp">
+    <ClCompile Include="BlockAre
+                        a.cpp">
       <Filter>Source Files\Grid</Filter>
     </ClCompile>
+
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h">
@@ -51,10 +62,12 @@
     <ClInclude Include="View.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+
     <ClInclude Include="CritterManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Critter.h">
+
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Tower.h">
@@ -63,11 +76,19 @@
     <ClInclude Include="TowerManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+
     <ClInclude Include="BlockArea.h">
       <Filter>Header Files\Grid</Filter>
     </ClInclude>
     <ClInclude Include="Grid.h">
       <Filter>Header Files\Grid</Filter>
+
+    <ClInclude Include="Critter.h">
+      <Filter>Header Files\Critter</Filter>
+    </ClInclude>
+    <ClInclude Include="CritterManager.h">
+      <Filter>Header Files\Critter</Filter>
+
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
