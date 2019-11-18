@@ -101,6 +101,32 @@ void Game::placeTower(int type, Position towerPos)
 	_view->addNewTower();
 }
 
+void Game::buyTower(Tower* tower)
+{
+	if (tower->getBuyCost() < _player->getMoney())
+	{
+		_player->buyTower(tower->getBuyCost());
+		placeTower(tower->getType(),tower->getPosition());
+		//grid tiltolista implementalas
+	}
+	else
+	{
+		std::cout << "Nincs elegendo penzed a torony megvasarlasahoz.\n";
+	}
+}
+
+void Game::sellTower(Tower* tower)
+{
+	_player->sellTower(tower->getSellCost());
+	//torony torles majd ez alá..
+
+}
+
+void Game::upgradeTower(Tower* tower)
+{
+	_tm->upgradeTower(tower);
+}
+
 void Game::levelSelected(int selectedRoad)
 {
 	_selectedRoad = selectedRoad;

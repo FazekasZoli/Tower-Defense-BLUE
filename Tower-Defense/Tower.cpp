@@ -48,13 +48,11 @@ void Tower::attack(std::list<std::shared_ptr<Critter>>& critters)
 	}
 }
 
-
-
 void Tower::upgrade(std::shared_ptr<Tower> tower)
 {
-	tower->attackPower *= 2;
-	tower->sellCost *= 1.2;
-	tower->attackRange *= 1.2;
+	setAttackPower(attackPower *= 2);
+	setSellCost(sellCost *= 1.2) ;
+	setAttackRange(attackRange *= 1.2);
 	/*if (tower->type == BASE)
 	{
 		setType(POISONING);

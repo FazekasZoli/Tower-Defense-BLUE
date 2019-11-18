@@ -24,7 +24,7 @@ public:
 	Tower(TowerType _type, Position& position);
 
 
-	//GETTEREK (azért inline mert az osztály leírásában szerepeltetem a tagfüggvények teljes definícióját (rövidek))
+	//GETTEREK (azÃ©rt inline mert az osztÃ¡ly leÃ­rÃ¡sÃ¡ban szerepeltetem a tagfÃ¼ggvÃ©nyek teljes definÃ­ciÃ³jÃ¡t (rÃ¶videk))
 	inline TowerType getType() const { return type; };
 	inline int getBuyCost() const { return buyCost; };
 	inline int getSellCost() const { return sellCost; };
@@ -42,17 +42,14 @@ public:
 
 	//metodusok
 	void upgrade(std::shared_ptr<Tower> tower);
-
-	void attack(std::list<std::shared_ptr<Critter>>& critters);
-
-	
+	void attack(std::list<std::shared_ptr<Critter>>& critters);	
 	std::shared_ptr<Tower> clone(); 
 
 private:
 	//tipus
 	TowerType type;
 
-	// az az osszeg, amennyiért a tower lehelyezheto
+	// az az osszeg, amennyiÃ©rt a tower lehelyezheto
 	int buyCost;
 
 	//az az osszeg, amennyiert a tower visszavalthato

@@ -19,12 +19,9 @@ void TowerManager::createTowerForGame(int type, Position pos)
 	_towerForGame.emplace_back(_createTower(static_cast<TowerType>(type)));
 	_towerForGame.back()->setPosTw(pos);
 } 
-void TowerManager::upgradeTower(std::vector<std::shared_ptr<Tower>> towers)
+void TowerManager::upgradeTower(Tower* tower)
 {
-	for (auto tower : towers)
-	{
-		tower->upgrade(towers[0]);
-	}
+	tower->upgrade();
 
 }
 

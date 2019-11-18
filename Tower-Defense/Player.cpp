@@ -29,13 +29,13 @@ void Player::setMoney(int _money)
 	money = _money;
 }
 
-int Player::addMoney(int _money)
+int Player::sellTower(int _money)
 {
 	money += _money;
 	return money;
 }
 
-int Player::removeMoney(int _money)
+int Player::buyTower(int _money)
 {
 	money -= _money;
 	return money;
