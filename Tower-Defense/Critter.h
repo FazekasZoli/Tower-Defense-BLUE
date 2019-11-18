@@ -28,6 +28,8 @@ public:
 	void move(std::vector<std::pair<Position, Position>> road_);
 	void test_move();
 
+	void damage(int dmg);
+
 	std::shared_ptr<Critter> clone(); //override
 
 private:

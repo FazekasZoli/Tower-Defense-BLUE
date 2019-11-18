@@ -1,19 +1,34 @@
-<<<<<<< HEAD
-﻿  main.cpp
-c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\grid.h(22): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  Tower-Defense.vcxproj -> C:\Users\fbalogh\source\repos\ng201\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe
-=======
 ﻿  Critter.cpp
   CritterManager.cpp
   Game.cpp
+c:\users\mpinter\source\repos\towerdefense\tower-defense-blue\tower-defense\grid.h(14): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mpinter\source\repos\towerdefense\tower-defense-blue\tower-defense\grid.h(22): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   Grid.cpp
-  main.cpp
-  View.cpp
-c:\users\zfazekas\desktop\tower-defense-blue\tower-defense-blue\tower-defense\view.cpp(523): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\zfazekas\desktop\tower-defense-blue\tower-defense-blue\tower-defense\view.cpp(541): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\zfazekas\desktop\tower-defense-blue\tower-defense-blue\tower-defense\view.cpp(559): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\zfazekas\desktop\tower-defense-blue\tower-defense-blue\tower-defense\view.cpp(567): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\mpinter\source\repos\towerdefense\tower-defense-blue\tower-defense\grid.h(14): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mpinter\source\repos\towerdefense\tower-defense-blue\tower-defense\grid.h(22): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   Player.cpp
+  Tower.cpp
+c:\users\mpinter\source\repos\towerdefense\tower-defense-blue\tower-defense\tower.cpp(12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\mpinter\source\repos\towerdefense\tower-defense-blue\tower-defense\tower.cpp(18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\mpinter\source\repos\towerdefense\tower-defense-blue\tower-defense\tower.cpp(24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\mpinter\source\repos\towerdefense\tower-defense-blue\tower-defense\tower.cpp(36): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+c:\users\mpinter\source\repos\towerdefense\tower-defense-blue\tower-defense\tower.cpp(37): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+  TowerManager.cpp
+  View.cpp
+c:\users\mpinter\source\repos\towerdefense\tower-defense-blue\tower-defense\view.cpp(481): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\mpinter\source\repos\towerdefense\tower-defense-blue\tower-defense\view.cpp(557): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\mpinter\source\repos\towerdefense\tower-defense-blue\tower-defense\view.cpp(558): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\mpinter\source\repos\towerdefense\tower-defense-blue\tower-defense\view.cpp(604): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\mpinter\source\repos\towerdefense\tower-defense-blue\tower-defense\view.cpp(623): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\mpinter\source\repos\towerdefense\tower-defense-blue\tower-defense\view.cpp(641): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\mpinter\source\repos\towerdefense\tower-defense-blue\tower-defense\view.cpp(655): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\mpinter\source\repos\towerdefense\tower-defense-blue\tower-defense\view.cpp(684): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  main.cpp
+c:\users\mpinter\source\repos\towerdefense\tower-defense-blue\tower-defense\grid.h(14): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+c:\users\mpinter\source\repos\towerdefense\tower-defense-blue\tower-defense\grid.h(22): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
   Generating Code...
-  Tower-Defense.vcxproj -> C:\Users\zfazekas\Desktop\Tower-Defense-BLUE\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe
->>>>>>> 713ecd91ff59a247593ec9c47651a1d113ac3085
+  Tower-Defense.vcxproj -> C:\Users\mpinter\source\repos\TowerDefense\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe

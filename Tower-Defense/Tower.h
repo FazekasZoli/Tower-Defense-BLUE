@@ -1,8 +1,13 @@
 #pragma once
 #include <vector>
 #include <memory>
+#include <chrono>
+#include <ctime>
+
 
 #include "Entity.h"
+#include "Critter.h"
+#include "CritterManager.h"
 
 enum TowerType
 {
@@ -38,6 +43,9 @@ public:
 
 	//metodusok
 	void upgrade(std::shared_ptr<Tower> tower);
+
+	void attack(std::list<std::shared_ptr<Critter>>& critters);
+
 	
 	std::shared_ptr<Tower> clone(); 
 
@@ -56,5 +64,8 @@ private:
 
 	//tamadas hatosugara
 	int attackRange;
+
+	std::chrono::time_point<std::chrono::system_clock> lastAttackTime;
+	
 };
 
