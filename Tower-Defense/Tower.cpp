@@ -1,8 +1,7 @@
-#include "Tower.h"
 #include <iostream>
 #include <memory>
 
-
+#include "Tower.h"
 
 Tower::Tower(TowerType _type, Position& position) : Entity(position), type(_type), lastAttackTime(std::chrono::system_clock::now())
 {

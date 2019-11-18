@@ -4,7 +4,6 @@
 #include <chrono>
 #include <ctime>
 
-
 #include "Entity.h"
 #include "Critter.h"
 #include "CritterManager.h"

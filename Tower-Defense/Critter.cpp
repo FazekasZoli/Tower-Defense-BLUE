@@ -53,20 +53,24 @@ void Critter::test_move()
 	Position end3(0, 50);
 
 	//Critter* monster = new Critter();
-	
-
 	p.emplace_back(start1, dir1);
 	p.emplace_back(end1, dir2);
 	p.emplace_back(end2, dir3);
-
 	p.emplace_back(end3, start1);
-
 	
 	for (int i = 0; i < 50; i++)
 	{
 		this->move(p);
 		std::cout << "x: " << getPos().x << " y: " << getPos().y << std::endl;
-		
+	}
+}
+
+void Critter::damage(int dmg)
+{
+	this->life -= dmg;
+	if (this->life <= 0)
+	{
+		this->isAlive = false;
 	}
 }
 
