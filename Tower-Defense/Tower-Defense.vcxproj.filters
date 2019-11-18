@@ -13,9 +13,6 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Grid.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CritterManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -25,7 +22,15 @@
     <ClCompile Include="Tower.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TowerManager.cpp" />
+    <ClCompile Include="TowerManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>Source Files\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="BlockArea.cpp">
+      <Filter>Source Files\Grid</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h">
@@ -49,9 +54,6 @@
     <ClInclude Include="CritterManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Grid.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Critter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -60,6 +62,12 @@
     </ClInclude>
     <ClInclude Include="TowerManager.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockArea.h">
+      <Filter>Header Files\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>Header Files\Grid</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -72,11 +80,11 @@
     <Filter Include="Source Files">
       <UniqueIdentifier>{a168728d-d9aa-4a5c-a7e8-311a41945176}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Critter">
-      <UniqueIdentifier>{660695b9-15fa-4c2b-ac94-58d367288d39}</UniqueIdentifier>
+    <Filter Include="Header Files\Grid">
+      <UniqueIdentifier>{240067e9-6085-4e63-8848-9e82dfcab3f1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Critter">
-      <UniqueIdentifier>{ca97a8f5-d31c-49fd-a2fd-d4e905be2a70}</UniqueIdentifier>
+    <Filter Include="Source Files\Grid">
+      <UniqueIdentifier>{8d4b5fc4-82a1-4a3a-aed8-34918570053a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

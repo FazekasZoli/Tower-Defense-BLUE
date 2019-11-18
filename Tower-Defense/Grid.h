@@ -1,30 +1,31 @@
 #pragma once
 #include <vector>
+#include <list>
 #include <fstream>
-#pragma once
 #include <iostream>
+
 #include "Entity.h"
+#include "BlockArea.h"
 
 class Grid
 {
-public:
-	Grid() {}
-
-	std::vector<std::pair<Position, Position>> & getRoad(int selectedRoad)  { return allRoads[selectedRoad]; };
-	int allRoadsSize() { return allRoads.size(); };
-	void saveGrid();
-	std::vector<std::pair<Position, Position>> loadRoad(int ActualMap);
-	
-	void loadRoads() 
-	{
-		for (size_t i = 1; i <= 2; i++)
-		{
-			allRoads.push_back(loadRoad(i));
-		}
-	}
-
 private:
 	std::vector<std::vector<std::pair<Position, Position>>> allRoads;
 
-};
+	std::list<std::shared_ptr<BlockArea>> blockedAreas;
 
+public:
+	// store road
+	std::vector<std::pair<Position, Position>> & getRoad(int selectedRoad)  { return allRoads[selectedRoad]; };
+	int allRoadsSize() { return allRoads.size(); };
+	
+	// load road
+	void saveRoad();
+	void loadRoads();
+	std::vector<std::pair<Position, Position>> loadRoad(const int actualMap);
+
+	// blocked area related methods
+	bool isAreaBlocked(const Position &pos);
+	void addBlockedTowerArea(const Position &towerPos);
+	void createBlockedAreaFromRoad(const int level);
+};
