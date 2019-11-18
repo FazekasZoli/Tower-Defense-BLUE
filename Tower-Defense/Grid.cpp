@@ -1,9 +1,10 @@
 ﻿#pragma once
-#include "Grid.h"
 #include <functional>
 #include <string>
 
-void Grid::saveGrid()
+#include "Grid.h"
+
+void Grid::saveRoad()
 {
 	std::vector<std::pair<Position, Position>> road;
 		   
@@ -25,9 +26,9 @@ void Grid::saveGrid()
 
 }
 
-std::vector<std::pair<Position, Position>> Grid::loadRoad(int ActualMap)
+std::vector<std::pair<Position, Position>> Grid::loadRoad(const int actualMap)
 {
-	int level = ActualMap;
+	int level = actualMap;
 
 	std::string levelMap = std::to_string(level);
 
@@ -53,3 +54,47 @@ std::vector<std::pair<Position, Position>> Grid::loadRoad(int ActualMap)
 
 	return load;
 }
+
+void Grid::loadRoads()
+{
+	for (size_t i = 1; i <= 2; i++)
+	{
+		allRoads.push_back(loadRoad(i));
+	}
+}
+
+void Grid::createBlockedAreaFromRoad(const int level)
+{
+	blockedAreas.clear();
+
+	for (size_t i = 0; i < allRoads[level].size() - 1; i++)
+	{
+		blockedAreas.emplace_back(std::make_shared<BlockArea>(allRoads[level][i], allRoads[level][i + 1]));
+	}
+}
+
+void Grid::addBlockedTowerArea(const Position& towerPos)
+{
+	blockedAreas.emplace_back(std::make_shared<BlockArea>(towerPos));
+}
+
+bool Grid::isAreaBlocked(const Position &pos)
+{
+	// create corners from center position
+	Position topLeft(pos.x - BlockArea::TILE, pos.y + BlockArea::TILE);
+	Position topRight(pos.x + BlockArea::TILE, pos.y + BlockArea::TILE);
+	Position bottomLeft(pos.x - BlockArea::TILE, pos.y - BlockArea::TILE);
+	Position bottomRight(pos.x + BlockArea::TILE, pos.y - BlockArea::TILE);
+
+	// check if corners are fall into one of the blocked areas
+	for (const std::shared_ptr<BlockArea> area : blockedAreas)
+	{
+		if (area->contains(topLeft) ||
+			area->contains(topRight) ||
+			area->contains(bottomLeft) ||
+			area->contains(bottomRight))
+			return true;
+	}
+	return false;
+}
+

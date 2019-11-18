@@ -134,6 +134,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BlockArea.cpp" />
     <ClCompile Include="Critter.cpp" />
     <ClCompile Include="CritterManager.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -145,6 +146,7 @@
     <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BlockArea.h" />
     <ClInclude Include="Critter.h" />
     <ClInclude Include="CritterManager.h" />
     <ClInclude Include="Entity.h" />
