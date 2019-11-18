@@ -1,8 +1,12 @@
 #pragma once
 #include <vector>
 #include <memory>
+#include <chrono>
+#include <ctime>
 
 #include "Entity.h"
+#include "Critter.h"
+#include "CritterManager.h"
 
 enum TowerType
 {
@@ -20,7 +24,7 @@ public:
 	Tower(TowerType _type, Position& position);
 
 
-	//GETTEREK (azÈrt inline mert az oszt·ly leÌr·s·ban szerepeltetem a tagf¸ggvÈnyek teljes definÌciÛj·t (rˆvidek))
+	//GETTEREK (az√©rt inline mert az oszt√°ly le√≠r√°s√°ban szerepeltetem a tagf√ºggv√©nyek teljes defin√≠ci√≥j√°t (r√∂videk))
 	inline TowerType getType() const { return type; };
 	inline int getBuyCost() const { return buyCost; };
 	inline int getSellCost() const { return sellCost; };
@@ -37,15 +41,15 @@ public:
 	inline void setAttackRange(int _attackRange) { attackRange = _attackRange; };
 
 	//metodusok
-	void upgrade();
-	
+	void upgrade(std::shared_ptr<Tower> tower);
+	void attack(std::list<std::shared_ptr<Critter>>& critters);	
 	std::shared_ptr<Tower> clone(); 
 
 private:
 	//tipus
 	TowerType type;
 
-	// az az osszeg, amennyiÈrt a tower lehelyezheto
+	// az az osszeg, amennyi√©rt a tower lehelyezheto
 	int buyCost;
 
 	//az az osszeg, amennyiert a tower visszavalthato
@@ -56,5 +60,8 @@ private:
 
 	//tamadas hatosugara
 	int attackRange;
+
+	std::chrono::time_point<std::chrono::system_clock> lastAttackTime;
+	
 };
 
