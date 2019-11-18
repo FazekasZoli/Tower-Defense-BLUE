@@ -11,7 +11,7 @@ public:
 	Grid() {}
 
 	std::vector<std::pair<Position, Position>> & getRoad(int selectedRoad)  { return allRoads[selectedRoad]; };
-
+	int allRoadsSize() { return allRoads.size(); };
 	void saveGrid();
 	std::vector<std::pair<Position, Position>> loadRoad(int ActualMap);
 	

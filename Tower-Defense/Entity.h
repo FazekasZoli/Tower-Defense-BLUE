@@ -71,8 +71,10 @@ public:
 
 	int getCost() const { return _cost; };
 	Position getPos() const { return _pos; };
+	Position getDir() const { return irany; };
 
 	void setPos(int x, int y, int dirX, int dirY) { _pos.x = x; _pos.y = y; irany.x = dirX; irany.y = dirY; }
+	void setPosTw(Position pos) { _pos.x = pos.x; _pos.y = pos.y;}
 
 	//virtual std::shared_ptr<Entity> clone() = 0;
 };

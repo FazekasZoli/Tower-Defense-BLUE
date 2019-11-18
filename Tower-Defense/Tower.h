@@ -26,6 +26,7 @@ public:
 	inline int getSellCost() const { return sellCost; };
 	inline bool getAttackPower() const { return attackPower; };
 	inline bool getAttackRange() const { return attackRange; };
+	inline Position getPosition() const { return _pos; };
 
 	//SETTEREK
 	//........

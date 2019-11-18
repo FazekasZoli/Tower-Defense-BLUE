@@ -5,8 +5,10 @@
 #include <unordered_map>
 #include <list>
 #include <vector>
+#include "Observer.h"
 
-class TowerManager //: public Observable
+
+class TowerManager //: public ViewObserver
 {
 private:
 
@@ -18,8 +20,10 @@ public:
 		
 	TowerManager();
 
-	void createTowerForGame();
+	void createTowerForGame(int type, Position pos);
 	void upgradeTower(std::vector<std::shared_ptr<Tower>> towers);
 	int sellTower(std::vector<std::shared_ptr<Tower>> towers);
+	std::vector<std::shared_ptr<Tower>>& getTowerList();
+	void deleteTowers();
 
 };

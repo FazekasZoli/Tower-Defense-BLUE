@@ -45,18 +45,22 @@ std::shared_ptr<Critter> CritterManager::createCritter(CritterType critterType)
 
 void CritterManager::moveActualRoundCritters(int actualRound, const std::vector<std::pair<Position, Position>>& road)
 {
-	if(!_startTimeIsValid)
-	{
-		_startTime = std::chrono::high_resolution_clock::now();
-		_startTimeIsValid = true;
-	}
-
+<<<<<<< HEAD
+	
 	int i = 0;
 	if (!_startTimeIsValid)
+=======
+	int i = 0;
+	if(!_startTimeIsValid)
+>>>>>>> 713ecd91ff59a247593ec9c47651a1d113ac3085
 	{
 		_startTime = std::chrono::high_resolution_clock::now();
 		_startTimeIsValid = true;
 	}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 713ecd91ff59a247593ec9c47651a1d113ac3085
 	std::chrono::duration<double> diff = std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now() - _startTime);
 
 	for (auto critterIt = _crittersForGame[actualRound].begin(); critterIt != _crittersForGame[actualRound].end(); critterIt++)
