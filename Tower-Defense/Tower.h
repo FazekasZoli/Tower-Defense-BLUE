@@ -37,7 +37,7 @@ public:
 	inline void setAttackRange(int _attackRange) { attackRange = _attackRange; };
 
 	//metodusok
-	void upgrade(std::shared_ptr<Tower> tower);
+	void upgrade();
 	
 	std::shared_ptr<Tower> clone(); 
 
