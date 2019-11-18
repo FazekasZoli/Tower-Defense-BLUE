@@ -19,10 +19,7 @@ class Tower : public Entity
 {
 public:
 	//konstruktor
-	
-
 	Tower(TowerType _type, Position& position);
-
 
 	//GETTEREK (azért inline mert az osztály leírásában szerepeltetem a tagfüggvények teljes definícióját (rövidek))
 	inline TowerType getType() const { return type; };
@@ -61,7 +58,6 @@ private:
 	//tamadas hatosugara
 	int attackRange;
 
-	std::chrono::time_point<std::chrono::system_clock> lastAttackTime;
-	
+	std::chrono::time_point<std::chrono::system_clock> lastAttackTime;	
 };
 
