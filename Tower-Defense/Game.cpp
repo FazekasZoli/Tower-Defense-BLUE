@@ -3,7 +3,7 @@
 void Game::playGame()
 {
 	setupGame();
-	_view->displayIntro();
+	//_view->displayIntro();
 	
 	_view->displayMenu(_grid->allRoadsSize());
 	while (!_endGame)
@@ -81,9 +81,9 @@ void Game::setupRound()
 	_cm->resetCritters(1);
 	_cm->resetCritters(2);
 	_currentRound = 0;
-	_player->setLife(3);
+	_player->setLife(30);
 	//_cm->resetCritters(_currentRound);
-	_view->setUpDisplay(_cm->getCrittersForRound(_currentRound), _tm->getTowerList() , _grid->getRoad(_selectedRoad), _player->getLifePtr());
+	_view->setUpDisplay(_cm->getCrittersForRound(_currentRound), _tm->getTowerList(), _grid->getRoad(_selectedRoad), _player->getLifePtr(), _player->getMoneyPtr());
 }
 
 void Game::currentRound()

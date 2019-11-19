@@ -31,22 +31,45 @@ public:
 	Button() {};
 	bool checkClick(sf::Vector2f mousePos);
 	void setState(bool);
-	void setText(std::string);
+	void setStateVar(bool);
+	//void setText(std::string);
 	bool getVar();
-	void initialize(sf::Texture* normal, sf::Texture* clicked, std::string, sf::Vector2f location, ButtonType ownType);
+	void initialize(sf::Texture* normal, sf::Texture* clicked, sf::Vector2f location, ButtonType ownType);
 	sf::Sprite* getSprite();
-	sf::String * getText();
+	sf::Sprite* getSpriteNorm();
+	//sf::String * getText();
 	ButtonType getType();
 
 private:
 	sf::Sprite normal;
 	sf::Sprite clicked;
 	sf::Sprite* currentSpr;
-	sf::String String;
+	//sf::String String;
 	bool current;
-	sf::Text string;
+	//sf::Text string;
 	ButtonType ownType;
 };
+
+class TowerButtons:public Button
+{
+public:
+	TowerButtons();
+	~TowerButtons();
+	void draw(sf::RenderWindow * window);
+	Button* getUpgradeButton() { return &upgradeButton; };
+	Button* getSellButton() { return &sellButton; };
+	static TowerButtons* SelectedTower;
+	bool checkClickTower(sf::Vector2f mousePos);
+
+
+private:
+	
+	Button upgradeButton;
+	Button sellButton;
+
+};
+
+
 
 
 class View : public ViewEvents
@@ -69,6 +92,8 @@ private:
 	sf::Texture newEntityBack;
 	sf::Texture newEntityLeft;
 	sf::Texture newEntityRight;
+	sf::Texture upgradeButtonTex;
+	sf::Texture sellButtonTex;
 	sf::Sprite spriteBG;
 
 	
@@ -77,6 +102,8 @@ private:
 	std::vector<sf::Sprite> sprites;
 	std::vector<sf::Sprite> RoadSprites;
 	std::vector<sf::Sprite> towerSprites;
+	std::vector<TowerButtons> towerButtons;
+
 	std::vector<Button> Buttons;
 	Button buttonTowerProba;
 	Button *selectedButton;
@@ -90,8 +117,11 @@ private:
 	int baseRadius = 100;
 
 	int* playerLife;
+	int* playerMoneyV;
 	sf::Text playerLifeText;
 	sf::Text playerLifeRizsa;
+	sf::Text playerMoneyText;
+	sf::Text playerMoneyRizsa;
 	sf::Font font;
 
 
@@ -105,7 +135,7 @@ public:
 	void displayGameOver(GameEnd status);
 	//void graphic();
 	void updateGraphic();
-	void setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::vector<std::shared_ptr<Tower>>& towerList, std::vector<std::pair<Position, Position>> &road, int* playerLifee);
+	void setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::vector<std::shared_ptr<Tower>>& towerList, std::vector<std::pair<Position, Position>> &road, int* playerLifee, int * playerMoney);
 	void addSprites(std::list<std::shared_ptr<Critter>>& critterList, const sf::Texture &texture);
 	void addRouteSprites(std::vector<std::pair<Position, Position>> &road, const sf::Texture &texture);
 	void updateSprites();
@@ -113,8 +143,11 @@ public:
 
 	void closeWindow();
 	void addNewSprites(std::list<std::shared_ptr<Critter>>& critterList);
+	void TowerButtonsLogic();
 	
 };
+
+
 
 
 

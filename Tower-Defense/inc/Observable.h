@@ -48,7 +48,7 @@ class CritterEvents
 	    }
 };
 
-enum ButtonType { Pause, Resume, TowerPlace, TowerUpgrade, TowerSell, NextRoundStart };
+enum ButtonType { Pause, Resume, TowerPlace, TowerUpgrade, TowerSell, NextRoundStart, OwnTower };
 
 class ViewEvents
 {
