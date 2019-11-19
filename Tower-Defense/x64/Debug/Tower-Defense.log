@@ -1,0 +1,32 @@
+<<<<<<< HEAD
+=======
+﻿  View.cpp
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(485): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(613): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(614): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(660): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(679): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(697): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(712): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(742): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(745): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(748): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(749): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  Tower-Defense.vcxproj -> C:\Users\fbalogh\Source\Repos\ng201\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe
+>>>>>>> Towers as buttons, upgrade/sell buttons

@@ -12,6 +12,11 @@ int* Player::getLifePtr()
 	return &life;
 }
 
+int * Player::getMoneyPtr()
+{
+	return &money;
+}
+
 int Player::getMoney() const
 {
 	return money;

@@ -46,12 +46,14 @@ class CritterEvents
 	    }
 };
 
-enum ButtonType { Pause, Resume, TowerPlace, TowerUpgrade, TowerSell, TowerBuy, NextRoundStart };
+enum ButtonType { Pause, Resume, TowerPlace, TowerUpgrade, TowerSell, NextRoundStart, OwnTower };
 
 class ViewEvents
 {
 private:
 	ViewObserver* _obs;	
+
+	
 
 public:
 	void addViewObserver(ViewObserver* obs) { _obs = obs; }
