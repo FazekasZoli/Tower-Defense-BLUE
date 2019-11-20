@@ -23,11 +23,18 @@ BlockArea::BlockArea(std::pair<Position, Position> &leftRoadPos, std::pair<Posit
 
 BlockArea::BlockArea(Position& towerPos)
 {
+	idPos = towerPos;
+
 	topLeftCorner.x = towerPos.x - TILE;
 	topLeftCorner.y = towerPos.y + TILE;
 
 	bottomRightCorner.x = towerPos.x + TILE;
 	bottomRightCorner.y = towerPos.y - TILE;
+}
+
+Position& BlockArea::getIdPos()
+{
+	return idPos;
 }
 
 bool BlockArea::contains(Position &p) const

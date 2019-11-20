@@ -52,8 +52,7 @@ void Game::playGame()
 
 void Game::critterFinishedRoad()
 {
-	_player->setLife(_player->getLife() - 1);
-	
+	_player->setLife(_player->getLife() - 1);	
 
 	if (_player->getLife() == 0)
 	{
@@ -71,11 +70,8 @@ void Game::critterDied()
 
 void Game::setupGame()
 {	
-	// add Game to CritterManager observer
 	_cm->addCritterFinishObserver(this);
-	// add Game to View observer
 	_view->addViewObserver(this);
-
 	_grid->loadRoads();
 }
 
