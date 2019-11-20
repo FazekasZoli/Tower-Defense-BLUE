@@ -65,6 +65,7 @@ void Grid::loadRoads()
 
 void Grid::createBlockedAreaFromRoad(const int level)
 {
+
 	blockedAreas.clear();
 
 	for (size_t i = 0; i < allRoads[level].size() - 1; i++)
@@ -92,7 +93,7 @@ bool Grid::isAreaBlocked(const Position &pos)
 	Position bottomRight(pos.x + BlockArea::TILE, pos.y - BlockArea::TILE);
 
 	// check if corners are fall into one of the blocked areas
-	for (const std::shared_ptr<BlockArea> area : blockedAreas)
+	for (std::shared_ptr<BlockArea> area : blockedAreas)
 	{
 		if (area->contains(topLeft) ||
 			area->contains(topRight) ||

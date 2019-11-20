@@ -12,7 +12,11 @@ int* Player::getLifePtr()
 	return &life;
 }
 
+<<<<<<< HEAD
 int* Player::getMoneyPtr()
+=======
+int * Player::getMoneyPtr()
+>>>>>>> 35684a874b1af4b28418a893d2f0deed24dae6d9
 {
 	return &money;
 }

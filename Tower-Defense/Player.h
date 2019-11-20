@@ -20,6 +20,7 @@ public:
 	int getLife() const;
 	int getMoney() const;
 	int *getLifePtr();
+	int *getMoneyPtr();
 
 	//SETTEREK: arra kell, hogy tudjuk módosítani a Life és a Money értékén.
 

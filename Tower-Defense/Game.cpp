@@ -3,13 +3,14 @@
 void Game::playGame()
 {
 	setupGame();
-	_view->displayIntro();
+	//_view->displayIntro();
 	
 	_view->displayMenu(_grid->allRoadsSize());
 	while (!_endGame)
 	{	
 
 		setupRound();
+
 		while (0 < _player->getLife())
 		{
 			_cm->resetTimer();
@@ -26,7 +27,6 @@ void Game::playGame()
 				break;
 			}
 
-			
 			++_currentRound;
 			std::cout << _currentRound << "\n";
 			if ((_player->getLife() > 0) && _currentRound == 3)
@@ -64,11 +64,15 @@ void Game::critterFinishedRoad()
 	}
 }
 
+void Game::critterDied()
+{
+}
+
 
 void Game::setupGame()
 {	
 	// add Game to CritterManager observer
-	_cm->addCritterObserver(this);
+	_cm->addCritterFinishObserver(this);
 	// add Game to View observer
 	_view->addViewObserver(this);
 
@@ -82,9 +86,10 @@ void Game::setupRound()
 	_cm->resetCritters(2);
 	_currentRound = 0;
 	_grid->createBlockedAreaFromRoad(_currentRound);
-	_player->setLife(3);
+	_player->setLife(100);
+	_player->setMoney(100);
 	//_cm->resetCritters(_currentRound);
-	_view->setUpDisplay(_cm->getCrittersForRound(_currentRound), _tm->getTowerList() , _grid->getRoad(_selectedRoad), _player->getLifePtr());
+	_view->setUpDisplay(_cm->getCrittersForRound(_currentRound), _tm->getTowerList(), _grid->getRoad(_selectedRoad), _player->getLifePtr(), _player->getMoneyPtr(),  _grid);
 }
 
 void Game::currentRound()
@@ -92,14 +97,26 @@ void Game::currentRound()
 	if (!_isPaused)
 		
 		_cm->moveActualRoundCritters(_currentRound, _grid->getRoad(_selectedRoad));
+		_tm->attackWithTowers(_cm->getCrittersForRound(_currentRound));
 	
 	_view->updateGraphic();	
 }
 
 void Game::towerPlaced(int type, Position towerPos)
 {
-	_tm->createTowerForGame(type, towerPos);
-	_view->addNewTower();
+	if (25 <= _player->getMoney()) {
+		_tm->createTowerForGame(type, towerPos);
+		_view->addNewTower();
+		_grid->addBlockedTowerArea(towerPos);
+		_player->buyTower(25);
+
+	}
+	else
+	{
+		_view->playNotEnoughMoneySound();
+		_view->addNotEnoughMoneyError();
+		std::cout << "Nincs elegendo penzed a torony megvasarlasahoz.\n";
+	}
 }
 
 void Game::buyTower(Tower* tower)
@@ -109,6 +126,7 @@ void Game::buyTower(Tower* tower)
 		_player->buyTower(tower->getBuyCost());
 		towerPlaced(tower->getType(),tower->getPosition());
 		//grid tiltolista implementalas
+		
 	}
 	else
 	{
@@ -116,16 +134,34 @@ void Game::buyTower(Tower* tower)
 	}
 }
 
-void Game::sellTower(Tower* tower)
+void Game::sellTower(Position &towerPos)
 {
-	_player->sellTower(tower->getSellCost());
+	for (auto &it:_tm->getTowerList())
+	{
+		if (it->getPos()== towerPos) {
+			std::cout << "\nSOLD\n";
+			_player->sellTower(it->getSellCost());
+			_tm->sellTower(towerPos);
+			_view->removeTower(towerPos);
+			_grid->removeBlockedTowerArea(towerPos);
+			return;
+			//
+			//REMOVE FROM BLOCKED AREA!!!!
+			//
+		}
+	}
+	//_player->sellTower(tower->getSellCost());
 	//torony torles majd ez alá..
 
 }
 
-void Game::upgradeTower(Tower* tower)
+void Game::upgradeTower(Position &towerPos)
 {
-	_tm->upgradeTower(tower);
+	if (10 <= _player->getMoney()) {
+		_tm->upgradeTower(towerPos);
+		_player->buyTower(10);
+	}
+	
 }
 
 void Game::levelSelected(int selectedRoad)

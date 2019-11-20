@@ -72,11 +72,14 @@ protected:
 
 public:
 	Entity() : _pos({ 0, 0 }), _cost()
-	{
-	}
+	{}
 
 	Entity(int x, int y, int cost = 0)
 		: _pos({ x, y }), _cost(cost)
+	{}
+
+	Entity(int cost = 0)
+		: _cost(cost)
 	{}
 
 	Entity(const Position& p, int cost = 0) : _pos(p), _cost(cost) {}
@@ -90,7 +93,7 @@ public:
 
 	double distance(Position p)
 	{
-		double result = sqrt(pow((_pos.x + p.x), 2) + pow((_pos.y + p.y), 2));
+		double result = sqrt(pow((_pos.x - p.x), 2) + pow((_pos.y - p.y), 2));
 
 		return result;
 	}

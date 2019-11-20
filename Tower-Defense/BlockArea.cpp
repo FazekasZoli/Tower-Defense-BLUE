@@ -37,5 +37,5 @@ const Position& BlockArea::getIdPos() const
 
 bool BlockArea::contains(Position &p) const
 {
-	return (topLeftCorner.x < p.x && p.x < bottomRightCorner.x) && (bottomRightCorner.y < p.y && p.y < topLeftCorner.y);
+	return (topLeftCorner.x <= p.x && p.x <= bottomRightCorner.x) && (bottomRightCorner.y <= p.y && p.y <= topLeftCorner.y);
 }

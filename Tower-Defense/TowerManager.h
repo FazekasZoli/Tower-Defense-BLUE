@@ -21,9 +21,10 @@ public:
 	TowerManager();
 
 	void createTowerForGame(int type, Position pos);
-	void upgradeTower(Tower* tower);
-	int sellTower(std::vector<std::shared_ptr<Tower>> towers);
+	void upgradeTower(Position &towerPos);
+	void sellTower(Position &towerPos);
 	std::vector<std::shared_ptr<Tower>>& getTowerList();
 	void deleteTowers();
+	void attackWithTowers(std::list<std::shared_ptr<Critter>>& critters);
 
 };
