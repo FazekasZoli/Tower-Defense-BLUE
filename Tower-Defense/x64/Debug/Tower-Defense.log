@@ -1,105 +1,52 @@
-<<<<<<< HEAD
 ﻿  View.cpp
-c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\grid.h(20): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(116): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
 c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(453): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
-=======
-﻿  Critter.cpp
-  CritterManager.cpp
-  Game.cpp
-  Tower.cpp
-c:\_repo\tower-defense-blue\tower-defense\tower.cpp(23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-  TowerManager.cpp
-  View.cpp
-c:\_repo\tower-defense-blue\tower-defense\view.cpp(116): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-c:\_repo\tower-defense-blue\tower-defense\view.cpp(453): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
->>>>>>> 83438bb5f26af28f2a6fbcfecea5c83c5c9e17b3
           with
           [
               T=float
           ]
-<<<<<<< HEAD
-c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(542): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(546): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(669): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(670): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(737): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(756): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(775): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(790): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(827): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-=======
-c:\_repo\tower-defense-blue\tower-defense\view.cpp(638): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\_repo\tower-defense-blue\tower-defense\view.cpp(639): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\_repo\tower-defense-blue\tower-defense\view.cpp(706): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\_repo\tower-defense-blue\tower-defense\view.cpp(725): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\_repo\tower-defense-blue\tower-defense\view.cpp(744): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\_repo\tower-defense-blue\tower-defense\view.cpp(759): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\_repo\tower-defense-blue\tower-defense\view.cpp(793): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\_repo\tower-defense-blue\tower-defense\view.cpp(796): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
->>>>>>> 83438bb5f26af28f2a6fbcfecea5c83c5c9e17b3
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(535): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(537): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(659): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(660): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(727): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(746): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(765): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(780): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(817): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-<<<<<<< HEAD
-c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(831): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-=======
-c:\_repo\tower-defense-blue\tower-defense\view.cpp(800): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
->>>>>>> 83438bb5f26af28f2a6fbcfecea5c83c5c9e17b3
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(821): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-<<<<<<< HEAD
-c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(832): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-=======
-c:\_repo\tower-defense-blue\tower-defense\view.cpp(801): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
->>>>>>> 83438bb5f26af28f2a6fbcfecea5c83c5c9e17b3
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(822): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-<<<<<<< HEAD
-c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(859): warning C4244: '=': conversion from 'const T' to 'int', possible loss of data
-=======
-c:\_repo\tower-defense-blue\tower-defense\view.cpp(822): warning C4244: '=': conversion from 'const T' to 'int', possible loss of data
->>>>>>> 83438bb5f26af28f2a6fbcfecea5c83c5c9e17b3
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(848): warning C4244: '=': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-<<<<<<< HEAD
-c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(860): warning C4244: '=': conversion from 'const T' to 'int', possible loss of data
-=======
-c:\_repo\tower-defense-blue\tower-defense\view.cpp(823): warning C4244: '=': conversion from 'const T' to 'int', possible loss of data
->>>>>>> 83438bb5f26af28f2a6fbcfecea5c83c5c9e17b3
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(849): warning C4244: '=': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-<<<<<<< HEAD
-c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(892): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
-=======
-c:\_repo\tower-defense-blue\tower-defense\view.cpp(854): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
->>>>>>> 83438bb5f26af28f2a6fbcfecea5c83c5c9e17b3
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(880): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-<<<<<<< HEAD
-c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(899): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
-=======
-c:\_repo\tower-defense-blue\tower-defense\view.cpp(861): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
->>>>>>> 83438bb5f26af28f2a6fbcfecea5c83c5c9e17b3
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(887): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-<<<<<<< HEAD
-c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(1071): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\fbalogh\source\repos\ng201\tower-defense-blue\tower-defense\view.cpp(1059): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Tower-Defense.vcxproj -> C:\Users\fbalogh\Source\Repos\ng201\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe
-=======
-  main.cpp
-  Generating Code...
-  Tower-Defense.vcxproj -> C:\_repo\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe
->>>>>>> 83438bb5f26af28f2a6fbcfecea5c83c5c9e17b3

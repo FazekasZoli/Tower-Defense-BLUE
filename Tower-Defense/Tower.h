@@ -18,7 +18,7 @@ public:
 	{}	
 
 	std::shared_ptr<Tower> clone(); 
-	inline int* getAttackRangePtr() { return &attackRange; };
+	inline double* getAttackRangePtr() { return &attackRange; };
 	inline int* getLevelPtr() { return &level; };
 
 	TowerType getType() const { return type; };		

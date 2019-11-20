@@ -71,7 +71,7 @@ public:
 	void setLevelPtr(int* levelptr);
 	void levelTextini(sf::Font *font);
 	int* levelPtr;
-	int* radPtr;
+	double* radPtr;
 	sf::Text level;
 	sf::CircleShape range;
 	sf::CircleShape* getRangeCircPtr() { return &range; };

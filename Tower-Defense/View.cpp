@@ -500,38 +500,31 @@ void View::updateGraphic()
 	updateSprites();
 	window.clear();
 	window.draw(spriteBG);
-	/*auto it = my_vector.rbegin(); it != my_vector.rend(); ++it
-		RoadSprites*/
 
 	for (auto &it : RoadSprites) { window.draw(it); }
-	//for (int i = RoadSprites.size()-1; i > 0; --i) { window.draw(RoadSprites[i]); }
+
 	for (auto it = sprites.rbegin(); it != sprites.rend(); ++it)
 	{
-		window.draw(*it);
+		if (it->getTexture()==&grave)
+		{
+			window.draw(*it);
+		}
 	}
-	//for (auto &it : towerSprites) { window.draw(it); }
+	for (auto it = sprites.rbegin(); it != sprites.rend(); ++it)
+	{
+		if (it->getTexture() != &grave)
+		{
+			window.draw(*it);
+		}
+	}
 	for (auto &it : towerButtons) {
 
 		it.draw(window);
-		//std::string asdasd = it.level.getString();
-		//window.draw(it.level);
 		it.level.setString(std::to_string(*it.levelPtr));
 		window.draw(it.level);
 
 	}
-	//for (auto &it : towerButtons) {
-
-	//	//it.draw(window);
-	//	//std::string asdasd = it.level.getString();
-	//	
-
-	//}
-
-	/*for (auto &it : towerButtons) {
-
-		window.draw(it.level);
-		
-	}*/
+	
 	for (auto &it : towerButtons)
 	{
 		if (it.getVar())
@@ -540,11 +533,8 @@ void View::updateGraphic()
 			window.draw(*it.getUpgradeButton()->getSpriteNorm());
 			window.draw(*it.getSellButton()->getSpriteNorm());
 			it.range.setRadius(*it.radPtr);
-			
-			//it.range.setOrigin((*it.radPtr)/2, (*it.radPtr)/2);
 			it.range.setPosition(it.pos);
 			it.range.setOrigin((*it.radPtr), (*it.radPtr));
-			//sf::CircleShape tmpcirc = *it.getRangeCircPtr();
 			window.draw(*it.getRangeCircPtr());
 
 
