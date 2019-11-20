@@ -24,6 +24,15 @@ struct Position
 		return false;	
 	}
 
+	bool operator==(const Position& p) const
+	{
+		if (x == p.x && y == p.y)
+		{
+			return true;
+		}
+		return false;
+	}
+
 	bool operator!=(const Position& p)
 	{
 		if (x != p.x && y != p.y)

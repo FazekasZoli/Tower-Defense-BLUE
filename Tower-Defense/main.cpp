@@ -13,5 +13,5 @@ int main(int argc, char* argv[])
 	//Critter monster;
 	//monster.test_move();
 
-	return 0;
+		return 0;
 }

@@ -79,8 +79,9 @@ void Grid::addBlockedTowerArea(Position& towerPos)
 	blockedAreas.emplace_back(std::make_shared<BlockArea>(towerPos));
 }
 
-void Grid::removeBlockedTowerArea(Position &towerPos)
+void Grid::removeBlockedTowerArea(Position& towerPos)
 {
+	blockedAreas.remove_if([towerPos](BlockArea& area) { return area.getIdPos() == towerPos; });
 }
 
 bool Grid::isAreaBlocked(const Position &pos)

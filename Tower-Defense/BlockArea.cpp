@@ -30,6 +30,11 @@ BlockArea::BlockArea(Position& towerPos)
 	bottomRightCorner.y = towerPos.y - TILE;
 }
 
+const Position& BlockArea::getIdPos() const
+{
+	return idPos;
+}
+
 bool BlockArea::contains(Position &p) const
 {
 	return (topLeftCorner.x <= p.x && p.x <= bottomRightCorner.x) && (bottomRightCorner.y <= p.y && p.y <= topLeftCorner.y);
