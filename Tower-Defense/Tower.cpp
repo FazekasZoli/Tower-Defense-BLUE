@@ -55,7 +55,7 @@ void Tower::attack(std::list<std::shared_ptr<Critter>>& critters)
 void Tower::upgrade()
 {
 	++level;
-	setAttackPower(attackPower *= 2);
+	setAttackPower(attackPower *= 1.5);
 	setSellCost(sellCost *= 1.2) ;
 	setAttackRange(attackRange *= 1.2);
 	/*if (tower->type == BASE)

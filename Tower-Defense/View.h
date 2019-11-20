@@ -9,7 +9,9 @@
 #include <vector>
 #include <string>
 #include <list>
-
+//#pragma comment(lib, "openal32.lib")
+//#pragma comment(lib, "sndfile.lib") 
+//#pragma comment(lib, "sfml-system.lib") 
 #include "Critter.h"
 #include "Tower.h"
 #include "inc/Observable.h"
@@ -41,6 +43,7 @@ public:
 	sf::Sprite* getSpriteNorm();
 	//sf::String * getText();
 	ButtonType getType();
+	sf::Vector2f pos;
 
 private:
 	sf::Sprite normal;
@@ -59,13 +62,21 @@ public:
 	~TowerButtons();
 	//sf::Sprite backgroundGrass;
 	//void setBG(sf::Texture bg);
-	void draw(sf::RenderWindow * window);
+	void draw(sf::RenderWindow & window);
+	void drawLevel(sf::RenderWindow & window);
 	Button* getUpgradeButton() { return &upgradeButton; };
 	Button* getSellButton() { return &sellButton; };
 	static TowerButtons* SelectedTower;
 	bool checkClickTower(sf::Vector2f mousePos);
-	int* levelptr;
+	void setLevelPtr(int* levelptr);
+	void levelTextini(sf::Font *font);
+	int* levelPtr;
+	int* radPtr;
 	sf::Text level;
+	sf::CircleShape range;
+	sf::CircleShape* getRangeCircPtr() { return &range; };
+
+	
 
 private:
 	
@@ -109,7 +120,7 @@ private:
 	std::vector<std::shared_ptr<Tower>>* towersPtr;
 	std::vector<sf::Sprite> sprites;
 	std::vector<sf::Sprite> RoadSprites;
-	std::vector<sf::Sprite> towerSprites;
+	//std::vector<sf::Sprite> towerSprites;
 	std::vector<TowerButtons> towerButtons;
 
 	std::vector<Button> Buttons;
@@ -128,6 +139,7 @@ private:
 
 	int* playerLife;
 	int* playerMoneyV;
+	
 	sf::Text playerLifeText;
 	sf::Text playerLifeRizsa;
 	sf::Text playerMoneyText;

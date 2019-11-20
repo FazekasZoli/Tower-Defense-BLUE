@@ -510,13 +510,44 @@ void View::updateGraphic()
 		window.draw(*it);
 	}
 	//for (auto &it : towerSprites) { window.draw(it); }
-	for (auto &it : towerButtons) { it.draw(&window); }
+	for (auto &it : towerButtons) {
+
+		it.draw(window);
+		//std::string asdasd = it.level.getString();
+		//window.draw(it.level);
+		it.level.setString(std::to_string(*it.levelPtr));
+		window.draw(it.level);
+
+	}
+	//for (auto &it : towerButtons) {
+
+	//	//it.draw(window);
+	//	//std::string asdasd = it.level.getString();
+	//	
+
+	//}
+
+	/*for (auto &it : towerButtons) {
+
+		window.draw(it.level);
+		
+	}*/
 	for (auto &it : towerButtons)
 	{
 		if (it.getVar())
 		{
+
 			window.draw(*it.getUpgradeButton()->getSpriteNorm());
 			window.draw(*it.getSellButton()->getSpriteNorm());
+			it.range.setRadius(*it.radPtr);
+			
+			//it.range.setOrigin((*it.radPtr)/2, (*it.radPtr)/2);
+			it.range.setPosition(it.pos);
+			it.range.setOrigin((*it.radPtr), (*it.radPtr));
+			//sf::CircleShape tmpcirc = *it.getRangeCircPtr();
+			window.draw(*it.getRangeCircPtr());
+
+
 		}
 	}
 
@@ -575,7 +606,7 @@ void View::setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::v
 			++itr;
 	}*/
 
-	towerSprites.clear();
+	//towerSprites.clear();
 	towerButtons.clear();
 	crittersPtr = &critterList;
 	towersPtr = &towerList;
@@ -786,11 +817,11 @@ void View::addNewTower()
 {
 	//system("pause");
 
-	towerSprites.emplace_back();
-	towerSprites[towersPtr->size()-1].setTexture(towerTex);
-	towerSprites[towersPtr->size() - 1].setOrigin(25,25);
-	//std::next(sprites.begin(), i)->setScale(sf::Vector2f(0.1, 0.1));
-	towerSprites[towersPtr->size() - 1].setPosition(towersPtr->back()->getPosition().x, towersPtr->back()->getPosition().y);
+	//towerSprites.emplace_back();
+	//towerSprites[towersPtr->size()-1].setTexture(towerTex);
+	//towerSprites[towersPtr->size() - 1].setOrigin(25,25);
+	////std::next(sprites.begin(), i)->setScale(sf::Vector2f(0.1, 0.1));
+	//towerSprites[towersPtr->size() - 1].setPosition(towersPtr->back()->getPosition().x, towersPtr->back()->getPosition().y);
 
 	towerButtons.emplace_back();
 	towerButtons.back().initialize(&towerTex, &towerTex, sf::Vector2f(towersPtr->back()->getPosition().x, towersPtr->back()->getPosition().y), OwnTower);
@@ -801,7 +832,11 @@ void View::addNewTower()
 	towerButtons.back().getUpgradeButton()->initialize(&upgradeButtonTex, &upgradeButtonTex, sf::Vector2f(towersPtr->back()->getPosition().x - 40, towersPtr->back()->getPosition().y), TowerUpgrade);
 	towerButtons.back().getSellButton()->getSpriteNorm()->setOrigin(15, 15);
 	towerButtons.back().getUpgradeButton()->getSpriteNorm()->setOrigin(15, 15);
-
+	towerButtons.back().setLevelPtr(towersPtr->back()->getLevelPtr());
+	towerButtons.back().radPtr = towersPtr->back()->getAttackRangePtr();
+	towerButtons.back().levelTextini(&font);
+	
+	
 
 }
 
@@ -899,7 +934,7 @@ void Button::initialize(sf::Texture* normal, sf::Texture* clicked, sf::Vector2f 
 	//this->normal.setOrigin(0,150);
 	this->clicked.setTexture(*clicked);
 	//this->clicked.setOrigin(0, 143);
-	
+	pos = location;
 	this->normal.setPosition(location);
 	this->clicked.setPosition(location);
 	currentSpr = &this->normal;
@@ -909,6 +944,7 @@ void Button::initialize(sf::Texture* normal, sf::Texture* clicked, sf::Vector2f 
 	//string.setPosition(location.x + 3, location.y + 3);
 	//string.setCharacterSize(4);
 	this->ownType = ownType;
+	
 }
 
 bool Button::checkClick(sf::Vector2f mousePos) {
@@ -974,11 +1010,13 @@ TowerButtons::~TowerButtons()
 //	backgroundGrass.setPosition(this->getSpriteNorm()->getPosition());
 //}
 
-void TowerButtons::draw(sf::RenderWindow * window)
+void TowerButtons::draw(sf::RenderWindow & window)
 {
 	//std::cout << "rajz\n";
 	//window->draw(backgroundGrass);
-	window->draw(*(this->getSpriteNorm()));
+	
+	window.draw(*(this->getSpriteNorm()));
+	
 
 	//if (this->getVar())
 	//{
@@ -986,6 +1024,15 @@ void TowerButtons::draw(sf::RenderWindow * window)
 	//	window->draw(*this->upgradeButton.getSpriteNorm());
 	//	window->draw(*this->sellButton.getSpriteNorm());
 	//}
+}
+
+void TowerButtons::drawLevel(sf::RenderWindow & window)
+{
+
+	std::string tmpasd = std::to_string((*levelPtr));
+	level.setString(std::to_string((*levelPtr)));
+	window.draw(level);
+
 }
 
 bool TowerButtons::checkClickTower(sf::Vector2f mousePos)
@@ -997,6 +1044,36 @@ bool TowerButtons::checkClickTower(sf::Vector2f mousePos)
 		}
 	}
 	return false;
+}
+
+void TowerButtons::setLevelPtr(int * levelptr)
+{
+	levelPtr = levelptr;
+
+
+}
+
+void TowerButtons::levelTextini(sf::Font *font)
+{
+	
+	//std::string asdas = ;
+	level.setString(std::to_string(*levelPtr));
+	//std::cout << "\n" << asdas << "\n";
+	level.setFont(*font);
+	level.setPosition(this->getSpriteNorm()->getPosition());
+	level.setFillColor(sf::Color::Yellow);
+	level.setOutlineColor(sf::Color::Black);
+	level.setOutlineThickness(5);
+	level.setCharacterSize(20);
+
+	range.setOutlineColor(sf::Color::Yellow);
+	range.setOutlineThickness(3);
+	range.setRadius(*radPtr);
+
+	//range.setOrigin(this->getSpriteNorm()->getPosition());
+	
+	range.setFillColor(sf::Color::Transparent);
+
 }
 
 
