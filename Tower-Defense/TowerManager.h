@@ -1,12 +1,11 @@
 #pragma once
-#include "Tower.h"
-//#include "Observable.h"
 #include <memory>
 #include <unordered_map>
 #include <list>
 #include <vector>
-#include "Observer.h"
 
+#include "Tower.h"
+#include "Observer.h"
 
 class TowerManager //: public ViewObserver
 {

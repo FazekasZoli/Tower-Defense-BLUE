@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Observer.h"
 
 class CritterEvents 
@@ -62,9 +61,7 @@ enum ButtonType { Pause, Resume, TowerPlace, TowerUpgrade, TowerSell, NextRoundS
 class ViewEvents
 {
 private:
-	ViewObserver* _obs;	
-
-	
+	ViewObserver* _obs;		
 
 public:
 	void addViewObserver(ViewObserver* obs) { _obs = obs; }
@@ -78,7 +75,6 @@ public:
 		case Resume:
 			break;
 		case TowerPlace:
-
 			_obs->towerPlaced(type, towerPos);
 			break;
 		case TowerUpgrade:
@@ -94,23 +90,23 @@ public:
 		}
 	}
 
-	void notifyButtonClicked(ButtonType clickType, Tower* tower)
-	{
-		switch (clickType)
-		{
-		case TowerUpgrade:
-			//_obs->upgradeTower(tower);
-			break;
-		case TowerSell:
-			//_obs->sellTower(tower);
-			break;
-		case TowerPlace:
-			_obs->buyTower(tower);
-			break;
-		default:
-			break;
-		}
-	}
+	//void notifyButtonClicked(ButtonType clickType, Tower* tower)
+	//{
+	//	switch (clickType)
+	//	{
+	//	case TowerUpgrade:
+	//		//_obs->upgradeTower(tower);
+	//		break;
+	//	case TowerSell:
+	//		//_obs->sellTower(tower);
+	//		break;
+	//	case TowerPlace:
+	//		_obs->buyTower(tower);
+	//		break;
+	//	default:
+	//		break;
+	//	}
+	//}
 
 	void notifySelectedLevel(int selectedLevel)
 	{

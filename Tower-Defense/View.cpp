@@ -1,5 +1,6 @@
-#include "View.h"
 #include <iostream>
+
+#include "View.h"
 
 TowerButtons* TowerButtons::SelectedTower = nullptr;
 

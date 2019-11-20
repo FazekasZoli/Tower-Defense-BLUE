@@ -17,7 +17,7 @@ public:
 	BlockArea(std::pair<Position, Position>& leftRoadPos, std::pair<Position, Position>& rightRoadPos);
 	BlockArea(Position& towerPos);
 
-	const Position& getIdPos() const;
+	Position& getIdPos();
 
 	bool contains(Position& p) const;
 };

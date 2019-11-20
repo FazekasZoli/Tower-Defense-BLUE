@@ -84,14 +84,17 @@ void CritterManager::moveActualRoundCritters(int actualRound, const std::vector<
 	}
 }
 
-void CritterManager::resetCritters(int actualRound)
+void CritterManager::resetCritters()
 {
 	_startTimeIsValid = false;
-	for (auto& critter : _crittersForGame[actualRound])
+	for (auto& level : _crittersForGame)
 	{
-		critter->setLife(10);
-		critter->setIsAlive(true);
-		critter->setPos(0, 0, 0, 0);
+		for (auto& critter : level)
+		{
+			critter->setLife(10);
+			critter->setIsAlive(true);
+			critter->setPos(0, 0, 0, 0);
+		}
 	}
 }
 

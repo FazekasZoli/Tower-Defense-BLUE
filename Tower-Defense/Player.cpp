@@ -1,6 +1,5 @@
 #include "Player.h"
 
-
 //Getterek implementálása
 int Player::getLife() const
 {

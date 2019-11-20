@@ -30,7 +30,7 @@ BlockArea::BlockArea(Position& towerPos)
 	bottomRightCorner.y = towerPos.y - TILE;
 }
 
-const Position& BlockArea::getIdPos() const
+Position& BlockArea::getIdPos()
 {
 	return idPos;
 }

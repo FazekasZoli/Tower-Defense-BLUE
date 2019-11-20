@@ -57,7 +57,7 @@ std::vector<std::pair<Position, Position>> Grid::loadRoad(const int actualMap)
 
 void Grid::loadRoads()
 {
-	for (size_t i = 1; i <= 2; i++)
+	for (int i = 1; i <= 2; i++)
 	{
 		allRoads.push_back(loadRoad(i));
 	}
@@ -65,10 +65,9 @@ void Grid::loadRoads()
 
 void Grid::createBlockedAreaFromRoad(const int level)
 {
-
 	blockedAreas.clear();
 
-	for (size_t i = 0; i < allRoads[level].size() - 1; i++)
+	for (int i = 0; i < allRoads[level].size() - 1; i++)
 	{
 		blockedAreas.emplace_back(std::make_shared<BlockArea>(allRoads[level][i], allRoads[level][i + 1]));
 	}
@@ -81,7 +80,7 @@ void Grid::addBlockedTowerArea(Position& towerPos)
 
 void Grid::removeBlockedTowerArea(Position& towerPos)
 {
-	blockedAreas.remove_if([towerPos](BlockArea& area) { return area.getIdPos() == towerPos; });
+	blockedAreas.remove_if([towerPos](std::shared_ptr<BlockArea> area) { return area->getIdPos() == towerPos; });
 }
 
 bool Grid::isAreaBlocked(const Position &pos)

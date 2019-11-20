@@ -1,11 +1,11 @@
 #pragma once
 #include <memory>
 
+#include "Observer.h"
 #include "Player.h"
 #include "View.h"
 #include "Grid.h"
 #include "CritterManager.h"
-#include "Observer.h"
 #include "TowerManager.h"
 
 class Game : public CritterObserver, public ViewObserver
@@ -29,8 +29,7 @@ public:
 	virtual void critterFinishedRoad() override;
 	virtual void critterDied() override;
 	// Inherited via ViewObserver
-	virtual void towerPlaced(int type, Position towerPos) override;
-	virtual void buyTower(Tower* tower) override;
+	virtual void towerPlaced(int type, Position towerPos) override;	
 	virtual void sellTower(Position &towerPos) override;
 	virtual void upgradeTower(Position &towerPos) override;
 	virtual void levelSelected(int selectedLevel) override;

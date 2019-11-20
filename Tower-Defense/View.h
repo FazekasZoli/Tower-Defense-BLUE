@@ -2,18 +2,18 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/OpenGL.hpp>
 #include <SFML/Audio.hpp>
-#include <iostream>
 #include <Windows.h>
+#include <iostream>
 #include <iomanip>
 #include <conio.h>
 #include <vector>
 #include <string>
 #include <list>
-#include<thread>
+#include <thread>
 
+#include "inc/Observable.h"
 #include "Critter.h"
 #include "Tower.h"
-#include "inc/Observable.h"
 #include "Grid.h"
 
 enum LevelSelectMode
