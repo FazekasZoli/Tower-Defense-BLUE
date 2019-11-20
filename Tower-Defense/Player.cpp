@@ -17,7 +17,7 @@ int* Player::getMoneyPtr()
 	return &money;
 }
 
-int Player::getMoney() const
+double Player::getMoney() const
 {
 	return money;
 }
@@ -29,18 +29,18 @@ void Player::setLife(int _life)
 	life = _life;
 }
 
-void Player::setMoney(int _money)
+void Player::setMoney(double _money)
 {
 	money = _money;
 }
 
-int Player::sellTower(int _money)
+double Player::sellTower(double _money)
 {
 	money += _money;
 	return money;
 }
 
-int Player::buyTower(int _money)
+double Player::buyTower(double _money)
 {
 	money -= _money;
 	return money;

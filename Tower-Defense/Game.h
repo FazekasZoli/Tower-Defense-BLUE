@@ -8,7 +8,7 @@
 #include "Observer.h"
 #include "TowerManager.h"
 
-class Game : public CritterObserver, public ViewObserver
+class Game : public CritterManagerObserver, public ViewObserver
 {	  
 private:
 	void setupGame();
@@ -26,15 +26,13 @@ public:
 
 	// Events
 	// Inherited via CritterObserver
-	virtual void critterFinishedRoad() override;
-	virtual void critterDied() override;
+	virtual void critterFinishedRoad() override;	
 	// Inherited via ViewObserver
-	virtual void towerPlaced(int type, Position towerPos) override;
-	virtual void buyTower(Tower* tower) override;
-	virtual void sellTower(Position &towerPos) override;
-	virtual void upgradeTower(Position &towerPos) override;
 	virtual void levelSelected(int selectedLevel) override;
 	virtual void endGameRequest() override;
+	virtual void buyTower(Position &towerPos) override;	
+	virtual void sellTower(Position &towerPos) override;
+	virtual void upgradeTower(Position &towerPos) override;	
 
 private:
 	std::unique_ptr<Player> _player;
@@ -47,4 +45,6 @@ private:
 	int _selectedRoad;
 	bool _isPaused;
 	bool _endGame;
+
+	
 };

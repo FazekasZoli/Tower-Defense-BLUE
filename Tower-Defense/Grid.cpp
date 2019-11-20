@@ -65,7 +65,6 @@ void Grid::loadRoads()
 
 void Grid::createBlockedAreaFromRoad(const int level)
 {
-
 	blockedAreas.clear();
 
 	for (size_t i = 0; i < allRoads[level].size() - 1; i++)
@@ -81,6 +80,7 @@ void Grid::addBlockedTowerArea(Position& towerPos)
 
 void Grid::removeBlockedTowerArea(Position &towerPos)
 {
+	blockedAreas.remove_if([towerPos](std::shared_ptr<BlockArea> area) { return area->getIdPos() == towerPos; });
 }
 
 bool Grid::isAreaBlocked(const Position &pos)

@@ -17,7 +17,7 @@ private:
 public:
 	// store road
 	std::vector<std::pair<Position, Position>> & getRoad(int selectedRoad)  { return allRoads[selectedRoad]; };
-	int allRoadsSize() { return allRoads.size(); };
+	size_t allRoadsSize() { return allRoads.size(); };
 	
 	// load road
 	void saveRoad();
@@ -26,8 +26,7 @@ public:
 
 	// blocked area related methods
 	bool isAreaBlocked(const Position &pos);
-	void addBlockedTowerArea(Position &towerPos);
+	void addBlockedTowerArea(Position &towerPos);	
 	void removeBlockedTowerArea(Position &towerPos);
-
 	void createBlockedAreaFromRoad(const int level);
 };

@@ -11,10 +11,10 @@
 
 enum CritterType { NORMAL };
 
-class CritterManager : public CritterEvents
+class CritterManager : public CritterManagerEvents
 {
 private:	
-	std::shared_ptr<Critter> createCritter(CritterType critterType); // majd private legyen
+	std::shared_ptr<Critter> createCritter(CritterType critterType);
 	void createCrittersForGame();
 	
 public:	
@@ -23,7 +23,7 @@ public:
 	std::list<std::shared_ptr<Critter>>& getCrittersForRound(int actualRound);
 
 	void moveActualRoundCritters(int actualRound, const std::vector<std::pair<Position, Position>>& road);
-	void resetCritters(int actualRound);
+	void resetCritters();
 	bool allCritterIsDead(int actualRound);
 	void resetTimer();
 

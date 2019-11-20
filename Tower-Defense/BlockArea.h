@@ -6,6 +6,8 @@
 class BlockArea
 {
 private:
+	Position idPos;
+
 	Position topLeftCorner;
 	Position bottomRightCorner;
 
@@ -14,6 +16,8 @@ public:
 	
 	BlockArea(std::pair<Position, Position>& leftRoadPos, std::pair<Position, Position>& rightRoadPos);
 	BlockArea(Position& towerPos);
+	
+	Position& getIdPos();
 
 	bool contains(Position& p) const;
 };

@@ -50,41 +50,39 @@ struct Position
 
 		return *this;	
 	}
-
-
 };
 
 class Entity
 {
 protected:
-	Position _pos;
-	Position irany;
-	int _cost;
+	Position pos;
+	Position dir;
+	int cost;
 
 public:
-	Entity() : _pos({ 0, 0 }), _cost()
+	Entity() : pos({ 0, 0 }), cost()
 	{}
 
 	Entity(int x, int y, int cost = 0)
-		: _pos({ x, y }), _cost(cost)
+		: pos({ x, y }), cost(cost)
 	{}
 
-	Entity(int cost = 0)
-		: _cost(cost)
+	Entity(int cost =  0)
+		: cost(cost)
 	{}
 
-	Entity(const Position& p, int cost = 0) : _pos(p), _cost(cost) {}
+	Entity(const Position& p, int cost) : pos(p), cost(cost) {}
 
-	int getCost() const { return _cost; };
-	Position getPos() const { return _pos; };
-	Position getDir() const { return irany; };
+	int getCost() const { return cost; };
+	Position getPos() { return pos; };
+	Position getDir() const { return dir; };
 
-	void setPos(int x, int y, int dirX, int dirY) { _pos.x = x; _pos.y = y; irany.x = dirX; irany.y = dirY; }
-	void setPosTw(Position pos) { _pos.x = pos.x; _pos.y = pos.y;}
+	void setPos(int x, int y, int dirX, int dirY) { pos.x = x; pos.y = y; dir.x = dirX; dir.y = dirY; }
+	void setPosTw(Position newPos) { this->pos.x = newPos.x; this->pos.y = newPos.y;}
 
-	double distance(Position p)
+	double distance(Position &p)
 	{
-		double result = sqrt(pow((_pos.x - p.x), 2) + pow((_pos.y - p.y), 2));
+		double result = sqrt(pow((pos.x - p.x), 2) + pow((pos.y - p.y), 2));
 
 		return result;
 	}

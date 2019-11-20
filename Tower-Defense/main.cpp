@@ -1,5 +1,3 @@
-#include <iostream>
-#include "Critter.h"
 #include "Game.h"	
 
 int main(int argc, char* argv[])
@@ -8,10 +6,7 @@ int main(int argc, char* argv[])
 
 	Game game;
 	  
-	game.playGame();
-
-	//Critter monster;
-	//monster.test_move();
+	game.playGame();	
 
 	return 0;
-}
+} 
