@@ -83,7 +83,8 @@ void View::displayIntro()
 	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(76) << "++\n";
 	std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(76) << "++\n";
 	std::cout << std::setfill(' ') << std::setw(10) << "+" << std::setfill('+') << std::setw(77) << "\n";
-	Sleep(500);
+	
+	std::this_thread::sleep_for(std::chrono::milliseconds(3000));
 }
 
 void View::displayMenu(int numberOfMaps)
@@ -414,6 +415,8 @@ void View::displayGameOver(GameEnd status)
 		std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(76) << "++\n";
 		std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(76) << "++\n";
 		std::cout << std::setfill(' ') << std::setw(10) << "+" << std::setfill('+') << std::setw(77) << "\n";
+
+		std::this_thread::sleep_for(std::chrono::milliseconds(3000));
 	}
 	else {
 
@@ -439,6 +442,8 @@ void View::displayGameOver(GameEnd status)
 		std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << std::setfill(' ') << std::setw(76) << "++\n";
 		std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << std::setfill(' ') << std::setw(76) << "++\n";
 		std::cout << std::setfill(' ') << std::setw(10) << "+" << std::setfill('+') << std::setw(77) << "\n";
+
+		std::this_thread::sleep_for(std::chrono::milliseconds(3000));
 	}
 }
 

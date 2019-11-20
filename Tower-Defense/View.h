@@ -9,6 +9,7 @@
 #include <vector>
 #include <string>
 #include <list>
+#include<thread>
 
 #include "Critter.h"
 #include "Tower.h"
