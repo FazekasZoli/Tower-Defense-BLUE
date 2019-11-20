@@ -27,5 +27,7 @@ public:
 	// blocked area related methods
 	bool isAreaBlocked(const Position &pos);
 	void addBlockedTowerArea(Position &towerPos);
+	void removeBlockedTowerArea(Position &towerPos);
+
 	void createBlockedAreaFromRoad(const int level);
 };

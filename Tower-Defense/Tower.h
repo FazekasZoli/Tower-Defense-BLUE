@@ -46,6 +46,7 @@ private:
 	//tipus
 	TowerType type;
 
+	int level;
 	// az az osszeg, amennyiért a tower lehelyezheto
 	int buyCost;
 

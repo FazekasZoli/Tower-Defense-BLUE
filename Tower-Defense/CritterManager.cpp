@@ -59,8 +59,9 @@ void CritterManager::moveActualRoundCritters(int actualRound, const std::vector<
 	}
 	std::chrono::duration<double> diff = std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now() - _startTime);
 
-	for (auto critterIt = _crittersForGame[actualRound].begin(); critterIt != _crittersForGame[actualRound].end(); critterIt++)
+	for (auto &critterIt : _crittersForGame[actualRound])
 	{
+
 		if (i > std::min(_crittersForGame[actualRound].size(), static_cast<size_t>(diff.count() / 0.3)))
 		{
 			
@@ -68,14 +69,16 @@ void CritterManager::moveActualRoundCritters(int actualRound, const std::vector<
 			//system("pause");
 			break;
 		} 
-		
-		(*critterIt)->move(road);
+		if (critterIt->getIsAlive()) {
+			(critterIt)->move(road);
+		}
 
-		if ((*critterIt)->getPos() == road.back().first)
+		if ((critterIt)->getPos() == road.back().first && critterIt->getIsAlive())
 		{
+
 			notifyCritterFinishedRoad();
 			// mark critter death
-			(*critterIt)->setIsAlive(false);
+			(critterIt)->setIsAlive(false);
 		}
 		i++;
 	}

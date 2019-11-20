@@ -5,19 +5,20 @@
 
 Tower::Tower(TowerType _type, Position& position) : Entity(position), type(_type), lastAttackTime(std::chrono::system_clock::now())
 {
+	level = 1;
 	switch (_type)
 	{
 	case BASE:
 		buyCost = 50;
 		sellCost = buyCost * 0.6;
 		attackPower = 11;
-		attackRange = 50;
+		attackRange = 100;
 		break;
 	case POISONING:
 		buyCost = 75;
 		sellCost = buyCost * 0.6;
 		attackPower = 1;
-		attackRange = 50;
+		attackRange = 100;
 		break;
 	case FREEZING:
 		buyCost = 100;
@@ -38,18 +39,22 @@ void Tower::attack(std::list<std::shared_ptr<Critter>>& critters)
 		double min = attackRange;
 		for (auto& critter : critters)
 		{
-			if (critter->distance(_pos) < min)
+			if (critter->distance(_pos) < min && critter->getIsAlive())
 			{
+				//std::cout << "attack\n";
 				min = critter->distance(_pos);
 				critter->damage(attackPower);
+				lastAttackTime = std::chrono::system_clock::now();
+				break;
 			}
 		}
-		lastAttackTime = std::chrono::system_clock::now();
+		
 	}
 }
 
 void Tower::upgrade()
 {
+	++level;
 	setAttackPower(attackPower *= 2);
 	setSellCost(sellCost *= 1.2) ;
 	setAttackRange(attackRange *= 1.2);

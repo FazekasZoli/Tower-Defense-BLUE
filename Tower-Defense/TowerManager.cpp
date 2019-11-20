@@ -20,20 +20,40 @@ void TowerManager::createTowerForGame(int type, Position pos)
 	_towerForGame.emplace_back(_createTower(static_cast<TowerType>(type)));
 	_towerForGame.back()->setPosTw(pos);
 } 
-void TowerManager::upgradeTower(Tower* tower)
+void TowerManager::upgradeTower(Position & towerPos)
 {
-	tower->upgrade();
-
-}
-
-int TowerManager::sellTower(std::vector<std::shared_ptr<Tower>> towers)
-{
-	for (auto tower : towers)
+	for (auto &it : _towerForGame)
 	{
-		return towers[0]->getSellCost();
+		if (it->getPos()== towerPos)
+		{
+			it->upgrade();
+		}
 	}
-	return 0;
+
 }
+
+void TowerManager::sellTower(Position &towerPos)
+{
+	Position tmp;
+	for (auto it = _towerForGame.begin(); it != _towerForGame.end(); ++it)
+	{
+		tmp.x = (*it)->getPosition().x;
+		tmp.y = (*it)->getPosition().y;
+		if (tmp == towerPos) {
+			_towerForGame.erase(it);
+			return;
+		}
+	}
+}
+
+//int TowerManager::sellTower(std::vector<std::shared_ptr<Tower>> towers)
+//{
+//	for (auto tower : towers)
+//	{
+//		return towers[0]->getSellCost();
+//	}
+//	return 0;
+//}
 
 std::vector<std::shared_ptr<Tower>>& TowerManager::getTowerList()
 {
@@ -43,4 +63,13 @@ std::vector<std::shared_ptr<Tower>>& TowerManager::getTowerList()
 void TowerManager::deleteTowers()
 {
 	_towerForGame.clear();
+}
+
+void TowerManager::attackWithTowers(std::list<std::shared_ptr<Critter>>& critters)
+{
+	for (auto &it:_towerForGame)
+	{
+		
+		it->attack(critters);
+	}
 }

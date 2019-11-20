@@ -5,13 +5,14 @@
 class CritterEvents 
 {
 	private:
-	    std::list<CritterObserver*> _critterFinishObservers;  ///< The registered observers.		
+	    std::list<CritterObserver*> _critterFinishObservers;  ///< The registered observers.	
+		CritterObserver* _critterDiedObserver;
 
     public:
 
 		/// Adds an observer.
 		/// \param obs	Observer to add.
-	    void addCritterObserver(CritterObserver *obs) 
+	    void addCritterFinishObserver(CritterObserver *obs) 
 		{
 		    //check if already in
 		    for (const auto p : _critterFinishObservers) 
@@ -24,7 +25,7 @@ class CritterEvents
 
 		/// Removes an observers.
 		/// \param obs	Observer to remove.
-	    void removeCritterObserver(CritterObserver *obs) 
+	    void removeCritterFinishObserver(CritterObserver *obs) 
 		{
 		    for (auto it = std::begin(_critterFinishObservers); it != std::end(_critterFinishObservers); ++it) 
 			{
@@ -36,6 +37,11 @@ class CritterEvents
 		    }
 	    }
 
+		void addCritterDiedObserver(CritterObserver* obs)
+		{
+			_critterDiedObserver = obs;
+		}
+
 		/// Notifies all the observers, i.e., calls  observers update function.
 	    void notifyCritterFinishedRoad() 
 		{
@@ -44,6 +50,11 @@ class CritterEvents
 				obs->critterFinishedRoad();
 		    }
 	    }
+
+		void notifyCritterDied()
+		{
+			_critterDiedObserver->critterDied();
+		}
 };
 
 enum ButtonType { Pause, Resume, TowerPlace, TowerUpgrade, TowerSell, NextRoundStart, OwnTower };
@@ -67,11 +78,14 @@ public:
 		case Resume:
 			break;
 		case TowerPlace:
+
 			_obs->towerPlaced(type, towerPos);
 			break;
 		case TowerUpgrade:
+			_obs->upgradeTower(towerPos);
 			break;
 		case TowerSell:
+			_obs->sellTower(towerPos);
 			break;
 		case NextRoundStart:
 			break;
@@ -85,12 +99,12 @@ public:
 		switch (clickType)
 		{
 		case TowerUpgrade:
-			_obs->upgradeTower(tower);
+			//_obs->upgradeTower(tower);
 			break;
 		case TowerSell:
-			_obs->sellTower(tower);
+			//_obs->sellTower(tower);
 			break;
-		case TowerBuy:
+		case TowerPlace:
 			_obs->buyTower(tower);
 			break;
 		default:

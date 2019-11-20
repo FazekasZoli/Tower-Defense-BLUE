@@ -448,6 +448,9 @@ void View::updateGraphic()
 
 	sf::Font font;
 	playerLifeText.setString(std::to_string(*playerLife));
+	playerMoneyText.setString(std::to_string(*playerMoneyV));
+	auto asd = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+	Position tmp(asd.x, asd.y);
 	while (window.pollEvent(event))
 	{
 		switch (event.type)
@@ -476,13 +479,12 @@ void View::updateGraphic()
 						window.setMouseCursorVisible(true);
 						selectedButton = nullptr;
 					}
-				} else if (selectedButton == &buttonTowerProba)
+				} else if (selectedButton == &buttonTowerProba && !gridPtr->isAreaBlocked(tmp))
 				{
 					selectedButton = nullptr;
 					buttonTowerProba.setState(!buttonTowerProba.getVar());
 					window.setMouseCursorVisible(true);
-					auto asd=window.mapPixelToCoords(sf::Mouse::getPosition(window));
-					Position tmp(asd.x, asd.y);
+					
 					notifyButtonClicked(buttonTowerProba.getType(), BASE, tmp);
 				}
 				else
@@ -526,20 +528,38 @@ void View::updateGraphic()
 	window.draw(*buttonTowerProba.getSprite());
 	if (selectedButton == &buttonTowerProba)
 	{
-
-		TowerShadySprite.setPosition(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
-		radius.setPosition(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
-		window.draw(TowerShadySprite);
-		window.draw(radius);
+		if (gridPtr->isAreaBlocked(Position(static_cast<int>(window.mapPixelToCoords(sf::Mouse::getPosition(window)).x),
+											static_cast<int>(window.mapPixelToCoords(sf::Mouse::getPosition(window)).y))))
+		{
+			TowerShadySpriteRed.setPosition(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
+			radius.setPosition(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
+			window.draw(TowerShadySpriteRed);
+			window.draw(radius);
+		}
+		else {
+			TowerShadySprite.setPosition(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
+			radius.setPosition(window.mapPixelToCoords(sf::Mouse::getPosition(window)));
+			window.draw(TowerShadySprite);
+			window.draw(radius);
+		}
 	}
+
+	if (notEoughMoneyBool && notEoughMoneyCounter<=25)
+	{
+		window.draw(notEoughMoney);
+		++notEoughMoneyCounter;
+	}
+
+
 	window.display();
 
 }
 
-void View::setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::vector<std::shared_ptr<Tower>>& towerList, std::vector<std::pair<Position, Position>> &road, int* playerLifee, int * playerMoney)
+void View::setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::vector<std::shared_ptr<Tower>>& towerList, std::vector<std::pair<Position, Position>> &road, int* playerLifee, int * playerMoney, std::shared_ptr<Grid> gridPtr)
 {
 	playerMoneyV = playerMoney;
 	selectedButton = nullptr;
+	this->gridPtr = gridPtr;
 	buttonTowerProba.setStateVar(false);
 	newEntityFront.loadFromFile("pokeFront.png");
 	newEntityBack.loadFromFile("pokeBack.png");
@@ -568,8 +588,13 @@ void View::setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::v
 
 	towerTex.loadFromFile("Tower1.png");
 	TowerShady.loadFromFile("Tower2Shady.png");
+	
 	TowerShadySprite.setTexture(TowerShady);
 	TowerShadySprite.setOrigin(25,25);
+
+	TowerShadyRed.loadFromFile("Tower2ShadyDeny.png");
+	TowerShadySpriteRed.setTexture(TowerShadyRed);
+	TowerShadySpriteRed.setOrigin(25, 25);
 
 	if (!font.loadFromFile("arial.ttf"))
 	{
@@ -589,7 +614,7 @@ void View::setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::v
 	playerLifeRizsa.setString("HP: ");
 	playerLifeRizsa.setPosition(800, 0);
 	playerLifeRizsa.setOutlineColor(sf::Color::Black);
-	playerLifeRizsa.setOutlineThickness(4);
+	playerLifeRizsa.setOutlineThickness(2);
 
 	playerMoneyText.setFont(font);
 	playerMoneyText.setString(std::to_string(*playerMoneyV));
@@ -606,7 +631,7 @@ void View::setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::v
 	playerMoneyRizsa.setPosition(400, 0);
 	playerMoneyRizsa.setFillColor(sf::Color::Yellow);
 	playerMoneyRizsa.setOutlineColor(sf::Color::Black);
-	playerMoneyRizsa.setOutlineThickness(4);
+	playerMoneyRizsa.setOutlineThickness(2);
 
 	radius.setOutlineColor(sf::Color::Yellow);
 	radius.setOutlineThickness(3);
@@ -621,6 +646,7 @@ void View::setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::v
 	window.setVerticalSyncEnabled(true);
 
 	grassTexture.create(1000, 800);
+	
 	grassTexture.setRepeated(true);
 
 	if (!grassTexture.loadFromFile("grassTile.png")) {
@@ -632,6 +658,7 @@ void View::setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::v
 	if (!entityTexture.loadFromFile("poke2.png")) {
 		std::cout << "betoltes nem sikerult\n";
 	}
+	grassTexture2.loadFromFile("grassTile.png");
 	grassTexture.setSmooth(true);
 	routeTexture.setSmooth(true);
 	entityTexture.setSmooth(true);
@@ -643,6 +670,24 @@ void View::setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::v
 	addNewSprites(critterList);
 	addRouteSprites(road, routeTexture);
 	//Buttons.emplace_back();
+
+	notEoughMoney.setString("Nincs elég pénz :(");
+	notEoughMoney.setCharacterSize(50);
+	notEoughMoney.setFont(font);
+	notEoughMoney.setStyle(sf::Text::Bold);
+	notEoughMoney.setFillColor(sf::Color::Red);
+	notEoughMoney.setOutlineColor(sf::Color::Black);
+	notEoughMoney.setOutlineThickness(10);
+	notEoughMoney.setPosition(300, 400);
+	notEoughMoneyBool = false;
+	notEoughMoneyCounter = 0;
+
+	buffer.loadFromFile("nincstobbgaras2.wav");
+	sound.setBuffer(buffer);
+
+	grave.loadFromFile("grave3.png");
+	
+
 	updateGraphic();
 
 
@@ -656,6 +701,7 @@ void View::addSprites(std::list<std::shared_ptr<Critter>>& critterList, const sf
 	{
 		sprites.emplace_back();
 		sprites[i].setTexture(texture);
+		sprites[i].setOrigin(25,25);
 		//std::next(sprites.begin(), i)->setScale(sf::Vector2f(0.1, 0.1));
 		sprites[i].setPosition((*std::next(critterList.begin(), i))->getPos().x, (*std::next(critterList.begin(), i))->getPos().y);
 	}
@@ -663,7 +709,7 @@ void View::addSprites(std::list<std::shared_ptr<Critter>>& critterList, const sf
 
 void View::addRouteSprites(std::vector<std::pair<Position, Position>>& road, const sf::Texture & texture)
 {
-
+	RoadSprites.clear();
 	Position irany = road[0].second;
 	Position pos = road[0].first;
 	Position nextPoint = road[1].first;
@@ -677,6 +723,7 @@ void View::addRouteSprites(std::vector<std::pair<Position, Position>>& road, con
 			RoadSprites.emplace_back();
 			RoadSprites[sorsz].setTexture(texture);
 			RoadSprites[sorsz].setPosition(pos.x, pos.y);
+			RoadSprites[sorsz].setOrigin(25,25);
 			/*std::cout << sorsz << ":\n";
 			std::cout << pos.x << " " << pos.y << "\n";
 			std::cout << irany.x << " " << irany.y << "\n";
@@ -728,6 +775,10 @@ void View::updateSprites()
 				sprites[i].setTexture(newEntityRight);
 			}
 		}
+		else
+		{
+			sprites[i].setTexture(grave);
+		}
 	}
 }
 
@@ -744,6 +795,7 @@ void View::addNewTower()
 	towerButtons.emplace_back();
 	towerButtons.back().initialize(&towerTex, &towerTex, sf::Vector2f(towersPtr->back()->getPosition().x, towersPtr->back()->getPosition().y), OwnTower);
 	towerButtons.back().getSpriteNorm()->setOrigin(25, 25);
+	//towerButtons.back().setBG(grassTexture2);
 
 	towerButtons.back().getSellButton()->initialize(&sellButtonTex, &sellButtonTex, sf::Vector2f(towersPtr->back()->getPosition().x +40, towersPtr->back()->getPosition().y), TowerSell);
 	towerButtons.back().getUpgradeButton()->initialize(&upgradeButtonTex, &upgradeButtonTex, sf::Vector2f(towersPtr->back()->getPosition().x - 40, towersPtr->back()->getPosition().y), TowerUpgrade);
@@ -751,6 +803,31 @@ void View::addNewTower()
 	towerButtons.back().getUpgradeButton()->getSpriteNorm()->setOrigin(15, 15);
 
 
+}
+
+void View::addNotEnoughMoneyError()
+{
+	notEoughMoneyBool = true;
+	notEoughMoneyCounter = 0;
+}
+
+void View::playNotEnoughMoneySound()
+{
+	sound.play();
+}
+
+void View::removeTower(Position & towerPos)
+{
+	Position tmp;
+	for (auto it=towerButtons.begin(); it != towerButtons.end();++it)
+	{
+		tmp.x = it->getSpriteNorm()->getPosition().x;
+		tmp.y = it->getSpriteNorm()->getPosition().y;
+		if (tmp == towerPos) {
+			towerButtons.erase(it);
+			return;
+		}
+	}
 }
 
 void View::closeWindow()
@@ -777,12 +854,14 @@ void View::TowerButtonsLogic()
 			std::cout << "\nasdfghjk\n";
 			if (it.getUpgradeButton()->checkClick(tmp))
 			{
+				notifyButtonClicked(it.getUpgradeButton()->getType(),0, Position(it.getSpriteNorm()->getPosition().x, it.getSpriteNorm()->getPosition().y) );
 				std::cout << "tower upgraded";
 				it.setStateVar(false);
 				return;
 			}
 			if (it.getSellButton()->checkClick(tmp))
 			{
+				notifyButtonClicked(it.getSellButton()->getType(), 0, Position(it.getSpriteNorm()->getPosition().x, it.getSpriteNorm()->getPosition().y));
 				std::cout << "tower sold";
 				it.setStateVar(false);
 				return;
@@ -813,26 +892,6 @@ void View::TowerButtonsLogic()
 	}
 }
 
-//void View::graphic()
-//{
-//
-//	sf::Font font;
-//	while (window.pollEvent(event))
-//	{
-//		switch (event.type)
-//		{
-//		case sf::Event::Closed:
-//			window.close();
-//			break;
-//		}
-//	}
-//
-//
-//	window.clear();
-//	
-//	window.display();
-//
-//}
 
 //Buttons
 void Button::initialize(sf::Texture* normal, sf::Texture* clicked, sf::Vector2f location, ButtonType ownType) {
@@ -908,9 +967,17 @@ TowerButtons::~TowerButtons()
 {
 }
 
+//void TowerButtons::setBG(sf::Texture bg)
+//{
+//	backgroundGrass.setTexture(bg);
+//	backgroundGrass.setOrigin(25,25);
+//	backgroundGrass.setPosition(this->getSpriteNorm()->getPosition());
+//}
+
 void TowerButtons::draw(sf::RenderWindow * window)
 {
 	//std::cout << "rajz\n";
+	//window->draw(backgroundGrass);
 	window->draw(*(this->getSpriteNorm()));
 
 	//if (this->getVar())

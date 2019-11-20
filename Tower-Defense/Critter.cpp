@@ -5,13 +5,18 @@
 #include "Critter.h"
 #include <Windows.h>
 
+int Critter::getIsFinished() const
+{
+	return isFinished;
+}
+
 void Critter::move(std::vector<std::pair<Position, Position>> road_)
 {
 	//std::cout << "asd\n" << road_[0].first.x << " " << road_[0].first.y << "\n";
 	for (int i = 0; i < road_.size(); i++)
 	{
 		
-		if (isAlive && _pos == road_[i].first)
+		if (_pos == road_[i].first)
 		{
 			irany = road_[i].second;
 			/*if (irany.x == 1 && irany.y == 0)
@@ -33,7 +38,6 @@ void Critter::move(std::vector<std::pair<Position, Position>> road_)
 		}
 		
 	}
-
 	_pos += irany *= speed;
 }
 
@@ -70,6 +74,8 @@ void Critter::damage(int dmg)
 	this->life -= dmg;
 	if (this->life <= 0)
 	{
+
+		std::cout << "critter died\n";
 		this->isAlive = false;
 	}
 }

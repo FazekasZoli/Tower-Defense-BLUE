@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <SFML/OpenGL.hpp>
+#include <SFML/Audio.hpp>
 #include <iostream>
 #include <Windows.h>
 #include <iomanip>
@@ -12,6 +13,7 @@
 #include "Critter.h"
 #include "Tower.h"
 #include "inc/Observable.h"
+#include "Grid.h"
 
 enum LevelSelectMode
 {
@@ -55,12 +57,15 @@ class TowerButtons:public Button
 public:
 	TowerButtons();
 	~TowerButtons();
+	//sf::Sprite backgroundGrass;
+	//void setBG(sf::Texture bg);
 	void draw(sf::RenderWindow * window);
 	Button* getUpgradeButton() { return &upgradeButton; };
 	Button* getSellButton() { return &sellButton; };
 	static TowerButtons* SelectedTower;
 	bool checkClickTower(sf::Vector2f mousePos);
-
+	int* levelptr;
+	sf::Text level;
 
 private:
 	
@@ -86,17 +91,20 @@ private:
 	int screenY = 800;
 	sf::Event event;
 	sf::Texture grassTexture;
+	sf::Texture grassTexture2;
 	sf::Texture routeTexture;
 	sf::Texture entityTexture;
 	sf::Texture newEntityFront;
 	sf::Texture newEntityBack;
 	sf::Texture newEntityLeft;
 	sf::Texture newEntityRight;
+	sf::Texture grave;
 	sf::Texture upgradeButtonTex;
 	sf::Texture sellButtonTex;
 	sf::Sprite spriteBG;
 
-	
+	std::shared_ptr<Grid> gridPtr;
+
 	std::list<std::shared_ptr<Critter>>* crittersPtr;
 	std::vector<std::shared_ptr<Tower>>* towersPtr;
 	std::vector<sf::Sprite> sprites;
@@ -113,6 +121,8 @@ private:
 	sf::Sprite placingTower;
 	sf::Texture TowerShady;
 	sf::Sprite TowerShadySprite;
+	sf::Texture TowerShadyRed;
+	sf::Sprite TowerShadySpriteRed;
 	sf::CircleShape radius;
 	int baseRadius = 100;
 
@@ -122,6 +132,14 @@ private:
 	sf::Text playerLifeRizsa;
 	sf::Text playerMoneyText;
 	sf::Text playerMoneyRizsa;
+	sf::Text notEoughMoney;
+	int notEoughMoneyCounter;
+	bool notEoughMoneyBool;
+
+	sf::SoundBuffer buffer;
+	sf::Sound sound;
+
+
 	sf::Font font;
 
 
@@ -135,11 +153,14 @@ public:
 	void displayGameOver(GameEnd status);
 	//void graphic();
 	void updateGraphic();
-	void setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::vector<std::shared_ptr<Tower>>& towerList, std::vector<std::pair<Position, Position>> &road, int* playerLifee, int * playerMoney);
+	void setUpDisplay(std::list<std::shared_ptr<Critter>>& critterList, std::vector<std::shared_ptr<Tower>>& towerList, std::vector<std::pair<Position, Position>> &road, int* playerLifee, int * playerMoney, std::shared_ptr<Grid> gridPtr);
 	void addSprites(std::list<std::shared_ptr<Critter>>& critterList, const sf::Texture &texture);
 	void addRouteSprites(std::vector<std::pair<Position, Position>> &road, const sf::Texture &texture);
 	void updateSprites();
 	void addNewTower();
+	void addNotEnoughMoneyError();
+	void playNotEnoughMoneySound();
+	void removeTower(Position &towerPos);
 
 	void closeWindow();
 	void addNewSprites(std::list<std::shared_ptr<Critter>>& critterList);

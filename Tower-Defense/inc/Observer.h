@@ -11,6 +11,7 @@ class CritterObserver : public Observer
 {
 public:
 	virtual void critterFinishedRoad() = 0;
+	virtual void critterDied() = 0;
 };
 
 
@@ -22,6 +23,6 @@ public:
 
 	virtual void towerPlaced(int type, Position towerPos) = 0;
 	virtual void buyTower(Tower* tower) = 0;
-	virtual void sellTower(Tower* tower) = 0;
-	virtual void upgradeTower(Tower* tower) = 0;
+	virtual void sellTower(Position& towerPos) = 0;
+	virtual void upgradeTower(Position& towerPos) = 0;
 };

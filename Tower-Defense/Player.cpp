@@ -12,7 +12,7 @@ int* Player::getLifePtr()
 	return &life;
 }
 
-int * Player::getMoneyPtr()
+int* Player::getMoneyPtr()
 {
 	return &money;
 }
