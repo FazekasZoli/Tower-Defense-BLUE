@@ -74,9 +74,6 @@ private:
 
 };
 
-
-
-
 class View : public ViewEvents
 {
 private:
@@ -139,14 +136,12 @@ private:
 	sf::SoundBuffer buffer;
 	sf::Sound sound;
 
-
 	sf::Font font;
-
 
 public:
 	//View() :window(sf::VideoMode(1000, 800), "Proba") {};
 	void displayIntro();
-	void displayMenu(int numberOfRoads);
+	void displayMenu(size_t numberOfRoads);
 	//A mentett palyak és a betöltendo pályák hasonlóan tárolhatóak(pl a new game tartalmazza ugyanazokat mint a mentett csak adott kezdo értékekkel)
 	//így az enummal adhatjuk meg éppen mit írjon ki a select level, utána ugyanúgy indítja el a pályát
 	void displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &betoltendoPalya, int numberOfMaps);

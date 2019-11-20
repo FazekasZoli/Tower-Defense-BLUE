@@ -17,7 +17,7 @@ private:
 public:
 	// store road
 	std::vector<std::pair<Position, Position>> & getRoad(int selectedRoad)  { return allRoads[selectedRoad]; };
-	int allRoadsSize() { return allRoads.size(); };
+	size_t allRoadsSize() { return allRoads.size(); };
 	
 	// load road
 	void saveRoad();

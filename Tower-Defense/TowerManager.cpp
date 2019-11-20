@@ -3,44 +3,38 @@
 #include "TowerManager.h"
 
 std::shared_ptr<Tower> TowerManager::_createTower(TowerType type)
-{
-	
+{	
 	return _towerTemplates[type]->clone();
 }
 
 TowerManager::TowerManager()
 {
-	Position b(10, 10);
-	std::shared_ptr<Tower>tower_ptr(new Tower(BASE, b));
-	_towerTemplates.insert(std::make_pair(BASE, tower_ptr));
+	Position start(10, 10);
+	_towerTemplates.insert(std::make_pair(BASE, std::make_shared<Tower>(start)));
 }
-void TowerManager::createTowerForGame(int type, Position pos)
+void TowerManager::createTowerForGame(Position &pos)
 {
-	//std::cout << "TowerPlaced: " << pos.x << "," << pos.x << "\n";
-	_towerForGame.emplace_back(_createTower(static_cast<TowerType>(type)));
+	_towerForGame.emplace_back(_createTower(BASE));
 	_towerForGame.back()->setPosTw(pos);
 } 
 void TowerManager::upgradeTower(Position & towerPos)
 {
-	for (auto &it : _towerForGame)
+	for (auto &tower : _towerForGame)
 	{
-		if (it->getPos()== towerPos)
-		{
-			it->upgrade();
-		}
+		if (tower->getPos() == towerPos)
+			tower->upgrade();
 	}
-
 }
 
 void TowerManager::sellTower(Position &towerPos)
 {
 	Position tmp;
-	for (auto it = _towerForGame.begin(); it != _towerForGame.end(); ++it)
+	for (auto towerIt = _towerForGame.begin(); towerIt != _towerForGame.end(); ++towerIt)
 	{
-		tmp.x = (*it)->getPosition().x;
-		tmp.y = (*it)->getPosition().y;
+		tmp.x = (*towerIt)->getPos().x;
+		tmp.y = (*towerIt)->getPos().y;
 		if (tmp == towerPos) {
-			_towerForGame.erase(it);
+			_towerForGame.erase(towerIt);
 			return;
 		}
 	}
@@ -67,9 +61,8 @@ void TowerManager::deleteTowers()
 
 void TowerManager::attackWithTowers(std::list<std::shared_ptr<Critter>>& critters)
 {
-	for (auto &it:_towerForGame)
-	{
-		
-		it->attack(critters);
+	for (auto &tower : _towerForGame)
+	{		
+		tower->attack(critters);
 	}
 }

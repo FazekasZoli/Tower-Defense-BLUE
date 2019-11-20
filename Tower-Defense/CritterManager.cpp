@@ -63,8 +63,7 @@ void CritterManager::moveActualRoundCritters(int actualRound, const std::vector<
 	{
 
 		if (i > std::min(_crittersForGame[actualRound].size(), static_cast<size_t>(diff.count() / 0.3)))
-		{
-			
+		{			
 			//std::cout << "asd\n";
 			//system("pause");
 			break;
@@ -75,7 +74,6 @@ void CritterManager::moveActualRoundCritters(int actualRound, const std::vector<
 
 		if ((critterIt)->getPos() == road.back().first && critterIt->getIsAlive())
 		{
-
 			notifyCritterFinishedRoad();
 			// mark critter death
 			(critterIt)->setIsAlive(false);
@@ -84,14 +82,17 @@ void CritterManager::moveActualRoundCritters(int actualRound, const std::vector<
 	}
 }
 
-void CritterManager::resetCritters(int actualRound)
+void CritterManager::resetCritters()
 {
 	_startTimeIsValid = false;
-	for (auto& critter : _crittersForGame[actualRound])
+	for (auto& level : _crittersForGame)
 	{
-		critter->setLife(10);
-		critter->setIsAlive(true);
-		critter->setPos(0, 0, 0, 0);
+		for (auto& critter : level)
+		{
+			critter->setLife(1);
+			critter->setIsAlive(true);
+			critter->setPos(0, 0, 0, 0);
+		}
 	}
 }
 
@@ -111,4 +112,3 @@ void CritterManager::resetTimer()
 {
 	_startTimeIsValid = false;
 }
-

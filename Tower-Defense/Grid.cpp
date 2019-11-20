@@ -65,7 +65,6 @@ void Grid::loadRoads()
 
 void Grid::createBlockedAreaFromRoad(const int level)
 {
-
 	blockedAreas.clear();
 
 	for (size_t i = 0; i < allRoads[level].size() - 1; i++)

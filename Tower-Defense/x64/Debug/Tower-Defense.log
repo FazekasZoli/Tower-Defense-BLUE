@@ -1,21 +1,11 @@
-﻿  BlockArea.cpp
-  Critter.cpp
+﻿  Critter.cpp
   CritterManager.cpp
   Game.cpp
-c:\_repo\tower-defense-blue\tower-defense\grid.h(20): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-  Grid.cpp
-c:\_repo\tower-defense-blue\tower-defense\grid.h(20): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
-c:\_repo\tower-defense-blue\tower-defense\grid.cpp(62): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
-  Player.cpp
   Tower.cpp
-c:\_repo\tower-defense-blue\tower-defense\tower.cpp(13): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\_repo\tower-defense-blue\tower-defense\tower.cpp(19): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\_repo\tower-defense-blue\tower-defense\tower.cpp(25): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\_repo\tower-defense-blue\tower-defense\tower.cpp(59): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-c:\_repo\tower-defense-blue\tower-defense\tower.cpp(60): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+c:\_repo\tower-defense-blue\tower-defense\tower.cpp(23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   TowerManager.cpp
   View.cpp
-c:\_repo\tower-defense-blue\tower-defense\grid.h(20): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+c:\_repo\tower-defense-blue\tower-defense\view.cpp(116): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
 c:\_repo\tower-defense-blue\tower-defense\view.cpp(453): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
@@ -43,27 +33,26 @@ c:\_repo\tower-defense-blue\tower-defense\view.cpp(801): warning C4244: 'argumen
           [
               T=float
           ]
-c:\_repo\tower-defense-blue\tower-defense\view.cpp(824): warning C4244: '=': conversion from 'const T' to 'int', possible loss of data
+c:\_repo\tower-defense-blue\tower-defense\view.cpp(822): warning C4244: '=': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-c:\_repo\tower-defense-blue\tower-defense\view.cpp(825): warning C4244: '=': conversion from 'const T' to 'int', possible loss of data
+c:\_repo\tower-defense-blue\tower-defense\view.cpp(823): warning C4244: '=': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-c:\_repo\tower-defense-blue\tower-defense\view.cpp(857): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+c:\_repo\tower-defense-blue\tower-defense\view.cpp(854): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-c:\_repo\tower-defense-blue\tower-defense\view.cpp(864): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
+c:\_repo\tower-defense-blue\tower-defense\view.cpp(861): warning C4244: 'argument': conversion from 'const T' to 'int', possible loss of data
           with
           [
               T=float
           ]
   main.cpp
-c:\_repo\tower-defense-blue\tower-defense\grid.h(20): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
   Generating Code...
   Tower-Defense.vcxproj -> C:\_repo\Tower-Defense-BLUE\x64\Debug\Tower-Defense.exe

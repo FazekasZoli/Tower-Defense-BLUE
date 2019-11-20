@@ -3,72 +3,35 @@
 
 #include "Tower.h"
 
-Tower::Tower(TowerType _type, Position& position) : Entity(position), type(_type), lastAttackTime(std::chrono::system_clock::now())
+std::shared_ptr<Tower> Tower::clone()
 {
-	level = 1;
-	switch (_type)
-	{
-	case BASE:
-		buyCost = 50;
-		sellCost = buyCost * 0.6;
-		attackPower = 11;
-		attackRange = 100;
-		break;
-	case POISONING:
-		buyCost = 75;
-		sellCost = buyCost * 0.6;
-		attackPower = 1;
-		attackRange = 100;
-		break;
-	case FREEZING:
-		buyCost = 100;
-		sellCost = buyCost * 0.6;
-		attackPower = 1;
-		attackRange = 50;
-		break;
-	default:
-		break;
-	}
+	return std::make_shared<Tower>(*this);
 }
 
 void Tower::attack(std::list<std::shared_ptr<Critter>>& critters)
 {
 	auto diff = std::chrono::system_clock::now() - lastAttackTime;
-	if (std::chrono::duration <double, std::milli>(diff).count() > 2000)
+	if (std::chrono::duration <double, std::milli>(diff).count() > coolDown)
 	{
 		double min = attackRange;
 		for (auto& critter : critters)
-		{
-			if (critter->distance(_pos) < min && critter->getIsAlive())
+		{			
+			if (critter->distance(this->pos) < min && critter->getIsAlive())
 			{
-				//std::cout << "attack\n";
-				min = critter->distance(_pos);
+				std::cout << "attack\n";
+				min = critter->distance(this->pos);
 				critter->damage(attackPower);
 				lastAttackTime = std::chrono::system_clock::now();
 				break;
 			}
-		}
-		
+		}		
 	}
 }
 
 void Tower::upgrade()
 {
 	++level;
-	setAttackPower(attackPower *= 2);
-	setSellCost(sellCost *= 1.2) ;
-	setAttackRange(attackRange *= 1.2);
-	/*if (tower->type == BASE)
-	{
-		setType(POISONING);
-	}
-	else if (tower->type == POISONING)
-	{
-		setType(FREEZING);
-	}*/
-}
-
-std::shared_ptr<Tower> Tower::clone()
-{
-	return std::make_shared<Tower>(*this);
+	attackPower *= 1.25;
+	attackRange *= 1.25;
+	coolDown *= 0.75;
 }

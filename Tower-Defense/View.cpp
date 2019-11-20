@@ -86,7 +86,7 @@ void View::displayIntro()
 	Sleep(500);
 }
 
-void View::displayMenu(int numberOfMaps)
+void View::displayMenu(size_t numberOfMaps)
 {
 	system("cls");
 	menuState = 0;
@@ -790,19 +790,17 @@ void View::addNewTower()
 	towerSprites[towersPtr->size()-1].setTexture(towerTex);
 	towerSprites[towersPtr->size() - 1].setOrigin(25,25);
 	//std::next(sprites.begin(), i)->setScale(sf::Vector2f(0.1, 0.1));
-	towerSprites[towersPtr->size() - 1].setPosition(towersPtr->back()->getPosition().x, towersPtr->back()->getPosition().y);
+	towerSprites[towersPtr->size() - 1].setPosition(towersPtr->back()->getPos().x, towersPtr->back()->getPos().y);
 
 	towerButtons.emplace_back();
-	towerButtons.back().initialize(&towerTex, &towerTex, sf::Vector2f(towersPtr->back()->getPosition().x, towersPtr->back()->getPosition().y), OwnTower);
+	towerButtons.back().initialize(&towerTex, &towerTex, sf::Vector2f(towersPtr->back()->getPos().x, towersPtr->back()->getPos().y), OwnTower);
 	towerButtons.back().getSpriteNorm()->setOrigin(25, 25);
 	//towerButtons.back().setBG(grassTexture2);
 
-	towerButtons.back().getSellButton()->initialize(&sellButtonTex, &sellButtonTex, sf::Vector2f(towersPtr->back()->getPosition().x +40, towersPtr->back()->getPosition().y), TowerSell);
-	towerButtons.back().getUpgradeButton()->initialize(&upgradeButtonTex, &upgradeButtonTex, sf::Vector2f(towersPtr->back()->getPosition().x - 40, towersPtr->back()->getPosition().y), TowerUpgrade);
+	towerButtons.back().getSellButton()->initialize(&sellButtonTex, &sellButtonTex, sf::Vector2f(towersPtr->back()->getPos().x +40, towersPtr->back()->getPos().y), TowerSell);
+	towerButtons.back().getUpgradeButton()->initialize(&upgradeButtonTex, &upgradeButtonTex, sf::Vector2f(towersPtr->back()->getPos().x - 40, towersPtr->back()->getPos().y), TowerUpgrade);
 	towerButtons.back().getSellButton()->getSpriteNorm()->setOrigin(15, 15);
 	towerButtons.back().getUpgradeButton()->getSpriteNorm()->setOrigin(15, 15);
-
-
 }
 
 void View::addNotEnoughMoneyError()
@@ -847,8 +845,7 @@ void View::TowerButtonsLogic()
 {
 	auto tmp = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 	for (auto &it: towerButtons)
-	{
-		
+	{		
 		if (it.getVar())
 		{
 			std::cout << "\nasdfghjk\n";
