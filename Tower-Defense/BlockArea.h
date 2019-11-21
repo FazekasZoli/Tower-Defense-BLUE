@@ -12,7 +12,7 @@ private:
 	Position bottomRightCorner;
 
 public:
-	static const int TILE = 25;
+	static const int TILE = 23;
 	
 	BlockArea(std::pair<Position, Position>& leftRoadPos, std::pair<Position, Position>& rightRoadPos);
 	BlockArea(Position& towerPos);

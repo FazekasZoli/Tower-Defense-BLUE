@@ -71,8 +71,9 @@ void Game::setupGame()
 
 void Game::setupRound()
 {
+	Position startPos = (_grid->getRoad(_selectedRoad))[0].first;
 	_currentRound = 0;
-	_cm->resetCritters();
+	_cm->resetCritters(startPos);
 	_grid->createBlockedAreaFromRoad(_selectedRoad);
 	_player->setLife(100);
 	_player->setMoney(100);
@@ -81,10 +82,12 @@ void Game::setupRound()
 
 void Game::currentRound()
 {	
+	int moneyGotThisTurn = 0;
 	if (!_isPaused)
 	{
 		_cm->moveActualRoundCritters(_currentRound, _grid->getRoad(_selectedRoad));
-		_tm->attackWithTowers(_cm->getCrittersForRound(_currentRound));
+		moneyGotThisTurn=_tm->attackWithTowers(_cm->getCrittersForRound(_currentRound));
+		_player->addMoney(moneyGotThisTurn);
 	}
 	_view->updateGraphic();	
 }
@@ -125,10 +128,17 @@ void Game::sellTower(Position &towerPos)
 
 void Game::upgradeTower(Position &towerPos)
 {
-	if (10 <= _player->getMoney()) {
+	int cost = 15;
+	if (cost <= _player->getMoney()) {
 		_tm->upgradeTower(towerPos);
-		_player->buyTower(10);
-	}	
+		_player->buyTower(cost);
+	}
+	else
+	{
+		_view->playNotEnoughMoneySound();
+		_view->addNotEnoughMoneyError();
+		std::cout << "Nincs elegendo penzed a torony megvasarlasahoz.\n";
+	}
 }
 
 void Game::levelSelected(int selectedRoad)

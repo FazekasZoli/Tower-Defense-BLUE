@@ -59,10 +59,12 @@ void TowerManager::deleteTowers()
 	_towerForGame.clear();
 }
 
-void TowerManager::attackWithTowers(std::list<std::shared_ptr<Critter>>& critters)
+int TowerManager::attackWithTowers(std::list<std::shared_ptr<Critter>>& critters)
 {
+	int count = 0;
 	for (auto &tower : _towerForGame)
 	{		
-		tower->attack(critters);
+		count+=tower->attack(critters);
 	}
+	return count;
 }

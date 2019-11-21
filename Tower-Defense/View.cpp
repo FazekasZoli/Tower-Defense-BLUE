@@ -355,7 +355,7 @@ void View::displayLevelSelect(LevelSelectMode mode, std::vector<std::string> &le
 				menuState = -1;
 				notifySelectedLevel(pos);
 				system("cls");
-				std::cout << "\n" << levels[pos] << " nevu palya indul... WIP";// ehhes hasonlóan hivatkozhat a megfelelore Pályák tárolása vektorban pl
+				std::cout << "\n" << levels[pos] << " nevu palya indul... WIP\n";// ehhes hasonlóan hivatkozhat a megfelelore Pályák tárolása vektorban pl
 				//graphic();
 				
 				return;

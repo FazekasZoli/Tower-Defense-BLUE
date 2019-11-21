@@ -21,6 +21,6 @@ public:
 	void sellTower(Position &towerPos);
 	std::vector<std::shared_ptr<Tower>>& getTowerList();
 	void deleteTowers();
-	void attackWithTowers(std::list<std::shared_ptr<Critter>>& critters);
+	int attackWithTowers(std::list<std::shared_ptr<Critter>>& critters);
 
 };

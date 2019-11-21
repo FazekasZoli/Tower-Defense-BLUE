@@ -23,7 +23,7 @@ public:
 	std::list<std::shared_ptr<Critter>>& getCrittersForRound(int actualRound);
 
 	void moveActualRoundCritters(int actualRound, const std::vector<std::pair<Position, Position>>& road);
-	void resetCritters();
+	void resetCritters(Position &startPos);
 	bool allCritterIsDead(int actualRound);
 	void resetTimer();
 

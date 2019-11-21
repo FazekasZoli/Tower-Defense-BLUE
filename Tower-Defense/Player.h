@@ -28,6 +28,7 @@ public:
 	// "hozzáad / elvesz metórusok" ha kell
 	double sellTower(double _money);
 	double buyTower(double _money);
+	void addMoney(int moneyGot);
 
 	//vásárlás metódusa
 	//void pay(int _money);

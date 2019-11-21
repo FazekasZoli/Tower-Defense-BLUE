@@ -3,9 +3,9 @@
 void CritterManager::createCrittersForGame()
 {
 	{
-		_crittersForGame.resize(3);
+		_crittersForGame.resize(5);
 		// 0. kör critterei
-		for (int i = 0; i < 5; i++)
+		/*for (int i = 0; i < 5; i++)
 		{
 			_crittersForGame[0].push_back(createCritter(NORMAL));
 		}
@@ -18,7 +18,26 @@ void CritterManager::createCrittersForGame()
 		for (int i = 0; i < 15; i++)
 		{
 			_crittersForGame[2].push_back(createCritter(NORMAL));
+		}*/
+		for (int j=0 ; j< _crittersForGame.size(); j++)
+		{
+			for (int i = 0; i < 5*(j+1); i++)
+			{
+				_crittersForGame[j].push_back(createCritter(NORMAL));
+
+			}
+			auto it = _crittersForGame[j].begin();
+			for (int i=0; i <(j+1); i++)
+			{
+				(*it)->setSpeed(5);
+				(*it)->setMaxLife(30);
+				++it;
+				++it;
+			}
 		}
+
+		
+
 	}
 }
 
@@ -52,11 +71,7 @@ void CritterManager::moveActualRoundCritters(int actualRound, const std::vector<
 	}
 
 	int i = 0;
-	if (!_startTimeIsValid)
-	{
-		_startTime = std::chrono::high_resolution_clock::now();
-		_startTimeIsValid = true;
-	}
+
 	std::chrono::duration<double> diff = std::chrono::duration_cast<std::chrono::duration<double>>(std::chrono::high_resolution_clock::now() - _startTime);
 
 	for (auto &critterIt : _crittersForGame[actualRound])
@@ -82,16 +97,16 @@ void CritterManager::moveActualRoundCritters(int actualRound, const std::vector<
 	}
 }
 
-void CritterManager::resetCritters()
+void CritterManager::resetCritters(Position &startPos)
 {
 	_startTimeIsValid = false;
 	for (auto& level : _crittersForGame)
 	{
 		for (auto& critter : level)
 		{
-			critter->setLife(1);
+			critter->setLife(critter->getMaxLife());
 			critter->setIsAlive(true);
-			critter->setPos(0, 0, 0, 0);
+			critter->setPosTw(startPos);
 		}
 	}
 }

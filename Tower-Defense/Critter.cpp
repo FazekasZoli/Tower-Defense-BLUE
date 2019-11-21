@@ -64,14 +64,16 @@ void Critter::test_move()
 	}
 }
 
-void Critter::damage(int dmg)
+int Critter::damage(int dmg)
 {
 	this->life -= dmg;
 	if (this->life <= 0)
 	{ 
 		std::cout << "critter died\n";
 		this->isAlive = false;
+		return cost;
 	}
+	return 0;
 }
 
 std::shared_ptr<Critter> Critter::clone()

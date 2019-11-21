@@ -14,7 +14,7 @@ class Tower : public Entity
 {
 public:
 	Tower(Position& pos)
-		: Entity(pos, 25), type(BASE), level(1), attackPower(1), attackRange(100), coolDown(2000), lastAttackTime(std::chrono::system_clock::now())
+		: Entity(pos, 25), type(BASE), level(1), attackPower(10), attackRange(100), coolDown(2000), lastAttackTime(std::chrono::system_clock::now())
 	{}	
 
 	std::shared_ptr<Tower> clone(); 
@@ -27,7 +27,7 @@ public:
 	double getAttackRange() const { return attackRange; };
 
 	void upgrade();
-	void attack(std::list<std::shared_ptr<Critter>>& critters);	
+	int attack(std::list<std::shared_ptr<Critter>>& critters);	
 
 private:
 	TowerType type;

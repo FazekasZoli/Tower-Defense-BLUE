@@ -45,3 +45,8 @@ double Player::buyTower(double _money)
 	money -= _money;
 	return money;
 }
+
+void Player::addMoney(int moneyGot)
+{
+	money += moneyGot;
+}
