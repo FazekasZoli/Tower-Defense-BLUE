@@ -440,6 +440,7 @@ void View::displayGameOver(GameEnd status)
 		std::cout << std::setfill(' ') << std::setw(11) << "++" << std::setfill(' ') << std::setw(42) << std::setfill(' ') << std::setw(76) << "++\n";
 		std::cout << std::setfill(' ') << std::setw(10) << "+" << std::setfill('+') << std::setw(77) << "\n";
 	}
+	Sleep(2000);
 }
 
 void View::updateGraphic()
